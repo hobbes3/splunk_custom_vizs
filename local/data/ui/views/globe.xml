@@ -24,7 +24,7 @@
           }
         }'>
         </div>
-        <div id="globe" class="splunk-view" data-require="app/hobbes3_globe/webgl_globe/webgl_globe" data-options='{
+        <div id="globe" class="splunk-view" data-require="app/dos_viz/webgl_globe/webgl_globe" data-options='{
           "managerid": "globe_search",
           "lat_field": "lat",
           "lon_field": "lon",

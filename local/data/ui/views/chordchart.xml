@@ -24,7 +24,7 @@
           }
         }'>
         </div>
-        <div id="chordchart" class="splunk-view" data-require="app/dod_viz/chordchart/chordchart" data-options='{
+        <div id="chordchart" class="splunk-view" data-require="app/dos_viz/chordchart/chordchart" data-options='{
           "managerid": "chordchart_search",
           "src_field": "src_port",
           "dst_field": "dst_port",

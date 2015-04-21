@@ -27,7 +27,7 @@
             }
           }'>
           </div>
-          <div id="dendrogram" class="splunk-view" data-require="app/dod_viz/dendrogram/dendrogram" data-options='{
+          <div id="dendrogram" class="splunk-view" data-require="app/dos_viz/dendrogram/dendrogram" data-options='{
             "managerid": "dendrogram_search",
             "root_label": "Country",
             "margin_left": 200,
