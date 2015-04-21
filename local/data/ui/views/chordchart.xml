@@ -1,0 +1,37 @@
+<form script="autodiscover.js">
+  <fieldset submitButton="false" autoRun="true">
+    <input type="time" searchWhenChanged="true">
+      <default>
+        <earliest>-24h@h</earliest>
+        <latest>now</latest>
+      </default>
+    </input>
+  </fieldset>
+    <row>
+    <panel>
+      <html>
+        <h2>Flight Overview</h2>
+        <div id="chordchart_search" class="splunk-manager" data-require="splunkjs/mvc/searchmanager" data-options='{
+          "search": "tag=ids | stats count by src_port dst_port",
+          "preview": true,
+          "earliest_time": {
+            "type": "token_safe",
+            "value": "$$earliest$$"
+          },
+          "latest_time": {
+            "type": "token_safe",
+            "value": "$$latest$$"
+          }
+        }'>
+        </div>
+        <div id="chordchart" class="splunk-view" data-require="app/dod_viz/chordchart/chordchart" data-options='{
+          "managerid": "chordchart_search",
+          "src_field": "src_port",
+          "dst_field": "dst_port",
+          "colors": "d3"
+        }'>
+        </div>
+      </html>
+    </panel>
+  </row>
+</form>

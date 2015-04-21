@@ -1,0 +1,40 @@
+<form script="autodiscover.js">
+  <fieldset submitButton="false" autoRun="true">
+    <input type="time" searchWhenChanged="true">
+      <default>
+        <earliest>-24h@h</earliest>
+        <latest>now</latest>
+      </default>
+    </input>
+  </fieldset>
+    <row>
+    <panel>
+        <html>
+          <h2>Attacks by Country</h2>
+          <div id="dendrogram_search" class="splunk-manager" data-require="splunkjs/mvc/searchmanager" data-options='{
+            "search": {
+              "type": "token_safe",
+              "value": "tag=ids | sistats count by src | iplocation src | where isnotnull(Country) AND Country!=\"\" | eval City=if(City=\"\", \"N/A\", City) | eval Region=if(Region=\"\", \"N/A\", Region) | stats count by Country City Region"
+            },
+            "preview": true,
+            "earliest_time": {
+              "type": "token_safe",
+              "value": "$$earliest$$"
+            },
+            "latest_time": {
+              "type": "token_safe",
+              "value": "$$latest$$"
+            }
+          }'>
+          </div>
+          <div id="dendrogram" class="splunk-view" data-require="app/dod_viz/dendrogram/dendrogram" data-options='{
+            "managerid": "dendrogram_search",
+            "root_label": "Country",
+            "margin_left": 200,
+            "margin_right": 0
+          }'>
+          </div>
+        </html>
+    </panel>
+  </row>
+</form>

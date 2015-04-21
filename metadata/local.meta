@@ -10,3 +10,13 @@ modtime = 1429565245.902454000
 owner = admin
 version = 6.2.2
 modtime = 1429567060.393150000
+
+[views/chordchart]
+owner = admin
+version = 6.2.2
+modtime = 1429592996.486693000
+
+[views/dendrogram]
+owner = admin
+version = 6.2.2
+modtime = 1429603398.731627000
