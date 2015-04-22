@@ -37,3 +37,9 @@ export = none
 owner = admin
 version = 6.2.2
 modtime = 1429684749.401192000
+
+[views/parallelcoords]
+export = none
+owner = admin
+version = 6.2.2
+modtime = 1429687808.387004000

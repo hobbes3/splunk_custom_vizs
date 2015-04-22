@@ -1,0 +1,35 @@
+<form script="autodiscover.js">
+  <fieldset submitButton="false" autoRun="true">
+    <input type="time" searchWhenChanged="true">
+      <default>
+        <earliest>-24h@h</earliest>
+        <latest>now</latest>
+      </default>
+    </input>
+  </fieldset>
+    <row>
+    <panel>
+      <html>
+        <h2>IDS</h2>
+        <div id="parallelcoords_search" class="splunk-manager" data-require="splunkjs/mvc/searchmanager" data-options='{
+          "search": "tag=ids | stats count by dvc product category severity | fields - count",
+          "preview": true,
+          "earliest_time": {
+            "type": "token_safe",
+            "value": "$$earliest$$"
+          },
+          "latest_time": {
+            "type": "token_safe",
+            "value": "$$latest$$"
+          }
+        }'>
+        </div>
+        <div id="parallelcoords" class="splunk-view" data-require="app/dos_viz/parallelcoords/parallelcoords" data-options='{
+          "managerid": "parallelcoords_search",
+          "height": "500px"
+        }'>
+        </div>
+      </html>
+    </panel>
+  </row>
+</form>
