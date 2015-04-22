@@ -10,11 +10,11 @@
     <row>
     <panel>
         <html>
-          <h2>IDS Events by Country</h2>
+          <h2>IDS Events in Australia</h2>
           <div id="dendrogram_search" class="splunk-manager" data-require="splunkjs/mvc/searchmanager" data-options='{
             "search": {
               "type": "token_safe",
-              "value": "tag=ids | sistats count by src | iplocation src | where isnotnull(Country) AND Country!=\"\" | eval City=if(City=\"\", \"N/A\", City) | eval Region=if(Region=\"\", \"N/A\", Region) | stats count by Country City Region"
+              "value": "tag=ids | sistats count by src | iplocation src | where Country=\"Australia\" | eval City=if(City=\"\", \"N/A\", City) | eval Region=if(Region=\"\", \"N/A\", Region) | stats count by Region City"
             },
             "preview": true,
             "earliest_time": {
@@ -29,7 +29,7 @@
           </div>
           <div id="dendrogram" class="splunk-view" data-require="app/dos_viz/dendrogram/dendrogram" data-options='{
             "managerid": "dendrogram_search",
-            "root_label": "Country",
+            "root_label": "Australia",
             "margin_left": 200,
             "margin_right": 0
           }'>
