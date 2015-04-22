@@ -31,3 +31,9 @@ export = none
 owner = admin
 version = 6.2.2
 modtime = 1429683875.823834000
+
+[views/sankey]
+export = none
+owner = admin
+version = 6.2.2
+modtime = 1429684749.401192000
