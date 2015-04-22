@@ -21,11 +21,6 @@ owner = admin
 version = 6.2.2
 modtime = 1429607242.685882000
 
-[views/tag_cloud]
-owner = admin
-version = 6.2.2
-modtime = 1429679963.246754000
-
 [views/force_directed]
 export = none
 owner = admin
@@ -43,3 +38,15 @@ export = none
 owner = admin
 version = 6.2.2
 modtime = 1429687808.387004000
+
+[views/tagcloud]
+export = none
+owner = admin
+version = 6.2.2
+modtime = 1429690082.580193000
+
+[views/bubblechart]
+export = none
+owner = admin
+version = 6.2.2
+modtime = 1429690066.375213000
