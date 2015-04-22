@@ -20,3 +20,8 @@ modtime = 1429607323.966030000
 owner = admin
 version = 6.2.2
 modtime = 1429607242.685882000
+
+[views/tag_cloud]
+owner = admin
+version = 6.2.2
+modtime = 1429679963.246754000

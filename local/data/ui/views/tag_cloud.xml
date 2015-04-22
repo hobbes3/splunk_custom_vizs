@@ -1,0 +1,44 @@
+<form script="autodiscover.js">
+  <fieldset submitButton="false" autoRun="true">
+    <input type="time" searchWhenChanged="true">
+      <default>
+        <earliest>-24h@h</earliest>
+        <latest>now</latest>
+      </default>
+    </input>
+  </fieldset>
+  <row>
+    <panel>
+      <html>
+        <h2>Tag Cloud of User Agent</h2>
+        <div id="tagcloud-search"
+             class="splunk-manager"
+             data-require="splunkjs/mvc/searchmanager"
+             data-options='{
+                    "preview": true,
+                    "search": "tag=web http_user_agent=* | rex field=http_user_agent max_match=0 \"(?&lt;words&gt;\\w+)\" | stats count by words",
+                    "earliest_time": {
+                      "type": "token_safe",
+                      "value": "$$earliest$$"
+                    },
+                    "latest_time": {
+                      "type": "token_safe",
+                      "value": "$$latest$$"
+                    }
+                }'>
+        </div>
+        <div id="tagcloud"
+             class="splunk-view"
+             data-require="app/dos_viz/tagcloud/tagcloud"
+             data-options='{
+                    "minFontSize": 14,
+                    "maxFontSize": 55,
+                    "managerid": "tagcloud-search",
+                    "valueField": "count",
+                    "labelField": "words"
+                 }'>
+        </div>
+     </html>
+    </panel>
+  </row>
+</form>
