@@ -10,7 +10,7 @@
     <row>
     <panel>
       <html>
-        <h2>Flight Overview</h2>
+        <h2>IDS Port Communication Relationship</h2>
         <div id="chordchart_search" class="splunk-manager" data-require="splunkjs/mvc/searchmanager" data-options='{
           "search": "tag=ids | stats count by src_port dst_port",
           "preview": true,

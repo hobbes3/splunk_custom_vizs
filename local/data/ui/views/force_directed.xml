@@ -10,7 +10,7 @@
     <row>
     <panel>
       <html>
-        <h2>Splunkweb navigation</h2>
+        <h2>Splunkweb Navigation</h2>
         <div id="forcedirected_search" class="splunk-manager" data-require="splunkjs/mvc/searchmanager" data-options='{
           "search": "index=_internal sourcetype=splunk_web_access uri_path=*/app/* NOT uri_path=*/static/* | table uri_path referer | rex field=referer \"https?://[^/]+(?&lt;source&gt;/[^\\?]*)\" | rename uri_path as target | stats count by source target",
           "preview": true,

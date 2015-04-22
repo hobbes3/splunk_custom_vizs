@@ -10,7 +10,7 @@
     <row>
     <panel>
         <html>
-          <h2>Attacks by Country</h2>
+          <h2>IDS Events by Country</h2>
           <div id="dendrogram_search" class="splunk-manager" data-require="splunkjs/mvc/searchmanager" data-options='{
             "search": {
               "type": "token_safe",
