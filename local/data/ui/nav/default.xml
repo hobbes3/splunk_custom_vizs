@@ -1,0 +1,8 @@
+<nav search_view="search" color="#65A637">
+  <collection label="Examples">
+    <view name="dashboards"  default='true' />
+    <divider/>
+    <view source="all" match="viz_"/>
+  </collection>
+  <view name="search"/>
+</nav>
