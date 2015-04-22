@@ -10,8 +10,8 @@
   <row>
     <panel>
       <html>
-        <h2>Tag Cloud of User Agent</h2>
-        <div id="tagcloud-search"
+        <h2>Tag Cloud of User Agent Keywords</h2>
+        <div id="tagcloud_search"
              class="splunk-manager"
              data-require="splunkjs/mvc/searchmanager"
              data-options='{
@@ -33,7 +33,7 @@
              data-options='{
                     "minFontSize": 14,
                     "maxFontSize": 55,
-                    "managerid": "tagcloud-search",
+                    "managerid": "tagcloud_search",
                     "valueField": "count",
                     "labelField": "words"
                  }'>
