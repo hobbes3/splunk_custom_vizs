@@ -50,3 +50,9 @@ export = none
 owner = admin
 version = 6.2.2
 modtime = 1429690066.375213000
+
+[views/gantt]
+export = none
+owner = admin
+version = 6.2.2
+modtime = 1429690558.499602000

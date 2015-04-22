@@ -1,0 +1,45 @@
+<form script="autodiscover.js">
+  <fieldset submitButton="false" autoRun="true">
+    <input type="time" searchWhenChanged="true">
+      <default>
+        <earliest>-24h@h</earliest>
+        <latest>now</latest>
+      </default>
+    </input>
+  </fieldset>
+    <row>
+    <panel>
+      <html>
+        <h2>Gantt Chart</h2>
+        <div id="demo-search"
+             class="splunk-manager"
+             data-require="splunkjs/mvc/searchmanager"
+             data-options='{
+                "search": { "type": "token_safe", "value": "index=_internal sourcetype=splunkd | where random()%100&lt;50 | eval resource=\"resource\".random()%10 | transaction maxpause=1m resource | search duration&gt;0 | eval user=\"user\".random()%7 | eval extras=\"{\\\"Source Type\\\":\\\"\"+sourcetype+\"\\\"}\"" },
+                "earliest_time": { "type": "token_safe", "value": "$$earliest$$" },
+                "latest_time": { "type": "token_safe", "value": "$$latest$$" },
+                "cancelOnUnload": true,
+                "preview": true
+             }'>
+        </div>
+        <div id="demo-view"
+             class="splunk-view"
+             data-require="app/dos_viz/gantt/gantt"
+             data-options='{
+                "managerid": "demo-search",
+                "startField": "_time",
+                "durationField": "duration",
+                "categoryLabel": "Resource",
+                "categoryField": "resource",
+                "categorySearch": "search index=_internal | stats count | eval resource=\"Magic\"",
+                "seriesLabel": "User",
+                "seriesField": "user",
+                "extrasField": "extras"
+             }'>
+        </div>
+
+
+      </html>
+    </panel>
+  </row>
+</form>
