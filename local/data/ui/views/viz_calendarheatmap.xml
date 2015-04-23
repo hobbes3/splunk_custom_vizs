@@ -1,5 +1,6 @@
 <form script="autodiscover.js">
-    <row>
+  <label>Calendar Heatmap</label>
+  <row>
     <panel>
       <html>
         <h2>IDS Events</h2>

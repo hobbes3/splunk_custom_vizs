@@ -1,4 +1,5 @@
 <form script="autodiscover.js">
+  <label>Bubble Chart</label>
   <fieldset submitButton="false" autoRun="true">
     <input type="time" searchWhenChanged="true">
       <default>

@@ -1,4 +1,5 @@
 <form script="autodiscover.js">
+  <label>Gantt Chart</label>
   <fieldset submitButton="false" autoRun="true">
     <input type="time" searchWhenChanged="true">
       <default>
@@ -11,7 +12,7 @@
     <panel>
       <html>
         <h2>Gantt Chart</h2>
-        <div id="demo-search"
+        <div id="gantt_search"
              class="splunk-manager"
              data-require="splunkjs/mvc/searchmanager"
              data-options='{
@@ -22,11 +23,11 @@
                 "preview": true
              }'>
         </div>
-        <div id="demo-view"
+        <div id="gantt"
              class="splunk-view"
              data-require="app/dos_viz/gantt/gantt"
              data-options='{
-                "managerid": "demo-search",
+                "managerid": "gantt_search",
                 "startField": "_time",
                 "durationField": "duration",
                 "categoryLabel": "Resource",

@@ -1,5 +1,6 @@
 <form script="autodiscover.js">
-    <row>
+  <label>Punchcard</label>
+  <row>
     <panel>
       <html>
         <h2>IDS Events in a week</h2>
