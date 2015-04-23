@@ -1,0 +1,41 @@
+<form script="autodiscover.js">
+  <fieldset submitButton="false" autoRun="true">
+    <input type="time" searchWhenChanged="true">
+      <default>
+        <earliest>-24h@h</earliest>
+        <latest>now</latest>
+      </default>
+    </input>
+  </fieldset>
+    <row>
+    <panel>
+        <html>
+          <h2>IDS Events in Australia</h2>
+          <div id="sunburst_search" class="splunk-manager" data-require="splunkjs/mvc/searchmanager" data-options='{
+            "search": {
+              "type": "token_safe",
+              "value": "tag=ids | sistats count by src | iplocation src | where Country=\"Australia\" | eval City=if(City=\"\", \"N/A\", City) | eval Region=if(Region=\"\", \"N/A\", Region) | stats count by Region City"
+            },
+            "preview": true,
+            "earliest_time": {
+              "type": "token_safe",
+              "value": "$$earliest$$"
+            },
+            "latest_time": {
+              "type": "token_safe",
+              "value": "$$latest$$"
+            }
+          }'>
+          </div>
+          <div id="sunburst" class="splunk-view" data-require="app/dos_viz/sunburst/sunburst" data-options='{
+            "managerid": "sunburst_search",
+            "height": "500px",
+            "valueField": "count",
+            "categoryFields": "Region City",
+            "chartTitle": "Australia"
+          }'>
+          </div>
+        </html>
+    </panel>
+  </row>
+</form>

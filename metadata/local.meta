@@ -68,3 +68,27 @@ modtime = 1429692688.115949000
 [views/viz_globe]
 version = 6.2.2
 modtime = 1429778471.655611000
+
+[views/viz_parallelset]
+export = none
+owner = admin
+version = 6.2.2
+modtime = 1429779905.291896000
+
+[views/viz_sunburst]
+export = none
+owner = admin
+version = 6.2.2
+modtime = 1429780494.490470000
+
+[views/viz_punchcard]
+export = none
+owner = admin
+version = 6.2.2
+modtime = 1429780933.552692000
+
+[views/viz_calendarheatmap]
+export = none
+owner = admin
+version = 6.2.2
+modtime = 1429781483.941611000
