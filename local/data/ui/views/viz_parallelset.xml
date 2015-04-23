@@ -11,6 +11,47 @@
     <row>
     <panel>
       <html>
+        <h2>Options</h2>
+        <table class="table table-striped table-bordered">
+          <tbody>
+            <tr>
+              <td><b>Name</b></td>
+              <td><b>Type</b></td>
+              <td><b>Default</b></td>
+              <td><b>Description</b></td>
+            </tr>
+            <tr>
+              <td><code>managerid</code></td>
+              <td>string</td>
+              <td>null</td>
+              <td>The search manager bound to the chart.</td>
+            </tr>
+            <tr>
+              <td><code>height</code></td>
+              <td>string</td>
+              <td>null</td>
+              <td>The height of the chart</td>
+            </tr>
+            <tr>
+              <td><code>width</code></td>
+              <td>string</td>
+              <td>null</td>
+              <td>The width of the chart.</td>
+            </tr>
+            <tr>
+              <td><code>tension</code></td>
+              <td>number</td>
+              <td>0.5</td>
+              <td>Tension of chart links. This value should be between 0 and 1.</td>
+            </tr>
+          </tbody>
+        </table>
+      </html>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <html>
         <h2>IDS by Device Product Categority Severity</h2>
         <div id="parallelsets_search" class="splunk-manager" data-require="splunkjs/mvc/searchmanager" data-options='{
           "search": "tag=ids | stats count by dvc product category severity | fields - count",
