@@ -1,24 +1,11 @@
 require.config({
     paths: {
         "app": "../app",
-        "tween": "../app/hobbes3_globe/Tween",
-        "three": "../app/hobbes3_globe/three.min",
-        "detector": "../app/hobbes3_globe/Detector",
-        "globe": "../app/hobbes3_globe/globe"
+        "three": "../app/dos_viz/globe/three.min"
     },
     shims: {
-        "tween": {
-            "exports": "TWEEN"
-        },
         "three": {
             "exports": "THREE"
-        },
-        "detector": {
-            "exports": "Detector"
-        },
-        "globe": {
-            "deps": ["three"],
-            "exports": "DAT"
         }
     }
 });

@@ -1,3 +1,5 @@
+define(function(require, exports, module) {
+    var THREE = require("three");
 /**
  * dat.globe Javascript WebGL Globe Toolkit
  * http://dataarts.github.com/dat.globe
@@ -22,6 +24,8 @@ DAT.Globe = function(container, opts) {
     return c;
   };
   var imgDir = opts.imgDir || '/globe/';
+  var orig_spin_speed = opts.spin_speed / 1000;
+  var spin_speed = orig_spin_speed;
 
   var Shaders = {
     'earth' : {
@@ -188,7 +192,7 @@ DAT.Globe = function(container, opts) {
         for (i = 0; i < data.length; i += step) {
           lat = data[i];
           lng = data[i + 1];
-//        size = data[i + 2];
+//          size = data[i + 2];
           color = colorFnWrapper(data,i);
           size = 0;
           addPoint(lat, lng, size, color, this._baseGeometry);
@@ -270,6 +274,7 @@ DAT.Globe = function(container, opts) {
   }
 
   function onMouseDown(event) {
+    spin_speed = 0;
     event.preventDefault();
 
     container.addEventListener('mousemove', onMouseMove, false);
@@ -303,6 +308,7 @@ DAT.Globe = function(container, opts) {
     container.removeEventListener('mouseup', onMouseUp, false);
     container.removeEventListener('mouseout', onMouseOut, false);
     container.style.cursor = 'auto';
+    spin_speed = orig_spin_speed;
   }
 
   function onMouseOut(event) {
@@ -321,11 +327,11 @@ DAT.Globe = function(container, opts) {
 
   function onDocumentKeyDown(event) {
     switch (event.keyCode) {
-      case 38:
+      case 38: // up aroow
         zoom(100);
         event.preventDefault();
         break;
-      case 40:
+      case 40: // down arrow
         zoom(-100);
         event.preventDefault();
         break;
@@ -352,8 +358,14 @@ DAT.Globe = function(container, opts) {
   function render() {
     zoom(curZoomSpeed);
 
-    rotation.x += (target.x - rotation.x) * 0.1;
+    if(spin_speed > 0) {
+        rotation.x += spin_speed;
+    }
+    else {
+        rotation.x += (target.x - rotation.x) * 0.1;
+    }
     rotation.y += (target.y - rotation.y) * 0.1;
+
     distance += (distanceTarget - distance) * 0.3;
 
     camera.position.x = distance * Math.sin(rotation.x) * Math.cos(rotation.y);
@@ -406,3 +418,5 @@ DAT.Globe = function(container, opts) {
 
 };
 
+return DAT;
+});

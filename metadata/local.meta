@@ -64,3 +64,7 @@ modtime = 1429691574.556814000
 [views/viz_dendrogram]
 version = 6.2.2
 modtime = 1429692688.115949000
+
+[views/viz_globe]
+version = 6.2.2
+modtime = 1429778471.655611000
