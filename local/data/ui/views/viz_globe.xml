@@ -11,6 +11,65 @@
   <row>
     <panel>
       <html>
+        <h2>Options</h2>
+        <table class="table table-striped table-bordered">
+          <tbody>
+            <tr>
+              <td><b>Name</b></td>
+              <td><b>Type</b></td>
+              <td><b>Default</b></td>
+              <td><b>Description</b></td>
+            </tr>
+            <tr>
+              <td><code>managerid</code></td>
+              <td>string</td>
+              <td>null</td>
+              <td>The search manager bound to the chart.</td>
+            </tr>
+            <tr>
+              <td><code>height</code></td>
+              <td>number</td>
+              <td>800</td>
+              <td>The height of the chart.</td>
+            </tr>
+            <tr>
+              <td><code>lat_field</code></td>
+              <td>string</td>
+              <td>"latitude"</td>
+              <td>The name of the latitude field.</td>
+            </tr>
+            <tr>
+              <td><code>lon_field</code></td>
+              <td>string</td>
+              <td>"longitude"</td>
+              <td>The name of the longitude field.</td>
+            </tr>
+            <tr>
+              <td><code>count_field</code></td>
+              <td>string</td>
+              <td>"count"</td>
+              <td>The name of the count field.</td>
+            </tr>
+            <tr>
+              <td><code>spin_speed</code></td>
+              <td>number</td>
+              <td>0</td>
+              <td>The speed to auto-spin the globe which is useful for "hands-off" dashboard like on TVs. 0 means no auto-spin.</td>
+            </tr>
+            <tr>
+              <td><code>zoom_level</code></td>
+              <td>number or string</td>
+              <td>9</td>
+              <td>Controls how much to "group" the data together; possible values are from 0 to 9 or "max", where 9 is the least grouping</td>
+            </tr>
+          </tbody>
+        </table>
+      </html>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <html>
         <h2>Web Data by Destination</h2>
         <div id="globe_search" class="splunk-manager" data-require="splunkjs/mvc/searchmanager" data-options='{
           "search": "| tstats count from datamodel=Web by Web.dest | rename Web.* as * | iplocation dest | where isnotnull(lat) AND isnotnull(lon) | geostats count",
