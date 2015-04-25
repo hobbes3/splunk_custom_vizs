@@ -72,7 +72,7 @@
           }
         }'>
         </div>
-        <div id="tagcloud" class="splunk-view" data-require="app/custom_viz/tagcloud/tagcloud" data-options='{
+        <div id="tagcloud" class="splunk-view" data-require="app/custom_vizs/tagcloud/tagcloud" data-options='{
           "minFontSize": 14,
           "maxFontSize": 55,
           "managerid": "tagcloud_search",

@@ -76,7 +76,7 @@
           }
         }'>
         </div>
-        <div id="sankey" class="splunk-view" data-require="app/custom_viz/sankey/sankey" data-options='{
+        <div id="sankey" class="splunk-view" data-require="app/custom_vizs/sankey/sankey" data-options='{
           "managerid": "sankey_search",
           "height": "400px"
         }'>

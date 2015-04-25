@@ -4,7 +4,7 @@
     <panel>
       <html>
         <h2>App Info</h2>
-        <p>This app (<code>custom_viz</code>) is simply a convenient reference for many custom JS "viz's" (visualizations). Most of them are not created by me (hobbes3). Please see the Sources section below for credits.</p>
+        <p>This app (<code>custom_vizs</code>) is simply a convenient reference for many custom JS "viz's" (visualizations). Most of them are not created by me (hobbes3). Please see the Sources section below for credits.</p>
         <h2>JS Info</h2>
         <p>
           Custom JS vizs can be used in Splunk by including special JS files that extends and modifies the <code>SimpleSplunkView</code> SplunkJS object. All custom JS (and other static files like CSS and images) goes in the app's <code>appserver/static/</code> folder. These JS are then called from SimpleXML. Creating the JS files require server access, but <i>using</i> the custom viz only require access to Splunk UI (SimpleXML).
@@ -16,7 +16,7 @@
     <panel>
       <html>
         <h2>SimpleXML declaration</h2>
-        <img src="/static/app/custom_viz/tutorial.png" width="1000px"/>
+        <img src="/static/app/custom_vizs/tutorial.png" width="1000px"/>
       </html>
     </panel>
   </row>

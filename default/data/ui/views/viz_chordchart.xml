@@ -70,7 +70,7 @@
           "latest_time": "now"
         }'>
         </div>
-        <div id="chordchart" class="splunk-view" data-require="app/custom_viz/chordchart/chordchart" data-options='{
+        <div id="chordchart" class="splunk-view" data-require="app/custom_vizs/chordchart/chordchart" data-options='{
           "managerid": "chordchart_search",
           "src_field": "from",
           "dst_field": "to",
