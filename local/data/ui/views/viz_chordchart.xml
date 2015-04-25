@@ -1,13 +1,5 @@
 <form script="autodiscover.js">
   <label>Chord Chart</label>
-  <fieldset submitButton="false" autoRun="true">
-    <input type="time" searchWhenChanged="true">
-      <default>
-        <earliest>-24h@h</earliest>
-        <latest>now</latest>
-      </default>
-    </input>
-  </fieldset>
   <row>
     <panel>
       <html>
@@ -70,24 +62,18 @@
   <row>
     <panel>
       <html>
-        <h2>IDS Port Communication Relationship</h2>
+        <h2>Flights Sample (from sample_flights.csv)</h2>
         <div id="chordchart_search" class="splunk-manager" data-require="splunkjs/mvc/searchmanager" data-options='{
-          "search": "tag=ids | stats count by src_port dst_port",
+          "search": "| inputlookup sample_flights.csv | stats count by from to",
           "preview": true,
-          "earliest_time": {
-            "type": "token_safe",
-            "value": "$$earliest$$"
-          },
-          "latest_time": {
-            "type": "token_safe",
-            "value": "$$latest$$"
-          }
+          "earliest_time": "0",
+          "latest_time": "now"
         }'>
         </div>
         <div id="chordchart" class="splunk-view" data-require="app/dos_viz/chordchart/chordchart" data-options='{
           "managerid": "chordchart_search",
-          "src_field": "src_port",
-          "dst_field": "dst_port",
+          "src_field": "from",
+          "dst_field": "to",
           "colors": "d3"
         }'>
         </div>

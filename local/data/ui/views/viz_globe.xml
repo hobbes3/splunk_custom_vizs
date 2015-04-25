@@ -1,13 +1,5 @@
 <form script="autodiscover_globe.js" stylesheet="dark.css">
   <label>WebGL Globe</label>
-  <fieldset submitButton="false" autoRun="true">
-    <input type="time" searchWhenChanged="true">
-      <default>
-        <earliest>-24h@h</earliest>
-        <latest>now</latest>
-      </default>
-    </input>
-  </fieldset>
   <row>
     <panel>
       <html>
@@ -70,18 +62,12 @@
   <row>
     <panel>
       <html>
-        <h2>Web Data by Destination</h2>
+        <h2>Locations Sample (from sample_geo.csv)</h2>
         <div id="globe_search" class="splunk-manager" data-require="splunkjs/mvc/searchmanager" data-options='{
-          "search": "| tstats count from datamodel=Web by Web.dest | rename Web.* as * | iplocation dest | where isnotnull(lat) AND isnotnull(lon) | geostats count",
+          "search": "| inputlookup sample_geo.csv | geostats count",
           "preview": true,
-          "earliest_time": {
-            "type": "token_safe",
-            "value": "$$earliest$$"
-          },
-          "latest_time": {
-            "type": "token_safe",
-            "value": "$$latest$$"
-          }
+          "earliest_time": "0",
+          "latest_time": "now"
         }'>
         </div>
         <div id="globe" class="splunk-view" data-require="app/dos_viz/globe/globe" data-options='{

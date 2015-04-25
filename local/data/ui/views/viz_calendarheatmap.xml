@@ -19,27 +19,15 @@
               <td>The search manager bound to the chart.</td>
             </tr>
             <tr>
-              <td><code>height</code></td>
-              <td>string</td>
-              <td>null</td>
-              <td>The height of the chart</td>
-            </tr>
-            <tr>
-              <td><code>width</code></td>
-              <td>string</td>
-              <td>null</td>
-              <td>The width of the chart.</td>
-            </tr>
-            <tr>
               <td><code>domain</code></td>
               <td>string</td>
-              <td>'hour'</td>
+              <td>"hour"</td>
               <td>The largest unit the heatmap will differentiate by (represented as blocks of squares). Possible values are: hour, day, week, month, year.</td>	
             </tr>
             <tr>
               <td><code>subDomain</code></td>
               <td>string</td>
-              <td>'min'</td>
+              <td>"min"</td>
               <td>The smaller unit the heatmap differentiates by (represented as squares). Not all values are allowed, depending on the domain. Possible values are: min, x_min, hour, x_hour, day, x_day, week, x_week, month, x_month (x_ variants are used to rotate the reading order to left to right, then top to bottom).</td>	
             </tr>
             <tr>
@@ -56,11 +44,11 @@
   <row>
     <panel>
       <html>
-        <h2>IDS Events</h2>
+        <h2>Splunk Internal Events by Sourcetype in the Last 2 Hours</h2>
         <div id="calendarheatmap_search" class="splunk-manager" data-require="splunkjs/mvc/searchmanager" data-options='{
-          "search": "tag=ids | timechart span=1m count by severity",
+          "search": "index=_internal | timechart span=1m count by sourcetype",
           "preview": true,
-          "earliest_time": "-60m@m",
+          "earliest_time": "-120m@m",
           "latest_time": "now"
         }'>
         </div>

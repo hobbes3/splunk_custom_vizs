@@ -28,9 +28,9 @@
             </tr>
             <tr>
               <td><code>height</code></td>
-              <td>string</td>
-              <td>null</td>
-              <td>The height of the chart.</td>
+              <td>"auto" or number</td>
+              <td>"auto"</td>
+              <td>The height of the chart. "auto" will automatically adjust the height based based on the number of nodes (a minimum of 500 pixesl).</td>
             </tr>
             <tr>
               <td><code>root_label</code></td>
@@ -100,11 +100,11 @@
   <row>
     <panel>
         <html>
-          <h2>IDS Events in Australia</h2>
+          <h2>All Splunk Internal Events by Index Sourcetype and Source</h2>
           <div id="dendrogram_search" class="splunk-manager" data-require="splunkjs/mvc/searchmanager" data-options='{
             "search": {
               "type": "token_safe",
-              "value": "tag=ids | sistats count by src | iplocation src | where Country=\"Australia\" | eval City=if(City=\"\", \"N/A\", City) | eval Region=if(Region=\"\", \"N/A\", Region) | stats count by Region City"
+              "value": "| tstats count where index=_* by index sourcetype source"
             },
             "preview": true,
             "earliest_time": {
@@ -119,7 +119,7 @@
           </div>
           <div id="dendrogram" class="splunk-view" data-require="app/dos_viz/dendrogram/dendrogram" data-options='{
             "managerid": "dendrogram_search",
-            "root_label": "Australia",
+            "root_label": "Index",
             "margin_left": 200,
             "margin_right": 0
           }'>

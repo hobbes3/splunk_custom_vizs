@@ -56,17 +56,17 @@
   <row>
     <panel>
       <html>
-        <h2>IDS Events in a week</h2>
+        <h2>Splunk Internal Events by Sourcetype in the Last 7 Days</h2>
         <div id="punchcard_search" class="splunk-manager" data-require="splunkjs/mvc/searchmanager" data-options='{
-          "search": "tag=ids | stats count by date_wday sourcetype",
+          "search": "| tstats count where index=_internal by date_wday sourcetype",
           "preview": true,
-          "earliest_time": "-7d@d",
+          "earliest_time": "-6d@d",
           "latest_time": "now"
         }'>
         </div>
         <div id="punchcard" class="splunk-view" data-require="app/dos_viz/punchcard/punchcard" data-options='{
           "managerid": "punchcard_search",
-          "height": "250px"
+          "height": 500
         }'>
         </div>
       </html>

@@ -8,7 +8,7 @@
       </default>
     </input>
   </fieldset>
-    <row>
+  <row>
     <panel>
       <html>
         <h2>Options</h2>
@@ -28,46 +28,46 @@
             </tr>
             <tr>
               <td><code>height</code></td>
-              <td>string</td>
+              <td>number</td>
               <td>null</td>
               <td>The height of the chart.</td>
             </tr>
             <tr>
               <td><code>width</code></td>
-              <td>string</td>
+              <td>number</td>
               <td>null</td>
               <td>The width of the chart.</td>
             </tr>
             <tr>
-              <td>valueField</td>
+              <td><code>valueField</code></td>
               <td>string</td>
               <td>null (defaults to all)</td>
               <td>The magnitude field in the data. Circles will be sized based on this field. If the field does not exist, circles will be uniform size.</td>	
             </tr>
             <tr>
-              <td>labelField</td>
+              <td><code>nameField</code></td>
               <td>string</td>
               <td>null</td>
               <td>The field used for labeling circles.</td>	
             </tr>
             <tr>
-              <td>categoryField</td>
+              <td><code>categoryField</code></td>
               <td>string</td>
               <td>null</td>
               <td>The field used for grouping data.</td>	
             </tr>
-            <tr>
-              <td>formatLabel</td>
-              <td>function</td>
+            <!-- Isn't being used?<tr>
+              <td><code>formatLabel</code></td>
+              <td>string</td>
               <td>"{name} {value}"</td>
               <td>A custom formatting function bubble labels. Takes each node name as an input and returns a formatted name.</td>	
             </tr>
             <tr>
-              <td>formatTooltip</td>
-              <td>function</td>
+              <td><code>formatTooltip</code></td>
+              <td>string</td>
               <td>"{name}: {value}"</td>
               <td>A custom formatting function for path tooltips. Takes each node as an input and returns a formatted tooltip string.</td>	
-            </tr>
+            </tr>-->
           </tbody>
         </table>
       </html>
@@ -76,33 +76,27 @@
   <row>
     <panel>
       <html>
-        <h2>Bubble Chart of User Agent Keywords</h2>
-        <div id="bubblechart_search"
-             class="splunk-manager"
-             data-require="splunkjs/mvc/searchmanager"
-             data-options='{
-                    "preview": true,
-                    "search": "tag=web http_user_agent=* | rex field=http_user_agent max_match=0 \"(?&lt;words&gt;\\w+)\" | stats count by words source",
-                    "earliest_time": {
-                      "type": "token_safe",
-                      "value": "$$earliest$$"
-                    },
-                    "latest_time": {
-                      "type": "token_safe",
-                      "value": "$$latest$$"
-                    }
-                }'>
+        <h2>Top 30 Most Common Terms in an Ad-hoc Search Query</h2>
+        <div id="bubblechart_search" class="splunk-manager" data-require="splunkjs/mvc/searchmanager" data-options='{
+          "preview": true,
+          "search": "index=_audit NOT REST: search=* | regex search_id=\"&apos;\\d+\\.\\d+&apos;\" | rex field=search max_match=0 \"(?&lt;terms&gt;\\w+)\" | top limit=30 terms | lookup search_commands.csv search_command AS terms OUTPUT search_command | eval type=case(isnum(terms), \"number\", isnotnull(search_command), \"command\", 1=1, \"word\") | eval terms=if(isnum(terms), \"\\\"\"+terms+\"\\\"\", terms)",
+          "earliest_time": {
+            "type": "token_safe",
+            "value": "$$earliest$$"
+            },
+          "latest_time": {
+            "type": "token_safe",
+            "value": "$$latest$$"
+          }
+        }'>
         </div>
-        <div id="bubblechart"
-             class="splunk-view"
-             data-require="app/dos_viz/bubblechart/bubblechart"
-             data-options='{
-                    "managerid": "bubblechart_search",
-                    "nameField": "words",
-                    "categoryField": "source",
-                    "valueField": "count",
-                    "height": 450
-             }'>
+        <div id="bubblechart" class="splunk-view" data-require="app/dos_viz/bubblechart/bubblechart" data-options='{
+          "managerid": "bubblechart_search",
+          "nameField": "terms",
+          "valueField": "count",
+          "categoryField": "type",
+          "height": 600
+        }'>
         </div>
      </html>
     </panel>

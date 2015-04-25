@@ -1,0 +1,1001 @@
+from,to
+Netherlands,France
+Ukraine,Russia
+Russia,Spain
+Germany,Spain
+Germany,France
+"United Kingdom",Spain
+Turkey,Italy
+Italy,France
+Belgium,Italy
+Turkey,France
+"United Kingdom",Belgium
+France,France
+Belgium,Russia
+France,Spain
+Germany,Ukraine
+Kazakhstan,Italy
+Spain,Germany
+Russia,Turkey
+France,France
+France,France
+Portugal,"United Kingdom"
+Turkey,Netherlands
+Greece,Netherlands
+Russia,Netherlands
+France,Kazakhstan
+France,Germany
+Netherlands,Spain
+Italy,Spain
+Poland,Spain
+Russia,France
+Russia,Italy
+Russia,France
+"United Kingdom",Spain
+Germany,France
+France,Russia
+Germany,France
+France,Greece
+Russia,Turkey
+Poland,France
+France,Italy
+Turkey,France
+Germany,"United Kingdom"
+Russia,France
+France,Germany
+Russia,Romania
+"United Kingdom",Ukraine
+Spain,"United Kingdom"
+"United Kingdom",Ukraine
+Italy,Italy
+France,Italy
+Turkey,Netherlands
+"United Kingdom",Poland
+Ukraine,Russia
+"United Kingdom",Germany
+Italy,Ukraine
+Ukraine,Germany
+Italy,"United Kingdom"
+France,Poland
+Russia,Spain
+"United Kingdom","United Kingdom"
+Turkey,Germany
+Greece,Netherlands
+"United Kingdom","United Kingdom"
+France,Ukraine
+Russia,Spain
+Belgium,Netherlands
+Kazakhstan,Italy
+France,Spain
+Turkey,France
+Belgium,Netherlands
+Poland,Spain
+Russia,France
+"United Kingdom",Spain
+France,"United Kingdom"
+Poland,Romania
+Turkey,Italy
+Italy,France
+France,Portugal
+Netherlands,"United Kingdom"
+Poland,Spain
+Italy,France
+Kazakhstan,Italy
+Russia,Romania
+Spain,Russia
+France,"United Kingdom"
+France,Germany
+Russia,Kazakhstan
+"United Kingdom","United Kingdom"
+Germany,"United Kingdom"
+Russia,Ukraine
+Spain,Turkey
+Italy,Spain
+Russia,Germany
+Russia,Germany
+Turkey,Russia
+Russia,Romania
+Spain,Netherlands
+Poland,Romania
+Russia,Italy
+Germany,Ukraine
+Portugal,Spain
+France,Turkey
+Ukraine,Poland
+Belgium,Spain
+Italy,Ukraine
+Ukraine,Spain
+Germany,Italy
+Italy,France
+Russia,Spain
+"United Kingdom",Ukraine
+Spain,Portugal
+Kazakhstan,France
+Russia,"United Kingdom"
+"United Kingdom",France
+Spain,Italy
+Belgium,Germany
+"United Kingdom","United Kingdom"
+Italy,Germany
+Poland,France
+Germany,France
+"United Kingdom","United Kingdom"
+Kazakhstan,Germany
+Russia,Spain
+Romania,Belgium
+Portugal,France
+Ukraine,Portugal
+Spain,Poland
+Italy,Romania
+Turkey,"United Kingdom"
+Italy,Italy
+Russia,Belgium
+Germany,Ukraine
+Turkey,Germany
+Russia,Germany
+Turkey,Kazakhstan
+Turkey,Greece
+Poland,Turkey
+Kazakhstan,Russia
+France,Russia
+Spain,Romania
+Ukraine,Germany
+Belgium,Spain
+Germany,Ukraine
+Ukraine,Netherlands
+Spain,Netherlands
+Ukraine,Turkey
+Spain,France
+Romania,Italy
+Spain,"United Kingdom"
+Ukraine,Turkey
+Ukraine,Kazakhstan
+Spain,Germany
+Germany,France
+Turkey,Italy
+Poland,Ukraine
+"United Kingdom",Netherlands
+Russia,Russia
+Germany,Spain
+France,"United Kingdom"
+Russia,France
+Ukraine,Ukraine
+Ukraine,Romania
+France,France
+France,Belgium
+Germany,Poland
+Turkey,Russia
+"United Kingdom",Spain
+"United Kingdom",Russia
+"United Kingdom",Romania
+Russia,"United Kingdom"
+Russia,"United Kingdom"
+Poland,Germany
+Kazakhstan,Ukraine
+Italy,Russia
+Greece,"United Kingdom"
+France,Spain
+Ukraine,"United Kingdom"
+Kazakhstan,Greece
+"United Kingdom",Netherlands
+"United Kingdom",Russia
+France,Kazakhstan
+Portugal,France
+Russia,"United Kingdom"
+Greece,Ukraine
+"United Kingdom",Turkey
+Romania,"United Kingdom"
+Kazakhstan,Greece
+France,Spain
+Poland,France
+France,Germany
+Russia,Germany
+"United Kingdom",Italy
+Germany,Germany
+Ukraine,Netherlands
+Spain,"United Kingdom"
+Russia,Germany
+Portugal,Spain
+Germany,Spain
+Russia,Spain
+Spain,Russia
+Ukraine,Spain
+Netherlands,Netherlands
+Portugal,Turkey
+"United Kingdom","United Kingdom"
+Poland,Belgium
+Turkey,Ukraine
+Kazakhstan,Turkey
+Portugal,France
+Germany,Italy
+Poland,Belgium
+France,Germany
+Belgium,"United Kingdom"
+Ukraine,Romania
+Turkey,Greece
+Russia,Netherlands
+Portugal,France
+Turkey,"United Kingdom"
+Germany,Poland
+Italy,France
+Germany,Germany
+France,"United Kingdom"
+Germany,Turkey
+Kazakhstan,Belgium
+Greece,Turkey
+Netherlands,Italy
+Romania,Netherlands
+Ukraine,"United Kingdom"
+Russia,Greece
+Russia,"United Kingdom"
+Poland,France
+Russia,"United Kingdom"
+"United Kingdom",Turkey
+Belgium,France
+Spain,Ukraine
+Kazakhstan,France
+Poland,Ukraine
+Spain,Poland
+Spain,"United Kingdom"
+Russia,Spain
+Turkey,France
+Germany,Ukraine
+Romania,France
+Turkey,Spain
+"United Kingdom",Russia
+France,France
+"United Kingdom",Portugal
+Russia,Kazakhstan
+France,Spain
+Spain,Germany
+Italy,Germany
+Ukraine,Italy
+Italy,Kazakhstan
+Italy,Kazakhstan
+"United Kingdom",France
+Turkey,Italy
+Italy,Ukraine
+Germany,"United Kingdom"
+"United Kingdom",Ukraine
+Turkey,Portugal
+Portugal,Italy
+Spain,Greece
+Kazakhstan,Turkey
+Kazakhstan,France
+Turkey,Kazakhstan
+Germany,Ukraine
+"United Kingdom",Turkey
+France,Poland
+Russia,Italy
+Spain,France
+Spain,Turkey
+Ukraine,Netherlands
+France,France
+Kazakhstan,"United Kingdom"
+Russia,Turkey
+Belgium,Spain
+Poland,Italy
+Russia,Poland
+Russia,"United Kingdom"
+Italy,Poland
+Spain,"United Kingdom"
+Romania,Spain
+Russia,"United Kingdom"
+Russia,Greece
+"United Kingdom",France
+"United Kingdom",Belgium
+Spain,Ukraine
+Italy,France
+Portugal,"United Kingdom"
+Kazakhstan,France
+Poland,Greece
+Romania,France
+Russia,Greece
+Germany,France
+Spain,"United Kingdom"
+France,France
+France,Poland
+Russia,Romania
+Italy,Kazakhstan
+Spain,France
+Germany,France
+France,Italy
+"United Kingdom",Turkey
+Greece,Poland
+Russia,"United Kingdom"
+Russia,"United Kingdom"
+Ukraine,"United Kingdom"
+Ukraine,Belgium
+Belgium,Spain
+Italy,Italy
+Spain,Germany
+Russia,Spain
+France,Poland
+France,Turkey
+Germany,"United Kingdom"
+France,Greece
+Germany,Spain
+Germany,Greece
+Germany,Portugal
+Turkey,Poland
+Spain,Spain
+Russia,Germany
+Spain,"United Kingdom"
+Ukraine,Italy
+Italy,"United Kingdom"
+Spain,France
+Ukraine,Ukraine
+Turkey,France
+Russia,Netherlands
+Belgium,Russia
+Spain,Turkey
+Italy,France
+Ukraine,France
+Spain,Belgium
+Spain,Germany
+Netherlands,Poland
+Germany,Greece
+Spain,Portugal
+Poland,Poland
+Spain,France
+Belgium,Poland
+Russia,"United Kingdom"
+Russia,Poland
+Germany,Spain
+Poland,Turkey
+Romania,Russia
+"United Kingdom",Poland
+Spain,Poland
+Russia,Italy
+France,Kazakhstan
+Italy,"United Kingdom"
+"United Kingdom","United Kingdom"
+Romania,France
+Poland,Russia
+France,Ukraine
+Spain,"United Kingdom"
+France,"United Kingdom"
+Russia,France
+Germany,Ukraine
+Portugal,"United Kingdom"
+Spain,Spain
+Germany,Ukraine
+Poland,France
+Poland,Italy
+Russia,"United Kingdom"
+Russia,Netherlands
+Germany,Russia
+Ukraine,Netherlands
+Belgium,Kazakhstan
+Germany,Russia
+Germany,Germany
+Greece,Germany
+Turkey,France
+Romania,Spain
+Russia,Belgium
+Belgium,Turkey
+Poland,Spain
+Portugal,France
+Germany,Russia
+Turkey,Ukraine
+Netherlands,Germany
+Turkey,Italy
+Kazakhstan,Germany
+Kazakhstan,Russia
+Germany,Kazakhstan
+"United Kingdom",Germany
+France,"United Kingdom"
+Russia,Turkey
+Spain,France
+Poland,Russia
+Romania,France
+France,France
+Poland,Turkey
+Italy,Spain
+Romania,"United Kingdom"
+Turkey,Italy
+Belgium,Ukraine
+Ukraine,Ukraine
+"United Kingdom",Spain
+France,Ukraine
+Kazakhstan,"United Kingdom"
+Spain,Poland
+Poland,Germany
+Italy,Germany
+Germany,Netherlands
+Russia,"United Kingdom"
+Netherlands,Germany
+Germany,France
+Turkey,Spain
+Poland,France
+Spain,Russia
+France,Russia
+Kazakhstan,Spain
+Turkey,Spain
+Germany,"United Kingdom"
+"United Kingdom",Netherlands
+Kazakhstan,Italy
+Poland,Spain
+France,Turkey
+Ukraine,France
+Romania,"United Kingdom"
+Russia,Turkey
+Germany,France
+France,Ukraine
+Turkey,Ukraine
+Russia,Ukraine
+Kazakhstan,Italy
+Germany,Ukraine
+Germany,France
+Germany,Germany
+Turkey,Italy
+"United Kingdom",Netherlands
+Poland,Greece
+Netherlands,Russia
+Greece,Italy
+Italy,"United Kingdom"
+Italy,Kazakhstan
+Italy,France
+Turkey,Italy
+Belgium,Poland
+Russia,Italy
+Kazakhstan,Spain
+Russia,France
+Russia,Germany
+"United Kingdom",Poland
+Italy,France
+Spain,Russia
+Russia,Spain
+Turkey,Germany
+Netherlands,Turkey
+Ukraine,Russia
+"United Kingdom",Germany
+France,France
+Portugal,Greece
+"United Kingdom","United Kingdom"
+Ukraine,Turkey
+Kazakhstan,Romania
+Italy,Turkey
+Turkey,Russia
+Netherlands,Portugal
+France,Germany
+Spain,Italy
+Russia,Turkey
+Italy,"United Kingdom"
+France,"United Kingdom"
+France,Ukraine
+Poland,France
+"United Kingdom",Romania
+Turkey,"United Kingdom"
+Belgium,Poland
+Italy,Germany
+Turkey,Netherlands
+Spain,Ukraine
+"United Kingdom",Spain
+Ukraine,Ukraine
+Russia,Ukraine
+France,Portugal
+"United Kingdom",Spain
+France,Ukraine
+Russia,Germany
+Germany,Russia
+Germany,Netherlands
+Russia,"United Kingdom"
+Russia,Turkey
+France,Romania
+France,Netherlands
+Russia,Germany
+Romania,Romania
+Spain,France
+Russia,Spain
+Russia,"United Kingdom"
+Russia,Poland
+Turkey,"United Kingdom"
+Turkey,Spain
+Spain,France
+France,Greece
+"United Kingdom",Ukraine
+"United Kingdom",Ukraine
+France,Spain
+Kazakhstan,Germany
+France,France
+Germany,Turkey
+Belgium,France
+Italy,Germany
+Germany,Netherlands
+Belgium,"United Kingdom"
+Spain,France
+Russia,"United Kingdom"
+Russia,Italy
+"United Kingdom",Greece
+France,Netherlands
+Russia,Belgium
+Italy,Belgium
+"United Kingdom",Germany
+Spain,Russia
+Italy,Italy
+Spain,France
+Kazakhstan,France
+Italy,Netherlands
+Russia,Ukraine
+Ukraine,Poland
+Poland,Turkey
+Ukraine,Russia
+Russia,Portugal
+Ukraine,Spain
+Russia,Turkey
+Belgium,France
+Romania,Spain
+Netherlands,Poland
+"United Kingdom",Spain
+Kazakhstan,France
+Russia,Greece
+Netherlands,Spain
+"United Kingdom",Turkey
+Turkey,Italy
+Netherlands,Spain
+Turkey,Ukraine
+Russia,Russia
+Russia,Greece
+Ukraine,Germany
+Kazakhstan,Spain
+Poland,Kazakhstan
+Italy,"United Kingdom"
+Poland,Turkey
+Greece,Turkey
+Germany,Netherlands
+"United Kingdom",Germany
+Kazakhstan,Turkey
+Turkey,Spain
+Russia,France
+Russia,"United Kingdom"
+Romania,Romania
+Italy,Ukraine
+Romania,Spain
+Germany,France
+Poland,"United Kingdom"
+Spain,"United Kingdom"
+Russia,Germany
+Russia,Portugal
+Turkey,Belgium
+Kazakhstan,Portugal
+Russia,Russia
+Romania,"United Kingdom"
+Italy,Turkey
+Kazakhstan,Italy
+Italy,"United Kingdom"
+"United Kingdom",Italy
+Kazakhstan,"United Kingdom"
+Russia,Ukraine
+Germany,Italy
+Kazakhstan,"United Kingdom"
+France,Poland
+Turkey,Italy
+Spain,France
+Poland,Russia
+France,Spain
+Kazakhstan,"United Kingdom"
+Germany,Kazakhstan
+Russia,France
+"United Kingdom",Italy
+Spain,Russia
+Spain,Belgium
+Poland,Greece
+"United Kingdom",Kazakhstan
+Russia,Portugal
+Belgium,"United Kingdom"
+Russia,Belgium
+Russia,Belgium
+"United Kingdom",Italy
+France,Netherlands
+Spain,Belgium
+Ukraine,Netherlands
+Romania,Netherlands
+Russia,France
+Greece,Russia
+France,France
+Russia,Russia
+Italy,Germany
+Russia,Spain
+Russia,Netherlands
+Kazakhstan,Netherlands
+Poland,Romania
+Italy,Russia
+Germany,Spain
+Germany,Germany
+Romania,Italy
+Turkey,Germany
+Poland,Germany
+France,Spain
+France,Belgium
+Romania,Spain
+Russia,Germany
+Turkey,Netherlands
+Italy,France
+Russia,France
+Kazakhstan,Ukraine
+Greece,Russia
+Italy,Germany
+Netherlands,Spain
+France,Russia
+Greece,Turkey
+France,"United Kingdom"
+"United Kingdom",Russia
+Spain,Russia
+Russia,Italy
+France,Italy
+Netherlands,Ukraine
+Greece,France
+Germany,Poland
+"United Kingdom",Poland
+Netherlands,"United Kingdom"
+Spain,Spain
+Poland,"United Kingdom"
+Turkey,Belgium
+Spain,Spain
+France,Romania
+Italy,Germany
+Belgium,Italy
+Spain,Russia
+Russia,Russia
+Ukraine,Spain
+Romania,France
+Russia,Germany
+Netherlands,Kazakhstan
+Germany,France
+"United Kingdom",Ukraine
+Russia,"United Kingdom"
+Kazakhstan,Greece
+"United Kingdom",France
+Russia,France
+France,Spain
+Germany,Spain
+Italy,France
+Turkey,Germany
+Belgium,Turkey
+Spain,Spain
+Italy,France
+Turkey,France
+"United Kingdom",Poland
+France,"United Kingdom"
+Kazakhstan,Belgium
+Romania,"United Kingdom"
+"United Kingdom",Romania
+Germany,Romania
+Netherlands,Spain
+Kazakhstan,"United Kingdom"
+Spain,France
+Kazakhstan,France
+Romania,France
+Portugal,France
+Spain,Russia
+Ukraine,France
+Ukraine,France
+Portugal,France
+Italy,Netherlands
+Greece,"United Kingdom"
+Germany,Poland
+Russia,"United Kingdom"
+Turkey,Greece
+Russia,Russia
+Italy,Turkey
+Russia,Germany
+France,Germany
+Germany,Spain
+Netherlands,Italy
+Italy,Germany
+Turkey,Italy
+Turkey,Ukraine
+Germany,Netherlands
+Turkey,Spain
+Belgium,France
+Poland,Spain
+Germany,France
+Ukraine,Italy
+France,"United Kingdom"
+"United Kingdom",Netherlands
+Russia,Greece
+Spain,France
+Greece,Belgium
+Portugal,France
+Belgium,Spain
+Belgium,France
+France,Ukraine
+Russia,Italy
+Poland,Portugal
+Spain,Poland
+Poland,Italy
+Poland,Italy
+Kazakhstan,Russia
+France,Poland
+"United Kingdom",France
+Germany,"United Kingdom"
+Greece,Turkey
+Greece,Turkey
+"United Kingdom","United Kingdom"
+Belgium,France
+Russia,Ukraine
+Germany,"United Kingdom"
+Poland,Germany
+Germany,France
+Kazakhstan,Portugal
+Italy,Greece
+Turkey,"United Kingdom"
+Germany,Ukraine
+Belgium,Poland
+Spain,Russia
+"United Kingdom","United Kingdom"
+Ukraine,Poland
+Russia,France
+Russia,Ukraine
+"United Kingdom",Portugal
+Ukraine,Poland
+Ukraine,Greece
+Ukraine,France
+Russia,Greece
+Italy,Russia
+Turkey,Netherlands
+"United Kingdom",Turkey
+Kazakhstan,"United Kingdom"
+Russia,Netherlands
+Turkey,Italy
+"United Kingdom",Poland
+Spain,Spain
+Italy,Turkey
+Kazakhstan,France
+"United Kingdom",Germany
+Spain,Portugal
+Ukraine,Netherlands
+Turkey,France
+Portugal,Germany
+Spain,Germany
+"United Kingdom",Turkey
+"United Kingdom",Turkey
+France,Kazakhstan
+France,Spain
+Netherlands,"United Kingdom"
+Netherlands,Poland
+Ukraine,Italy
+"United Kingdom",France
+"United Kingdom",Belgium
+Germany,"United Kingdom"
+Italy,Greece
+Turkey,Ukraine
+Turkey,Turkey
+"United Kingdom",Turkey
+Russia,Kazakhstan
+"United Kingdom",Poland
+Russia,France
+France,Greece
+Turkey,Greece
+Russia,"United Kingdom"
+Italy,France
+Turkey,Greece
+"United Kingdom",Kazakhstan
+Russia,"United Kingdom"
+"United Kingdom",Spain
+France,Ukraine
+Russia,Netherlands
+Italy,Romania
+Turkey,Belgium
+"United Kingdom","United Kingdom"
+Ukraine,Romania
+Italy,Romania
+Greece,Greece
+France,Netherlands
+Russia,"United Kingdom"
+Ukraine,Netherlands
+Germany,Italy
+"United Kingdom",Greece
+Poland,Portugal
+Italy,Spain
+"United Kingdom",Spain
+Ukraine,"United Kingdom"
+France,Ukraine
+Turkey,Greece
+"United Kingdom",Belgium
+Spain,Germany
+Russia,Spain
+Russia,Russia
+Turkey,Turkey
+Ukraine,France
+Greece,Greece
+Italy,Greece
+Turkey,France
+Germany,Belgium
+Germany,France
+Portugal,France
+Kazakhstan,France
+Russia,Russia
+Russia,Spain
+Ukraine,France
+Turkey,France
+Kazakhstan,Greece
+"United Kingdom","United Kingdom"
+Poland,Spain
+Spain,France
+Germany,Russia
+France,"United Kingdom"
+Belgium,Netherlands
+Spain,Germany
+Poland,Greece
+Spain,Romania
+Spain,Belgium
+Germany,Greece
+Italy,Italy
+Turkey,Italy
+France,France
+Turkey,Turkey
+Romania,Spain
+Turkey,Ukraine
+Russia,Poland
+Russia,Romania
+Germany,Netherlands
+Germany,Russia
+Spain,France
+France,Russia
+Ukraine,Ukraine
+Russia,Belgium
+"United Kingdom",France
+Italy,Greece
+Greece,Turkey
+Kazakhstan,Romania
+Russia,Romania
+Poland,Netherlands
+Italy,France
+Russia,Netherlands
+Italy,France
+Kazakhstan,France
+Italy,"United Kingdom"
+Greece,"United Kingdom"
+Russia,Turkey
+Ukraine,Portugal
+Italy,Netherlands
+Russia,Ukraine
+Russia,Germany
+Spain,Germany
+Spain,Spain
+Turkey,Romania
+Spain,Spain
+Russia,Turkey
+Spain,Italy
+Netherlands,France
+Turkey,Belgium
+Turkey,Belgium
+Belgium,France
+Greece,Spain
+Poland,Poland
+"United Kingdom",Spain
+"United Kingdom","United Kingdom"
+Spain,Germany
+Poland,Romania
+Turkey,Romania
+Italy,Italy
+Germany,Germany
+Poland,Spain
+Italy,"United Kingdom"
+Poland,Romania
+Ukraine,Greece
+Greece,"United Kingdom"
+Poland,Italy
+Germany,Spain
+Italy,Greece
+Turkey,France
+Turkey,Germany
+Belgium,Kazakhstan
+France,"United Kingdom"
+Turkey,Belgium
+Ukraine,"United Kingdom"
+"United Kingdom",Germany
+Poland,Turkey
+France,France
+Turkey,Russia
+"United Kingdom",Germany
+Netherlands,Kazakhstan
+Greece,Germany
+Turkey,Kazakhstan
+Spain,Ukraine
+Russia,Germany
+France,Russia
+Kazakhstan,Spain
+Italy,Germany
+France,Spain
+Turkey,Germany
+Spain,Germany
+Spain,Germany
+Greece,France
+Russia,Greece
+Russia,"United Kingdom"
+Ukraine,Kazakhstan
+Russia,Greece
+Belgium,Spain
+Italy,Turkey
+Netherlands,Kazakhstan
+Netherlands,Germany
+Spain,Netherlands
+Italy,Italy
+Germany,Spain
+France,Ukraine
+Poland,Germany
+Romania,"United Kingdom"
+Greece,Italy
+Poland,Germany
+Poland,France
+Kazakhstan,Kazakhstan
+Ukraine,Italy
+Turkey,Italy
+Spain,France
+Turkey,France
+Netherlands,Turkey
+Italy,Ukraine
+Spain,Ukraine
+Germany,Poland
+Russia,Italy
+Spain,Turkey
+Germany,Ukraine
+Russia,Germany
+Russia,France
+Russia,Greece
+Belgium,Romania
+Romania,Spain
+Poland,Spain
+France,Romania
+Germany,Belgium
+Netherlands,Ukraine
+Turkey,"United Kingdom"
+Turkey,"United Kingdom"
+Poland,Spain
+Romania,Germany
+Russia,Germany
+Portugal,France
+Belgium,France
+Italy,Spain
+"United Kingdom",Germany
+Turkey,"United Kingdom"
+Russia,Germany
+Belgium,Ukraine
+Spain,Netherlands
+Russia,Russia
+Russia,Belgium
+Germany,Romania
+Germany,Ukraine
+Spain,Germany
+Kazakhstan,Spain
+Italy,Greece
+"United Kingdom","United Kingdom"
+Russia,Italy
+Russia,"United Kingdom"
+Germany,Greece
+Portugal,Germany
+Poland,Spain
+Spain,"United Kingdom"
+Turkey,Spain
+Russia,Netherlands
+Italy,Greece
+Kazakhstan,Netherlands
+Kazakhstan,Ukraine
+"United Kingdom",Spain
+Poland,Germany
+Russia,France
+France,Poland
+Germany,Ukraine
+Turkey,Germany
+Russia,Germany
+"United Kingdom",Greece
+Germany,France
+Italy,Germany
+Russia,"United Kingdom"
+Russia,Italy
+Kazakhstan,Germany
+Russia,Ukraine
+Turkey,Kazakhstan
+Romania,Germany
+Italy,"United Kingdom"
+France,Russia
+France,Romania
+Germany,Germany
+France,Germany
+Spain,Netherlands
+Turkey,Netherlands
+Italy,France
+Russia,Belgium
