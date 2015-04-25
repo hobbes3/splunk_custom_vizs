@@ -1,0 +1,40 @@
+<dashboard>
+  <label>Tutorial</label>
+  <row>
+    <panel>
+      <html>
+        <h2>Info</h2>
+        <p>
+          Custom JS viz can be used in Splunk by including JS files that extends and modifies the <code>SimpleSplunkView</code> object. All custom viz JS goes in the app's <code>appserver/static/</code> folder. These JS are then called from SimpleXML. Creating the JS files require server access, but <i>using</i> the custom viz only require access to Splunk UI (SimpleXML).
+        </p>
+        <p>
+          The <code>SimpleSplunkView</code> object is located at <code>$SPLUNKHOME$/share/splunk/search_mrsparkle/exposed/js/splunkjs/mvc/simplesplunkview.js</code>.
+        </p>
+      </html>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <html>
+        <h2>SimpleXML declaration</h2>
+        <img src="/static/app/custom_viz/tutorial.png" width="1000px"/>
+      </html>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <html>
+        <h2>Troubleshooting</h2>
+        <ul>
+          <li>Check that the <code>managerid</code> matches the id of the <code>searchmanager</code>'s <code>&lt;div&gt;</code>.</li>
+          <li>Check for the correct path for <code>data-require</code> for the viz "container" <code>&lt;div&gt;</code>. It should be in the form of <code>app/&lt;app_name&gt;/path/to/&lt;js_file_without_extension&gt;</code>.</li>
+          <li>Check that all XML attributes are properly escaped. For example, make sure all <code>'&lt;&gt;"\</code> characters are escaped in the search query.</li>
+          <li>Check that all tokens are wrapped in the "token_safe" syntax and are defined by 2 dollar signs on each side (like <code>$$token$$</code>).</li>
+          <li>Check that the value of <code>data-options</code> is in valid JS object (not necessary JSON since single quotes can be used). In other words, check for comma and quote placements.</li>
+          <li>Check for any JS errors in the browser (via some dev tool).</li>
+          <li>If all else fail then start with the working examples then modify it in small steps to see where it breaks.</li>
+        </ul>
+      </html>
+    </panel>
+  </row>
+</dashboard>

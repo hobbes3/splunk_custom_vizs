@@ -59,7 +59,7 @@ modtime = 1429690558.499602000
 
 [nav/default]
 version = 6.2.2
-modtime = 1429691574.556814000
+modtime = 1429964063.695548000
 
 [views/viz_dendrogram]
 version = 6.2.2
@@ -120,3 +120,15 @@ modtime = 1429783950.270947000
 [views/viz_tagcloud]
 version = 6.2.2
 modtime = 1429933017.636009000
+
+[views/viz_boxplot]
+export = none
+owner = admin
+version = 6.2.2
+modtime = 1429955025.940922000
+
+[views/tutorial]
+export = none
+owner = admin
+version = 6.2.2
+modtime = 1429964175.961923000
