@@ -4,7 +4,7 @@
     <panel>
       <html>
         <h2>App Info</h2>
-        <p>This app (<code>custom_viz</code>) is simply a convienent reference for many custom JS "viz's" (visualizations). Most of them are not created by me (hobbes3). Please see the Sources section below for credits.</p>
+        <p>This app (<code>custom_viz</code>) is simply a convenient reference for many custom JS "viz's" (visualizations). Most of them are not created by me (hobbes3). Please see the Sources section below for credits.</p>
         <h2>JS Info</h2>
         <p>
           Custom JS vizs can be used in Splunk by including special JS files that extends and modifies the <code>SimpleSplunkView</code> SplunkJS object. All custom JS (and other static files like CSS and images) goes in the app's <code>appserver/static/</code> folder. These JS are then called from SimpleXML. Creating the JS files require server access, but <i>using</i> the custom viz only require access to Splunk UI (SimpleXML).
@@ -25,17 +25,17 @@
       <html>
         <h2>Tips</h2>
         <ul>
-          <li>Making any dashboard modifications via "Edit Panels" <i>will destory any custom formatting</i> in the two <code>&lt;div&gt;</code>'s (Splunk will make each <code>&lt;div&gt;</code> into a single line and escape a bunch for characters). One way around this is to keep a copy of the formatted <code>&lt;div&gt;</code>'s before using "Edit Panels".</li>
+          <li>Making any dashboard modifications via "Edit Panels" <i>will destroy any custom formatting</i> in the two <code>&lt;div&gt;</code>'s (Splunk will make each <code>&lt;div&gt;</code> into a single line and escape a bunch for characters). One way around this is to keep a copy of the formatted <code>&lt;div&gt;</code>'s before using "Edit Panels".</li>
           <li>To really understand how the custom viz JS code works, use a browser dev tool and set breakpoints in various lines (especially inside <code>createView</code>, <code>formatData</code>, and <code>updateView</code> of the extended <code>SimpleSplunkView</code> code).</li>
           <li>To use a saved search or post process search, use <code>splunkjs/mvc/savedsearchmanager</code> or <code>splunkjs/mvc/postprocessmanager</code>, respectively. Note that these both require <code>managerid</code>.</li>
           <li>More info about various SplunkJS objects:
             <ul>
-              <li><a href="http://docs.splunk.com/DocumentationStatic/WebFramework/1.1/compref_simplesplunk.html">SimpleSplunkView</a></li> 
+              <li><a href="http://docs.splunk.com/DocumentationStatic/WebFramework/1.1/compref_simplesplunk.html">SimpleSplunkView</a></li>
               <li><a href="http://docs.splunk.com/DocumentationStatic/WebFramework/1.1/compref_searchmanager.html">SearchManager</a></li>
               <li><a href="http://docs.splunk.com/DocumentationStatic/WebFramework/1.1/compref_savedsearchmanager.html">SavedSearchManager</a></li>
               <li><a href="http://docs.splunk.com/DocumentationStatic/WebFramework/1.1/compref_postprocessmanager.html">PostProcessManager</a></li>
               <li>All SplunkJS objects are located in <code>$SPLUNKHOME$/share/splunk/search_mrsparkle/exposed/js/splunkjs/mvc/</code>.</li>
-            </ul> 
+            </ul>
           </li>
         </ul>
         <h2>Troubleshooting</h2>
