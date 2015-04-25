@@ -93,7 +93,7 @@
             }
           }'>
           </div>
-          <div id="sunburst" class="splunk-view" data-require="app/dos_viz/sunburst/sunburst" data-options='{
+          <div id="sunburst" class="splunk-view" data-require="app/custom_viz/sunburst/sunburst" data-options='{
             "managerid": "sunburst_search",
             "height": 800,
             "valueField": "count",

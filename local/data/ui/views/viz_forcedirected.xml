@@ -102,7 +102,7 @@
           }
         }'>
         </div>
-        <div id="forcedirected" class="splunk-view" data-require="app/dos_viz/forcedirected/forcedirected" data-options='{
+        <div id="forcedirected" class="splunk-view" data-require="app/custom_viz/forcedirected/forcedirected" data-options='{
           "managerid": "forcedirected_search",
           "height": "500px",
           "panAndZoom": false,

@@ -90,7 +90,7 @@
           }
         }'>
         </div>
-        <div id="bubblechart" class="splunk-view" data-require="app/dos_viz/bubblechart/bubblechart" data-options='{
+        <div id="bubblechart" class="splunk-view" data-require="app/custom_viz/bubblechart/bubblechart" data-options='{
           "managerid": "bubblechart_search",
           "nameField": "terms",
           "valueField": "count",

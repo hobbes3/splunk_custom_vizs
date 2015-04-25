@@ -1,7 +1,7 @@
 require.config({
     paths: {
         "app": "../app",
-        "three": "../app/dos_viz/globe/three.min"
+        "three": "../app/custom_viz/globe/three.min"
     },
     shims: {
         "three": {

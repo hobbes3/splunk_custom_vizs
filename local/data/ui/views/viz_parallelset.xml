@@ -52,7 +52,7 @@
           "latest_time": "now"
         }'>
         </div>
-        <div id="parallelsets" class="splunk-view" data-require="app/dos_viz/parallelsets/parallelsets" data-options='{
+        <div id="parallelsets" class="splunk-view" data-require="app/custom_viz/parallelsets/parallelsets" data-options='{
           "managerid": "parallelsets_search",
           "height": "500px"
         }'>

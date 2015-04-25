@@ -54,7 +54,7 @@
           }
         }'>
         </div>
-        <div id="parallelcoords" class="splunk-view" data-require="app/dos_viz/parallelcoords/parallelcoords" data-options='{
+        <div id="parallelcoords" class="splunk-view" data-require="app/custom_viz/parallelcoords/parallelcoords" data-options='{
           "managerid": "parallelcoords_search",
           "height": "500px"
         }'>

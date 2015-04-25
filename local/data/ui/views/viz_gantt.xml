@@ -162,7 +162,7 @@
         </div>
         <div id="gantt"
              class="splunk-view"
-             data-require="app/dos_viz/gantt/gantt"
+             data-require="app/custom_viz/gantt/gantt"
              data-options='{
                 "managerid": "gantt_search",
                 "startField": "_time",
