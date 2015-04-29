@@ -5,3 +5,7 @@ modtime = 1430117649.797806000
 [views/tutorial]
 version = 6.2.2
 modtime = 1430269634.971468000
+
+[views/viz_bubblechart]
+version = 6.2.2
+modtime = 1430298387.949626000
