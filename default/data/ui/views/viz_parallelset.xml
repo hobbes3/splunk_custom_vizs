@@ -44,7 +44,7 @@
   <row>
     <panel>
       <html>
-        <h2>All Unique Combination of Search Type and Status in the Last 4 Hours</h2>
+        <h2>All Unique Combination of Search Type and Status in the Last 6 Hours</h2>
         <div id="parallelsets_search" class="splunk-manager" data-require="splunkjs/mvc/searchmanager" data-options='{
           "search": "index=_audit info=* | dedup date_hour action info | table date_hour action info",
           "preview": true,
