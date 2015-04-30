@@ -9,3 +9,11 @@ modtime = 1430347308.073595000
 [views/viz_bubblechart]
 version = 6.2.2
 modtime = 1430298387.949626000
+
+[views/viz_sankey]
+version = 6.2.2
+modtime = 1430392242.650881000
+
+[views/viz_forcedirected]
+version = 6.2.2
+modtime = 1430392461.048628000
