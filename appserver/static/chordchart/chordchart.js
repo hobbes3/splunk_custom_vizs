@@ -223,8 +223,9 @@ define(function(require, exports, module) {
             });
 
             function click(group) {
-                var city_name = src_order[group.index];
-                that.trigger("click", city_name);
+                var e = {};
+                e.name = src_order[group.index];
+                that.trigger("click", e.name);
             }
 
             // Function taken from http://bl.ocks.org/mbostock/4062006
