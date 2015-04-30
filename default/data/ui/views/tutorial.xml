@@ -1,4 +1,4 @@
-<dashboard>
+<dashboard script="tutorial.js">
   <label>Tutorial</label>
   <row>
     <panel>
