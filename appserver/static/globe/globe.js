@@ -58,7 +58,7 @@ define(function(require, exports, module) {
                 Detector.addGetWebGLMessage();
             } else {
                 return new DAT.Globe(that.el, {
-                    imgDir: SplunkUtil.make_url("/static/app/hobbes3_globe") + '/',
+                    imgDir: SplunkUtil.make_url("/static/app/custom_vizs/globe") + '/',
                     spin_speed: spin_speed
                 });
             }

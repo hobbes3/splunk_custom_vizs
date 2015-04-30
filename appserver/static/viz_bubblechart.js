@@ -9,19 +9,19 @@ function(
     _,
     mvc
 ) {
+    function submit_and_update_url() {
+        submitted_tokens.set(unsubmitted_tokens.toJSON());
+            mvc.Components.get('url').saveOnlyWithPrefix('form\\.', unsubmitted_tokens.toJSON(), {
+            replaceState: false
+        });
+    }
+
+    var unsubmitted_tokens = mvc.Components.get('default');
+    var submitted_tokens = mvc.Components.get('submitted');
+
     $("#input_term, #input_category").hide();
 
     require(['splunkjs/ready!'], function(){
-        function submit_and_update_url() {
-            submitted_tokens.set(unsubmitted_tokens.toJSON());
-                mvc.Components.get('url').saveOnlyWithPrefix('form\\.', unsubmitted_tokens.toJSON(), {
-                replaceState: false
-            });
-        }
-
-        var unsubmitted_tokens = mvc.Components.get('default');
-        var submitted_tokens = mvc.Components.get('submitted');
-
         var bubblechart = mvc.Components.get("bubblechart");
 
         bubblechart.on("click", function(e) {
