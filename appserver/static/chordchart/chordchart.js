@@ -225,7 +225,7 @@ define(function(require, exports, module) {
             function click(group) {
                 var e = {};
                 e.name = src_order[group.index];
-                that.trigger("click", e.name);
+                that.trigger("click", e);
             }
 
             // Function taken from http://bl.ocks.org/mbostock/4062006

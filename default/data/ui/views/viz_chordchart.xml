@@ -1,5 +1,8 @@
-<form script="autodiscover.js">
+<form script="autodiscover.js, viz_chordchart.js">
   <label>Chord Chart</label>
+  <fieldset submitButton="false">
+    <input type="text" token="selected_country" id="input_selected_country"></input>
+  </fieldset>
   <row>
     <panel>
       <html>
@@ -7,57 +10,78 @@
         <table class="table table-striped table-bordered">
           <tbody>
             <tr>
-              <td><b>Name</b></td>
-              <td><b>Type</b></td>
-              <td><b>Default</b></td>
-              <td><b>Description</b></td>
+              <td>
+                <b>Name</b>
+              </td>
+              <td>
+                <b>Type</b>
+              </td>
+              <td>
+                <b>Default</b>
+              </td>
+              <td>
+                <b>Description</b>
+              </td>
             </tr>
             <tr>
-              <td><code>managerid</code></td>
+              <td>
+                <code>managerid</code>
+              </td>
               <td>string</td>
               <td>null</td>
               <td>The search manager bound to the chart.</td>
             </tr>
             <tr>
-              <td><code>height</code></td>
+              <td>
+                <code>height</code>
+              </td>
               <td>number</td>
               <td>800</td>
               <td>The height of the panel.</td>
             </tr>
             <tr>
-              <td><code>src_field</code></td>
+              <td>
+                <code>src_field</code>
+              </td>
               <td>string</td>
               <td>"src"</td>
               <td>The name of the source field.</td>
             </tr>
             <tr>
-              <td><code>dst_field</code></td>
+              <td>
+                <code>dst_field</code>
+              </td>
               <td>string</td>
               <td>"dst"</td>
               <td>The name of the destination field.</td>
             </tr>
             <tr>
-              <td><code>count_field</code></td>
+              <td>
+                <code>count_field</code>
+              </td>
               <td>string</td>
               <td>"count"</td>
               <td>The name of the count field.</td>
             </tr>
             <tr>
-              <td><code>colors</code></td>
+              <td>
+                <code>colors</code>
+              </td>
               <td>string</td>
               <td>"splunk"</td>
               <td>Possible values are "splunk", "d3", and "random". "splunk" uses the default 36 charting colors in Splunk. "d3" uses a shuffled <code>d3.scale.category20()</code>. "random" generate a random color for every field each reload. Both "d3" and "splunk" will re-use colors if necessary.</td>
             </tr>
             <tr>
-              <td><code>src_colors</code></td>
+              <td>
+                <code>src_colors</code>
+              </td>
               <td>JSON</td>
               <td>null</td>
-              <td>Overrides colors for specific <code>src</code> fields. The JSON must have field name as the key with the corresponding hex color as the value: <code>{"foo": "#3e2f12", "bar": "#4d3d00"}</code></td>
+              <td>Overrides colors for specific <code>src</code> fields. The JSON must have field name as the key with the corresponding hex color as the value: <code>{"foo": "#3e2f12", "bar": "#4d3d00"}</code>
+              </td>
             </tr>
           </tbody>
         </table>
-      </html>
-      <html>
         <h2>Events</h2>
         <table class="table table-striped table-bordered">
           <tbody>
@@ -85,7 +109,7 @@
   <row>
     <panel>
       <html>
-        <h2>Flights Sample (from sample_flights.csv)</h2>
+        <h2>Flights Sample (from sample_flights.csv) (drilldown)</h2>
         <div id="chordchart_search" class="splunk-manager" data-require="splunkjs/mvc/searchmanager" data-options='{
           "search": "| inputlookup sample_flights.csv | stats count by from to",
           "preview": true,
@@ -101,6 +125,37 @@
         }'>
         </div>
       </html>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <chart id="piechart" depends="$selected_country$">
+        <title>Flights from $selected_country$</title>
+        <search>
+          <query>| inputlookup sample_flights.csv | where from=$selected_country|s$ | stats count by to</query>
+        </search>
+        <option name="charting.axisLabelsX.majorLabelStyle.overflowMode">ellipsisNone</option>
+        <option name="charting.axisLabelsX.majorLabelStyle.rotation">0</option>
+        <option name="charting.axisTitleX.visibility">visible</option>
+        <option name="charting.axisTitleY.visibility">visible</option>
+        <option name="charting.axisTitleY2.visibility">visible</option>
+        <option name="charting.axisX.scale">linear</option>
+        <option name="charting.axisY.scale">linear</option>
+        <option name="charting.axisY2.enabled">false</option>
+        <option name="charting.axisY2.scale">inherit</option>
+        <option name="charting.chart">pie</option>
+        <option name="charting.chart.bubbleMaximumSize">50</option>
+        <option name="charting.chart.bubbleMinimumSize">10</option>
+        <option name="charting.chart.bubbleSizeBy">area</option>
+        <option name="charting.chart.nullValueMode">gaps</option>
+        <option name="charting.chart.sliceCollapsingThreshold">0.01</option>
+        <option name="charting.chart.stackMode">default</option>
+        <option name="charting.chart.style">shiny</option>
+        <option name="charting.drilldown">all</option>
+        <option name="charting.layout.splitSeries">0</option>
+        <option name="charting.legend.labelStyle.overflowMode">ellipsisMiddle</option>
+        <option name="charting.legend.placement">right</option>
+      </chart>
     </panel>
   </row>
 </form>
