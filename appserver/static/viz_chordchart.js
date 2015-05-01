@@ -15,7 +15,7 @@ require([
         });
     }
 
-    //$("#input_selected_country").hide();
+    $("#input_selected_country").hide();
 
     var unsubmitted_tokens = mvc.Components.get('default');
     var submitted_tokens = mvc.Components.get('submitted');
