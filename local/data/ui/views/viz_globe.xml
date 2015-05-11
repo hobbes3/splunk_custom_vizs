@@ -1,0 +1,83 @@
+<form script="autodiscover_globe.js" stylesheet="dark.css">
+  <label>WebGL Globe</label>
+  <row>
+    <panel>
+      <html>
+        <h2>Options</h2>
+        <table class="table table-striped table-bordered">
+          <tbody>
+            <tr>
+              <td><b>Name</b></td>
+              <td><b>Type</b></td>
+              <td><b>Default</b></td>
+              <td><b>Description</b></td>
+            </tr>
+            <tr>
+              <td><code>managerid</code></td>
+              <td>string</td>
+              <td>null</td>
+              <td>The search manager bound to the chart.</td>
+            </tr>
+            <tr>
+              <td><code>height</code></td>
+              <td>number</td>
+              <td>800</td>
+              <td>The height of the chart.</td>
+            </tr>
+            <tr>
+              <td><code>lat_field</code></td>
+              <td>string</td>
+              <td>"latitude"</td>
+              <td>The name of the latitude field.</td>
+            </tr>
+            <tr>
+              <td><code>lon_field</code></td>
+              <td>string</td>
+              <td>"longitude"</td>
+              <td>The name of the longitude field.</td>
+            </tr>
+            <tr>
+              <td><code>count_field</code></td>
+              <td>string</td>
+              <td>"count"</td>
+              <td>The name of the count field.</td>
+            </tr>
+            <tr>
+              <td><code>spin_speed</code></td>
+              <td>number</td>
+              <td>0</td>
+              <td>The speed to auto-spin the globe which is useful for "hands-off" dashboard like on TVs. 0 means no auto-spin. A negative number means the earth spins the opposite direction (as opposed to in reality).</td>
+            </tr>
+            <tr>
+              <td><code>zoom_level</code></td>
+              <td>number or string</td>
+              <td>9</td>
+              <td>Controls how much to "group" the data together; possible values are from 0 to 9 or "max", where 9 is the least grouping</td>
+            </tr>
+          </tbody>
+        </table>
+      </html>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <html>
+        <h2>Locations Sample (from sample_geo.csv)</h2>
+        <div id="globe_search" class="splunk-manager" data-require="splunkjs/mvc/searchmanager" data-options='{
+          "search": "| inputlookup sample_geo.csv | geostats count",
+          "preview": true,
+          "earliest_time": "0",
+          "latest_time": "now"
+        }'>
+        </div>
+        <div id="globe" class="splunk-view" data-require="app/custom_vizs/globe/globe" data-options='{
+          "managerid": "globe_search",
+          "lat_field": "lat",
+          "lon_field": "lon",
+          "spin_speed": 2
+        }'>
+        </div>
+      </html>
+    </panel>
+  </row>
+</form>

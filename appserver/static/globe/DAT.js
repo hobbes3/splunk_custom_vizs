@@ -24,8 +24,6 @@ DAT.Globe = function(container, opts) {
     return c;
   };
   var imgDir = opts.imgDir || '/globe/';
-  var orig_spin_speed = opts.spin_speed / 1000;
-  var spin_speed = orig_spin_speed;
 
   var Shaders = {
     'earth' : {
@@ -84,6 +82,9 @@ DAT.Globe = function(container, opts) {
   var rotation = { x: 0, y: 0 },
       target = { x: Math.PI*3/2, y: Math.PI / 6.0 },
       targetOnDown = { x: 0, y: 0 };
+
+  // Added for auto spin
+  var incr_rotation = { x: -opts.spin_speed/1000, y: 0 };
 
   var distance = 100000, distanceTarget = 100000;
   var padding = 40;
@@ -274,7 +275,6 @@ DAT.Globe = function(container, opts) {
   }
 
   function onMouseDown(event) {
-    spin_speed = 0;
     event.preventDefault();
 
     container.addEventListener('mousemove', onMouseMove, false);
@@ -308,7 +308,6 @@ DAT.Globe = function(container, opts) {
     container.removeEventListener('mouseup', onMouseUp, false);
     container.removeEventListener('mouseout', onMouseOut, false);
     container.style.cursor = 'auto';
-    spin_speed = orig_spin_speed;
   }
 
   function onMouseOut(event) {
@@ -358,14 +357,12 @@ DAT.Globe = function(container, opts) {
   function render() {
     zoom(curZoomSpeed);
 
-    if(spin_speed > 0) {
-        rotation.x += spin_speed;
-    }
-    else {
-        rotation.x += (target.x - rotation.x) * 0.1;
-    }
-    rotation.y += (target.y - rotation.y) * 0.1;
+    // Added for auto spin
+    target.x += incr_rotation.x;
+    target.y += incr_rotation.y;
 
+    rotation.x += (target.x - rotation.x) * 0.1;
+    rotation.y += (target.y - rotation.y) * 0.1;
     distance += (distanceTarget - distance) * 0.3;
 
     camera.position.x = distance * Math.sin(rotation.x) * Math.cos(rotation.y);
