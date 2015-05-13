@@ -23,7 +23,10 @@ define(function(require, exports, module) {
         c.setHSL( ( 0.6 - ( x * 0.5 ) ), 1.0, 0.5 );
         return c;
     };
-    var imgDir = opts.imgDir || '/globe/';
+    var img_path        = opts.img_path;
+    var star_field      = opts.star_field;
+    var star_field_path = opts.star_field_path;
+    var spin_speed      = opts.spin_speed;
 
     var Shaders = {
         'earth' : {
@@ -84,7 +87,7 @@ define(function(require, exports, module) {
         targetOnDown = { x: 0, y: 0 };
 
     // Added for auto spin
-    var incr_rotation = { x: -opts.spin_speed/1000, y: 0 };
+    var incr_rotation = { x: -spin_speed/1000, y: 0 };
 
     var distance = 100000, distanceTarget = 100000;
     var padding = 40;
@@ -109,7 +112,7 @@ define(function(require, exports, module) {
         shader = Shaders['earth'];
         uniforms = THREE.UniformsUtils.clone(shader.uniforms);
 
-        uniforms['texture'].value = THREE.ImageUtils.loadTexture(imgDir+'world.jpg');
+        uniforms['texture'].value = THREE.ImageUtils.loadTexture(img_path);
 
         material = new THREE.ShaderMaterial({
 
@@ -141,15 +144,17 @@ define(function(require, exports, module) {
         mesh.scale.set( 1.1, 1.1, 1.1 );
         scene.add(mesh);
 
-        // Star field
-        geometry  = new THREE.SphereGeometry(8000, 32, 32)
-        // create the material, using a texture of startfield
-        material  = new THREE.MeshBasicMaterial()
-        material.map   = THREE.ImageUtils.loadTexture(imgDir+'galaxy_starfield.png')
-        material.side  = THREE.BackSide
-        // create the mesh based on geometry and material
-        mesh  = new THREE.Mesh(geometry, material)
-        scene.add(mesh);
+        if(star_field) {
+            // Star field
+            geometry  = new THREE.SphereGeometry(8000, 32, 32);
+            // create the material, using a texture of startfield
+            material  = new THREE.MeshBasicMaterial();
+            material.map   = THREE.ImageUtils.loadTexture(star_field_path);
+            material.side  = THREE.BackSide;
+            // create the mesh based on geometry and material
+            mesh  = new THREE.Mesh(geometry, material);
+            scene.add(mesh);
+        }
 
         geometry = new THREE.CubeGeometry(0.75, 0.75, 1);
         geometry.applyMatrix(new THREE.Matrix4().makeTranslation(0,0,-0.5));
@@ -239,7 +244,9 @@ define(function(require, exports, module) {
             this.points = new THREE.Mesh(this._baseGeometry, new THREE.MeshBasicMaterial({
                 color: 0xffffff,
                 vertexColors: THREE.FaceColors,
-                morphTargets: false
+                morphTargets: false//,
+                //transparent: true,
+                //opacity: 0.8
                 }));
         } else {
             if (this._baseGeometry.morphTargets.length < 8) {
@@ -257,8 +264,13 @@ define(function(require, exports, module) {
                 morphTargets: true
                 }));
         }
+        this.points.name = "lines";
         scene.add(this.points);
         }
+    }
+
+    function removeAllPoints() {
+        scene.remove(scene.getObjectByName("lines"));
     }
 
     function addPoint(lat, lng, size, color, subgeo) {
@@ -417,6 +429,7 @@ define(function(require, exports, module) {
     });
 
     this.addData = addData;
+    this.removeAllPoints = removeAllPoints;
     this.createPoints = createPoints;
     this.renderer = renderer;
     this.scene = scene;

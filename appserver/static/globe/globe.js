@@ -16,8 +16,9 @@ define(function(require, exports, module) {
             "data": "preview",
             "lat_field": "latitude",
             "lon_field": "longitude",
-            "count_field": "count",
-            "zoom_level": 9, // Can range from 0-9 or max
+            "group_by_field": null,
+            "world_image_path": "app/custom_vizs/globe/world_black.jpg",
+            "star_field": true,
             "height": 800,
             "spin_speed": 0
         },
@@ -29,9 +30,9 @@ define(function(require, exports, module) {
             // in the case that any options are changed, it will dynamically update
             // without having to refresh. copy the following line for whichever field
             // you'd like dynamic updating on
-            this.settings.on("change:lat_field",   this.render, this);
-            this.settings.on("change:lon_field",   this.render, this);
-            this.settings.on("change:count_field", this.render, this);
+            this.settings.on("change:lat_field",      this.render, this);
+            this.settings.on("change:lon_field",      this.render, this);
+            this.settings.on("change:group_by_field", this.render, this);
             // Set up resize callback. The first argument is a this
             // pointer which gets passed into the callback event
             //$(window).resize(this, _.debounce(this._handleResize, 20));
@@ -58,67 +59,83 @@ define(function(require, exports, module) {
                 Detector.addGetWebGLMessage();
             } else {
                 return new DAT.Globe(that.el, {
-                    imgDir: SplunkUtil.make_url("/static/app/custom_vizs/globe") + '/',
+                    img_path: SplunkUtil.make_url("/static/" + this.settings.get("world_image_path")),
+                    star_field: this.settings.get("star_field"),
+                    star_field_path: SplunkUtil.make_url("/static/app/custom_vizs/globe/star_field.png"),
                     spin_speed: spin_speed
                 });
             }
         },
         // making the data look how we want it to for updateView to do its job
         formatData: function(data) {
-            var that = this;
             // getting settings
-            var lat_field   = that.settings.get('lat_field');
-            var lon_field   = that.settings.get('lon_field');
-            var count_field = that.settings.get('count_field');
-            var zoom_level  = that.settings.get('zoom_level');
-
-            if(zoom_level === "max") {
-                zoom_level = _(data)
-                    .chain()
-                    .pluck("geobin")
-                    .map(function (v) {
-                        return /bin_id_zl_(\d)/.exec(v)[1];
-                    })
-                    .max()
-                    .value();
-            }
-
-            var filtered_data = _(data)
-                .filter(function(row) {
-                    var re = new RegExp("bin_id_zl_" + zoom_level);
-                    return row.geobin.match(re);
-                });
+            var lat_field      = this.settings.get('lat_field');
+            var lon_field      = this.settings.get('lon_field');
+            var group_by_field = this.settings.get('group_by_field');
 
             var max_value = 0;
 
-            var feathered_data = _.chain(filtered_data)
+            var group_by_values = {};
+
+            if(group_by_field) {
+                var i = 0;
+
+                values = _(data)
+                    .chain()
+                    .uniq(function(point) {
+                        return point[group_by_field];
+                    })
+                    .map(function(o) {
+                        return o[group_by_field];
+                    })
+                    .each(function(v) {
+                        group_by_values[v] = i;
+                        i++;
+                    });
+            }
+
+            var feathered_data = _(data)
+                .chain()
                 .groupBy(function(point) {
-                    return Math.floor(point.latitude) + "," + Math.floor(point.longitude);
+                    var zipped = Math.round(point[lat_field]) + "," + Math.round(point[lon_field]);
+
+                    // We eventually want the data to be formatted like
+                    // [lat, lon, magnitude, lat, long, magnitude, ...]
+                    // or
+                    // [lat, lon, magnitude, group_1, lat, long, magnitude, group_2, ...]
+                    // and group_* can only be integers
+                    zipped += group_by_field ? "," + group_by_values[point[group_by_field]] : "";
+
+                    return zipped;
                 })
-                .map(function(points, coord) {
-                    var re = /([^,]+),(.+)/;
-                    var lat = parseFloat(re.exec(coord)[1]);
-                    var lon = parseFloat(re.exec(coord)[2]);
+                .map(function(points, zipped) {
+                    var re;
 
-                    var value = _(points)
-                        .chain()
-                        .pluck("count")
-                        .reduce(function(memo, num) {
-                            var sum = parseInt(memo) + parseInt(num);
+                    re = group_by_field ? /([^,]+),([^,]+),(\d+)/ : /([^,]+),(.+)/;
+                    var lat = parseInt(re.exec(zipped)[1]);
+                    var lon = parseInt(re.exec(zipped)[2]);
+                    var group = group_by_field ? parseInt(re.exec(zipped)[3]) : null;
 
-                            return sum;
-                        }, 0)
-                        .value();
+                    var magnitude = points.length;
 
-                    max_value = Math.max(max_value, value);
+                    max_value = Math.max(max_value, magnitude);
 
-                    return [lat, lon, value];
+                    var point = [lat, lon, magnitude];
+
+                    if(group_by_field) {
+                        point.push(group);
+                    }
+
+                    return point;
                 })
                 .flatten()
                 .value();
 
             var normalized_feathered_data = _(feathered_data).map(function(v, i) {
-                if((i + 1) % 3 === 0) {
+                if(
+                    group_by_field && (i + 2) % 4 === 0 ||
+                    !group_by_field && (i + 1) % 3 === 0
+                ) {
                     // Normalized value between 0 and 1
                     v = v / max_value;
                 }
@@ -129,8 +146,16 @@ define(function(require, exports, module) {
             return normalized_feathered_data;
         },
         updateView: function(globe, data) {
+            var group_by_field = this.settings.get('group_by_field');
+
             TWEEN.start();
-            globe.addData(data, {format: 'magnitude', name: 'results', animated: false});
+            globe.removeAllPoints();
+            if(group_by_field) {
+                globe.addData(data, {format: 'legend', name: 'results', animated: false});
+            }
+            else {
+                globe.addData(data, {format: 'magnitude', name: 'results', animated: false});
+            }
             globe.createPoints();
             globe.animate();
         },
