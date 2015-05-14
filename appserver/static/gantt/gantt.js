@@ -142,7 +142,7 @@ define(function(require, exports, module) {
             // Here we set up the initial view layout
 
             var availableWidth = parseInt(this.$el.width()) - margin.left - margin.right;
-            var availableHeight = parseInt(this.$el.height()- margin.top - margin.bottom);
+            var availableHeight = parseInt(this.$el.height() - margin.top - margin.bottom);
 
             this.$el.html("");
 

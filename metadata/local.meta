@@ -20,7 +20,7 @@ modtime = 1430392461.048628000
 
 [views/viz_calendarheatmap]
 version = 6.2.2
-modtime = 1430426809.633996000
+modtime = 1431544404.417022000
 
 [views/viz_parallelcoords]
 version = 6.2.2
@@ -33,3 +33,7 @@ modtime = 1430476660.843175000
 [views/viz_globe]
 version = 6.2.2
 modtime = 1431491498.801983000
+
+[views/viz_gantt]
+version = 6.2.2
+modtime = 1431543383.191691000
