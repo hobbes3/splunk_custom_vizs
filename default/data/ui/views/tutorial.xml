@@ -4,16 +4,16 @@
     <panel>
       <html>
         <h2>App Info</h2>
-        <p>This app (<code>custom_vizs</code>) is simply a convenient reference for many custom JS "viz's" (visualizations). Most of them are not created by me (hobbes3). Please see the Sources section below for credits.</p>
+        <p>This app (<code>custom_vizs</code>) is simply a convenient reference for many custom JS visualizations. Most of them are not created by me (hobbes3). Please see the Sources section below for credits.</p>
         <h2>JS Info</h2>
         <p>
-          Custom JS vizs can be used in Splunk by including special JS files that extends and modifies the <code>SimpleSplunkView</code> SplunkJS object. All custom JS (and other static files like CSS and images) goes in the app's <code>appserver/static/</code> folder. These JS are then called from SimpleXML. Creating the JS files require server access, but <i>using</i> the custom viz only require access to Splunk UI (SimpleXML).
+          Custom JS visualizations can be used in Splunk by including special JS files that extends and modifies the <code>SimpleSplunkView</code> SplunkJS object. All custom JS (and other static files like CSS and images) goes in the app's <code>appserver/static/</code> folder. These JS are then called from SimpleXML. Creating the JS files require server access, but <i>using</i> the custom visualization only require access to Splunk UI (SimpleXML).
         </p>
         <h2>Instructions</h2>
         <ul>
-          <li>If you don't want to depend on this app, then copy the necessary files in <code>custom_viz/appserver/static/&lt;js_viz&gt;/</code> and <code>autodiscover.js</code> to your own app's <code>appserver/static/</code>. Some vizs like the globe uses its own, unique <code>autodiscover.js</code> file.</li>
+          <li>If you don't want to depend on this app, then copy the necessary files in <code>custom_viz/appserver/static/&lt;js_viz&gt;/</code> and <code>autodiscover.js</code> to your own app's <code>appserver/static/</code>. Some visualizations like the globe uses its own, unique <code>autodiscover.js</code> file.</li>
           <li>At the top of your dashboard load <code>autodiscover.js</code> like <code>&lt;form script="autodiscover.js"&gt;</code>.</li>
-          <li>Call the custom viz using 2 <code>&lt;div&gt;</code>'s in a HTML panel (see <b>SimpleXML Declaration</b> below).</li>
+          <li>Call the custom visualization using 2 <code>&lt;div&gt;</code>'s in a HTML panel (see <b>SimpleXML Declaration</b> below).</li>
         </ul>  
       </html>
     </panel>
@@ -32,7 +32,7 @@
         <h2>Tips</h2>
         <ul>
           <li>Making any dashboard modifications via "Edit Panels" <i>will destroy any custom formatting</i> in the two <code>&lt;div&gt;</code>'s (Splunk will make each <code>&lt;div&gt;</code> into a single line and escape a bunch for characters). One way around this is to keep a copy of the formatted <code>&lt;div&gt;</code>'s before using "Edit Panels".</li>
-          <li>To really understand how the custom viz JS code works, use a browser dev tool and set breakpoints in various lines (especially inside <code>createView</code>, <code>formatData</code>, and <code>updateView</code> of the extended <code>SimpleSplunkView</code> code).</li>
+          <li>To really understand how the custom visualization JS code works, use a browser dev tool and set breakpoints in various lines (especially inside <code>createView</code>, <code>formatData</code>, and <code>updateView</code> of the extended <code>SimpleSplunkView</code> code).</li>
           <li>To use a saved search or post process search, use <code>splunkjs/mvc/savedsearchmanager</code> or <code>splunkjs/mvc/postprocessmanager</code>, respectively. Note that these both require <code>managerid</code>.</li>
           <li>More info about various SplunkJS objects:
             <ul>
@@ -47,7 +47,7 @@
         <h2>Troubleshooting</h2>
         <ul>
           <li>Check that the <code>managerid</code> matches the id of the <code>searchmanager</code>'s <code>&lt;div&gt;</code>.</li>
-          <li>Check for the correct path for <code>data-require</code> for the viz "container" <code>&lt;div&gt;</code>. It should be in the form of <code>app/&lt;app_name&gt;/path/to/&lt;js_file_without_extension&gt;</code>.</li>
+          <li>Check for the correct path for <code>data-require</code> for the visualization "container" <code>&lt;div&gt;</code>. It should be in the form of <code>app/&lt;app_name&gt;/path/to/&lt;js_file_without_extension&gt;</code>.</li>
           <li>Check that all XML attributes are properly escaped. For example, make sure all <code>'&lt;&gt;"\</code> characters are escaped in the search query.</li>
           <li>Check that all tokens are wrapped in the <code>token_safe</code> syntax and are defined by 2 dollar signs on each side (like <code>$$$$token$$$$</code>).</li>
           <li>Check that the value of <code>data-options</code> is in valid JS object (not necessary JSON since single quotes can be used). In other words, check for comma and quote placements.</li>
@@ -72,7 +72,7 @@
           <li><b>Misty Gibbs</b>: Allowing me to speak at Splunk's .conf.</li>
           <li><b>Vladimir Skoryk</b> and <b>Jackson Sie</b>: Helped me here and there.</li>
           <li><b>Tom LaGatta</b> and <b>Stepehen Sorkin</b>: Boxplot, enough said.</li>
-          <li><b>Grigori Melnik</b> and <b>Alexandar Johnson</b>: Gave me some practice on how to explain how to create and use custom JS vizs to others.</li>
+          <li><b>Grigori Melnik</b> and <b>Alexandar Johnson</b>: Gave me some practice on how to explain how to create and use custom JS visualizations to others.</li>
         </ul>
       </html>
     </panel>
