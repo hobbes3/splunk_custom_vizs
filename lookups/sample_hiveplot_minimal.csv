@@ -1,0 +1,4 @@
+source,target,type
+A,B,foo
+B,,foo
+C,A,bar

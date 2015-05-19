@@ -59,20 +59,28 @@
   </row>
   <row>
     <panel>
+      <input type="dropdown" token="source" searchWhenChanged="true">
+        <label>Source</label>
+        <choice value="sample_hiveplot_flare.csv">Flare.json (original)</choice>
+        <choice value="sample_hiveplot_minimal.csv">Minimal</choice>
+        <choice value="sample_hiveplot_dev.csv">Dev</choice>
+        <default>sample_hiveplot_flare.csv</default>
+      </input>
       <html>
-        <h2>Flare Import Sample (from sample_flare.csv)</h2>
+        <h2>Flare Import Sample (from sample_hiveplot_*.csv)</h2>
         <p id="info"></p>
         <div id="hiveplot_search" class="splunk-manager" data-require="splunkjs/mvc/searchmanager" data-options='{
-          "search": "| inputlookup sample_flare.csv | rex field=source \"\\w+\\.(?&lt;type&gt;\\w+)\"",
-          "preview": true,
-          "earliest_time": "0",
-          "latest_time": "now"
+          "search": {
+            "type": "token_safe",
+            "value": "| inputlookup $$source$$ | rex field=source \"\\w+\\.(?&lt;type&gt;\\w+)\""
+          },
+          "preview": true
         }'>
         </div>
         <div id="hiveplot" class="splunk-view" data-require="app/custom_vizs/hiveplot/hiveplot" data-options='{
           "managerid": "hiveplot_search",
           "src_field": "source",
-          "dst_field": "target",
+          "dest_field": "target",
           "category_field": "type"
         }'>
         </div>

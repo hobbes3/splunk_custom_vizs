@@ -11,8 +11,9 @@ define(function(require, exports, module) {
         options: {
             "managerid": null,
             "data": "preview",
+            "height": 900,
             "src_field": "src",
-            "dst_field": "dst",
+            "dest_field": "dest",
             "category_field": "category"
         },
         output_mode: "json",
@@ -35,7 +36,7 @@ define(function(require, exports, module) {
             var that = this;
 
             var src_field = that.settings.get("src_field");
-            var dst_field = that.settings.get("dst_field");
+            var dest_field = that.settings.get("dest_field");
             var category_field = that.settings.get("category_field");
 
             var formatted_data = _(data)
@@ -45,11 +46,11 @@ define(function(require, exports, module) {
                     var obj = {
                         src: k,
                         category: v[0][category_field],
-                        dsts: _(v).pluck(dst_field)
+                        dests: _(v).pluck(dest_field)
                     };
 
-                    if(obj.dsts[0] === undefined) {
-                        obj.dsts = [];
+                    if(obj.dests[0] === undefined) {
+                        obj.dests = [];
                     }
 
                     return obj;
@@ -84,7 +85,7 @@ define(function(require, exports, module) {
                 .attr("width", width)
                 .attr("height", height)
             .append("g")
-                .attr("transform", "translate(" + outerRadius * .20 + "," + outerRadius * .57 + ")");
+                .attr("transform", "translate(" + outerRadius * .40 + "," + outerRadius * .57 + ")");
 
             // Load the data and display the plot!
             var nodes = data;
@@ -102,26 +103,29 @@ define(function(require, exports, module) {
 
             // Convert the import lists into links with sources and targets.
             nodes.forEach(function(source) {
-                source.dsts.forEach(function(targetName) {
-                var target = nodesByName[targetName];
-                if (!source.source) source.connectors.push(source.source = {node: source, degree: 0});
-                if (!target.target) target.connectors.push(target.target = {node: target, degree: 0});
-                links.push({source: source.source, target: target.target});
+                source.dests.forEach(function(targetName) {
+                    var target = nodesByName[targetName];
+                    if (!source.source) source.connectors.push(source.source = {node: source, degree: 0});
+                    if (!target.target) target.connectors.push(target.target = {node: target, degree: 0});
+                    links.push({source: source.source, target: target.target});
                 });
             });
 
             // Determine the type of each node, based on incoming and outgoing links.
             nodes.forEach(function(node) {
-                if (node.source && node.target) {
-                node.type = node.source.type = "target-source";
-                node.target.type = "source-target";
-                } else if (node.source) {
-                node.type = node.source.type = "source";
-                } else if (node.target) {
-                node.type = node.target.type = "target";
-                } else {
-                node.connectors = [{node: node}];
-                node.type = "source";
+                if(node.source && node.target) {
+                    node.type = node.source.type = "target-source";
+                    node.target.type = "source-target";
+                }
+                else if(node.source) {
+                    node.type = node.source.type = "source";
+                }
+                else if(node.target) {
+                    node.type = node.target.type = "target";
+                }
+                else {
+                    node.connectors = [{node: node}];
+                    node.type = "source";
                 }
             });
 
@@ -194,7 +198,17 @@ define(function(require, exports, module) {
                 .attr("cx", function(d) { return radius(d.node.index); })
                 .attr("r", 4)
                 .on("mouseover", nodeMouseover)
-                .on("mouseout", mouseout);
+                .on("mouseout", mouseout)
+                .on("click", nodeClick);
+
+            function nodeClick(d) {
+                var e = {
+                    "src": d.node.src,
+                    "dests": d.node.dests,
+                    "category": d.node.category
+                };
+                trigger("click", e);
+            }
 
             // Highlight the link and connected nodes on mouseover.
             function linkMouseover(d) {
@@ -206,6 +220,7 @@ define(function(require, exports, module) {
             // Highlight the node and connected links on mouseover.
             function nodeMouseover(d) {
                 svg.selectAll(".link").classed("active", function(p) { return p.source === d || p.target === d; });
+                svg.selectAll(".node circle").classed("active", function(p) { return p === d.source || p === d.target; });
                 d3.select(this).classed("active", true);
                 info.text(d.node.src);
             }
