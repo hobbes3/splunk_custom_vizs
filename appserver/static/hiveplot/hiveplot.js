@@ -163,11 +163,11 @@ define(function(require, exports, module) {
             var node = svg.selectAll(".node")
                 .data(nodes)
             .enter().append("g")
-                .attr("class", "node");
+                .attr("class", "node")
+                .attr("transform", function(d) { return "rotate(" + degrees(angle(d.x)) + ")"; });
 
             node.append("circle")
                 .attr("class", "node")
-                .attr("transform", function(d) { return "rotate(" + degrees(angle(d.x)) + ")"; })
                 .attr("cx", function(d) { return radius(d.y); })
                 .attr("r", 5)
                 .style("fill", function(d) { return color(d.x); })
@@ -188,8 +188,8 @@ define(function(require, exports, module) {
                 });
 
             node.append("text")
-                .attr("transform", function(d) { return "rotate(" + degrees(angle(d.x)) + ")"; })
-                .attr("dx", function(d) { return radius(d.y); })
+                .attr("class", "node")
+                .attr("transform", function(d) { return "translate(" + radius(d.y) + ",-10)rotate(-45)"; })
                 .attr("dy", ".35em")
                 .text(function(d) { return d.name });
 

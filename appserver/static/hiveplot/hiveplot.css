@@ -7,6 +7,13 @@
     stroke: #000;
 }
 
+text.node {
+    opacity: 0.5;
+}
+
+.node.active {
+}
+
 .link {
     fill: none;
     stroke: #999;
@@ -18,9 +25,6 @@
     stroke: red;
     stroke-width: 3px;
     stroke-opacity: 1;
-}
-
-.node.active {
 }
 
 .link.hidden, .node.hidden, .axis.hidden {
