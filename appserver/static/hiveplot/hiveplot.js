@@ -13,24 +13,32 @@ define(function(require, exports, module) {
             "data": "preview",
             "height": 900,
             "src_field": "src",
-            "value_field": "value",
-            "property_field": "property",
             "dest_field": "dest",
+            "property_field": "property",
             "category_field": "category",
             "category_order": null,
             "links_name": "links",
-            "nodes_name": "nodes"
+            "nodes_name": "nodes",
+            "labels": true
         },
         output_mode: "json",
         initialize: function() {
             SimpleSplunkView.prototype.initialize.apply(this, arguments);
             // In the case that any options are changed, it will dynamically update without having to refresh
             // Copy the following line for whichever field you'd like dynamic updating on
+
+            this.settings.on("change:src_field",      this.render, this);
+            this.settings.on("change:dest_field",     this.render, this);
+            this.settings.on("change:property_field", this.render, this);
+            this.settings.on("change:category_field", this.render, this);
         },
         createView: function() {
-            // Without this css, the chordchart won't be centered
+            // Clearing 'waiting for data...'
+            this.$el.html("");
+
+            // For centering
             this.$el.css({
-                "width": this.settings.get("height")+"px",
+                "width": this.settings.get("height")+100,
                 "margin": "0 auto"
             });
 
@@ -42,34 +50,37 @@ define(function(require, exports, module) {
 
             var src_field = that.settings.get("src_field");
             var dest_field = that.settings.get("dest_field");
+            var property_field = that.settings.get("property_field");
             var category_field = that.settings.get("category_field");
             var category_order = that.settings.get("category_order");
 
             var formatted_data = {};
 
-            var a = _(data).first();
+            var categories = _(data).chain().pluck(category_field).uniq().compact().value();
+            categories = _(category_order).intersection(categories).concat(_(categories).difference(category_order))
 
-            var categories = category_order || _(data).chain().pluck("region").uniq().compact().value();
-            var min = _(data).chain().map(function(o) { return parseFloat(o.population); }).min().value();
-            var max = _(data).chain().map(function(o) { return parseFloat(o.population); }).max().value();
+            var min = _(data).chain().map(function(o) { return parseFloat(o[property_field]); }).min().value();
+            var max = _(data).chain().map(function(o) { return parseFloat(o[property_field]); }).max().value();
             var range = max - min;
 
-            var nodes_info = _(data).filter(function(o) { return o.population; });
+            var nodes_info = _(data).filter(function(o) { return o[property_field]; });
 
             var nodes = _(data)
                 .chain()
-                .uniq(function(o) { return o.from; })
+                .uniq(function(o) { return o[src_field]; })
                 .map(function(o) {
-                    var name = o.from;
-                    var region = _(nodes_info).findWhere({from: name}).region;
-                    var population = parseFloat(_(nodes_info).findWhere({from: name}).population);
+                    var name = o[src_field];
+                    var find = {};
+                    find[src_field] = name;
+                    var category = _(nodes_info).findWhere(find)[category_field];
+                    var property = parseFloat(_(nodes_info).findWhere(find)[property_field]);
 
                     return {
                         name: name,
-                        x: categories.indexOf(region),
-                        y: (population - min)/range,
-                        population: population,
-                        region: region,
+                        x: categories.indexOf(category),
+                        y: (property - min)/range,
+                        property: property,
+                        category: category,
                         sources: [],
                         targets: []
                     };
@@ -78,10 +89,10 @@ define(function(require, exports, module) {
 
             var links = _(data)
                 .chain()
-                .filter(function(o) { return o.from && o.to; })
+                .filter(function(o) { return o[src_field] && o[dest_field]; })
                 .map(function(o) {
-                    var source = _(nodes).findWhere({name: o.from});
-                    var target = _(nodes).findWhere({name: o.to});
+                    var source = _(nodes).findWhere({name: o[src_field]});
+                    var target = _(nodes).findWhere({name: o[dest_field]});
 
                     source.targets.push(target);
                     target.sources.push(source);
@@ -102,17 +113,14 @@ define(function(require, exports, module) {
         },
         updateView: function(viz, data) {
             var that = this;
-
-            // clearing all prior junk from the view (eg. 'waiting for data...')
-            that.$el.html("");
+            var height = that.settings.get("height");
+            var width = this.$el.width();
 
             var nodes = data.nodes;
             var links = data.links;
             var axes  = data.axes;
 
-            var width = 960,
-                height = 500,
-                innerRadius = 40,
+            var innerRadius = 40,
                 outerRadius = 240;
 
             var angle = d3.scale.ordinal().domain(d3.range(axes + 1)).rangePoints([0, 2 * Math.PI]),
@@ -123,18 +131,21 @@ define(function(require, exports, module) {
                 formatCommaNumber = d3.format("0,000"),
                 defaultInfo;
 
-            var links_name = that.settings.get("links_name");
-            var nodes_name = that.settings.get("nodes_name");
+            var links_name     = that.settings.get("links_name");
+            var nodes_name     = that.settings.get("nodes_name");
+            var property_field = that.settings.get("property_field");
+            var category_field = that.settings.get("category_field");
+            var labels         = that.settings.get("labels");
 
             // Initialize the info display.
             var info = d3.select("#info")
                 .text(defaultInfo = "Showing " + formatNumber(links.length) + " " + links_name + " among " + formatNumber(nodes.length) + " " + nodes_name + ".");
 
-
-            var svg = d3.select(that.el).append("svg")
+            var svg = d3.select(that.el)
+                .append("svg")
                 .attr("width", width)
                 .attr("height", height)
-            .append("g")
+                .append("g")
                 .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
 
             svg.selectAll(".axis")
@@ -187,11 +198,13 @@ define(function(require, exports, module) {
                     return info.join("\n");
                 });
 
-            node.append("text")
-                .attr("class", "node")
-                .attr("transform", function(d) { return "translate(" + radius(d.y) + ",-10)rotate(-45)"; })
-                .attr("dy", ".35em")
-                .text(function(d) { return d.name });
+            if(labels) {
+                node.append("text")
+                    .attr("class", "node")
+                    .attr("transform", function(d) { return "translate(" + radius(d.y) + ",-10)rotate(-45)"; })
+                    .attr("dy", ".35em")
+                    .text(function(d) { return d.name });
+            }
 
             function degrees(radians) {
                 return radians / Math.PI * 180 - 90;
@@ -202,11 +215,18 @@ define(function(require, exports, module) {
                 svg.selectAll(".link")
                     .classed("active", function(p) {
                         return p === d;
+                    })
+                    .classed("hidden", function(p) {
+                        return !(p === d);
                     });
                 svg.selectAll(".node")
                     .classed("active", function(p) {
                         return p === d.source || p === d.target;
+                    })
+                    .classed("hidden", function(p) {
+                        return !(p === d.source || p === d.target);
                     });
+                svg.selectAll(".axis").classed("hidden", true);
                 info.text(d.source.name + " → " + d.target.name);
             }
 
@@ -228,7 +248,7 @@ define(function(require, exports, module) {
                     });
                 svg.selectAll(".axis").classed("hidden", true);
                 d3.select(this).classed("active", true);
-                info.text("Country: " + d.name + ", Region: " + d.region + ", Population: " + formatCommaNumber(d.population));
+                info.text("Country: " + d.name + ", Region: " + d.category + ", Population: " + formatCommaNumber(d.property));
             }
 
             // Clear any highlighted nodes or links.

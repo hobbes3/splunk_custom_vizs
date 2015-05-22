@@ -46,11 +46,51 @@
             </tr>
             <tr>
               <td>
+                <code>property_field</code>
+              </td>
+              <td>string</td>
+              <td>"property"</td>
+              <td>The name of the property field.</td>
+            </tr>
+            <tr>
+              <td>
                 <code>category_field</code>
               </td>
               <td>string</td>
               <td>"category"</td>
               <td>The name of the category field.</td>
+            </tr>
+            <tr>
+              <td>
+                <code>category_value</code>
+              </td>
+              <td>array</td>
+              <td>null</td>
+              <td>A hardcoded array of some or all category and its order. The first element will be the 12 o'clock axis and the order will go clockwise. Non-matching category element will be ignored.</td>
+            </tr>
+            <tr>
+              <td>
+                <code>links_name</code>
+              </td>
+              <td>string</td>
+              <td>"links"</td>
+              <td>The name of the links for the status. For example, by default the status will say something like "Showing 23 links among 4 nodes".</td>
+            </tr>
+            <tr>
+              <td>
+                <code>nodes_name</code>
+              </td>
+              <td>string</td>
+              <td>"nodes"</td>
+              <td>The name of the nodes for ths status.</td>
+            </tr>
+            <tr>
+              <td>
+                <code>labels</code>
+              </td>
+              <td>bool</td>
+              <td>true</td>
+              <td>Whether to show labels on the nodes or not.</td>
             </tr>
           </tbody>
         </table>
@@ -60,7 +100,7 @@
   <row>
     <panel>
       <html>
-        <h2>First 100 Flights (from sample_flights.csv)</h2>
+        <h2>First 100 Flights (from sample_flights.csv and europe.csv)</h2>
         <p id="info"></p>
         <div id="hiveplot_search" class="splunk-manager" data-require="splunkjs/mvc/searchmanager" data-options='{
           "search": "| inputlookup sample_flights.csv | head 100 | stats count by from to | inputlookup append=t europe.csv | rename country as from",
@@ -69,10 +109,12 @@
         </div>
         <div id="hiveplot" class="splunk-view" data-require="app/custom_vizs/hiveplot/hiveplot" data-options='{
           "managerid": "hiveplot_search",
-          "src_field": "source",
-          "dest_field": "target",
-          "category_field": "type",
+          "src_field": "from",
+          "height": 500,
+          "dest_field": "to",
+          "category_field": "region",
           "category_order": ["North", "East", "South", "West"],
+          "property_field": "population",
           "links_name": "flights",
           "nodes_name": "countries"
         }'>
