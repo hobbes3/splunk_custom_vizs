@@ -1,26 +1,28 @@
 .axis {
-  stroke: #000;
-  stroke-width: 1.5px;
+    stroke: #000;
+    stroke-width: 1.5px;
 }
 
-.node circle {
-  stroke: #000;
+.node {
+    stroke: #000;
 }
 
 .link {
-  fill: none;
-  stroke: #999;
-  stroke-width: 1.5px;
-  stroke-opacity: .3;
+    fill: none;
+    stroke: #999;
+    stroke-width: 1.5px;
+    stroke-opacity: .3;
 }
 
 .link.active {
-  stroke: red;
-  stroke-width: 2px;
-  stroke-opacity: 1;
+    stroke: red;
+    stroke-width: 3px;
+    stroke-opacity: 1;
 }
 
-.node circle.active {
-  stroke: red;
-  stroke-width: 3px;
+.node.active {
+}
+
+.link.hidden, .node.hidden, .axis.hidden {
+    opacity: 0.2;
 }
