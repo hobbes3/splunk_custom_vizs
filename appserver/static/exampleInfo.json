@@ -1,5 +1,40 @@
 [
 
+    // TODO:
+    // boxplot
+    // bubble chart
+    // chordchart
+    // dendrogram
+    // forcedirected
+    // gantt
+    // globe
+    // hiveplot
+    // parallelcoord
+    // parallelsets
+    // punchcard
+    // sankey
+    // suburst
+    // tagcloud
+
+    {
+        "id": "viz_calendarheatmap",
+        "title": "Calendar",
+        "short-description": "Visualize data in a calendar heatmap.",
+        "category": "Custom Viz",
+        "versions": ["6.2"],
+        "sourceFiles": [
+            "/static/app/custom_vizs/calendarheatmap/calendarheatmap.css",
+            "/static/app/custom_vizs/calendarheatmap/calendarheatmap.js",
+            "/static/app/custom_vizs/calendarheatmap/contrib/cal-heatmap.css",
+            "/static/app/custom_vizs/calendarheatmap/contrib/cal-heatmap.js"
+        ],
+        "related_links": []
+    },
+
+
+
+    // Everything below is from Splunk 6.x Dashboard Examples
+
     {
         "id": "simple_event",
         "title": "Event",
