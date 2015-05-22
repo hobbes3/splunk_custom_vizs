@@ -19,8 +19,8 @@ version = 6.2.2
 modtime = 1430392461.048628000
 
 [views/viz_calendarheatmap]
-version = 6.2.2
-modtime = 1431733743.097708000
+version = 6.2.3
+modtime = 1432256708.843724000
 
 [views/viz_parallelcoords]
 version = 6.2.2
