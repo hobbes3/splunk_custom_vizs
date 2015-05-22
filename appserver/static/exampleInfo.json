@@ -1,20 +1,31 @@
 [
 
-    // TODO:
-    // boxplot
-    // bubble chart
-    // chordchart
-    // dendrogram
-    // forcedirected
-    // gantt
-    // globe
-    // hiveplot
-    // parallelcoord
-    // parallelsets
-    // punchcard
-    // sankey
-    // suburst
-    // tagcloud
+    {
+        "id": "viz_boxplot",
+        "title": "Boxplot",
+        "short-description": "Boxplot Viz",
+        "category": "Custom Viz",
+        "versions": ["6.2"],
+        "sourceFiles": [
+            "/static/app/custom_vizs/box.js",
+            "/static/app/custom_vizs/boxplot/boxplot.js",
+            "/static/app/custom_vizs/boxplot/boxplot.css"
+        ],
+        "related_links": []
+    },
+
+    {
+        "id": "viz_bubblechart",
+        "title": "Bubblechart",
+        "short-description": "Bubblechart Viz",
+        "category": "Custom Viz",
+        "versions": ["6.2"],
+        "sourceFiles": [
+            "/static/app/custom_vizs/bubblechart/bubblechart.js",
+            "/static/app/custom_vizs/bubblechart/bubblechart.css"
+        ],
+        "related_links": []
+    },
 
     {
         "id": "viz_calendarheatmap",
@@ -31,9 +42,87 @@
         "related_links": []
     },
 
+    {
+        "id": "viz_chordchart",
+        "title": "Chordchart",
+        "short-description": "Chordchart Viz",
+        "category": "Custom Viz",
+        "versions": ["6.2"],
+        "sourceFiles": [
+            "/static/app/custom_vizs/chordchart/chordchart.js",
+            "/static/app/custom_vizs/chordchart/chordchart.css"
+        ],
+        "related_links": []
+    },
 
+    {
+        "id": "viz_dendrogram",
+        "title": "Dendrogram",
+        "short-description": "Dendrogram Viz",
+        "category": "Custom Viz",
+        "versions": ["6.2"],
+        "sourceFiles": [
+            "/static/app/custom_vizs/dendrogram/dendrogram.js",
+            "/static/app/custom_vizs/dendrogram/dendrogram.css"
+        ],
+        "related_links": []
+    },
 
-    // Everything below is from Splunk 6.x Dashboard Examples
+    {
+        "id": "viz_forcedirected",
+        "title": "Force-directed graph",
+        "short-description": "forcedirected Viz",
+        "category": "Custom Viz",
+        "versions": ["6.2"],
+        "sourceFiles": [
+            "/static/app/custom_vizs/forcedirected/forcedirected.js",
+            "/static/app/custom_vizs/forcedirected/forcedirected.css"
+        ],
+        "related_links": []
+    },
+
+    {
+        "id": "viz_gantt",
+        "title": "Gantt Chart",
+        "short-description": "Gantt Viz",
+        "category": "Custom Viz",
+        "versions": ["6.2"],
+        "sourceFiles": [
+            "/static/app/custom_vizs/gantt/gantt.js",
+            "/static/app/custom_vizs/gantt/gantt.css"
+        ],
+        "related_links": []
+    },
+
+    {
+        "id": "viz_globe",
+        "title": "WebGL Globe",
+        "short-description": "Globe Viz",
+        "category": "Custom Viz",
+        "versions": ["6.2"],
+        "sourceFiles": [
+            "/static/app/custom_vizs/globe/DAT.js",
+            "/static/app/custom_vizs/globe/Detector.js",
+            "/static/app/custom_vizs/globe/Tween.js",
+            "/static/app/custom_vizs/globe/globe.js",
+            "/static/app/custom_vizs/globe/globe.css".
+            "/static/app/custom_vizs/globe/three.min.js"
+        ],
+        "related_links": []
+    },
+
+    {
+        "id": "viz_gantt",
+        "title": "Gantt Chart",
+        "short-description": "Gantt Viz",
+        "category": "Custom Viz",
+        "versions": ["6.2"],
+        "sourceFiles": [
+            "/static/app/custom_vizs/gantt/gantt.js",
+            "/static/app/custom_vizs/gantt/gantt.css"
+        ],
+        "related_links": []
+    },
 
     {
         "id": "simple_event",
