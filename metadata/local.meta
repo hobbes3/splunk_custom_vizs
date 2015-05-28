@@ -51,8 +51,6 @@ version = 6.2.2
 modtime = 1432763358.624562000
 
 [views/viz_parallelsets]
-export = none
-owner = admin
 version = 6.2.2
 modtime = 1432766892.169750000
 
@@ -69,11 +67,9 @@ version = 6.2.2
 modtime = 1432781003.277277000
 
 [views/contents]
-export = none
-owner = admin
 version = 6.2.2
 modtime = 1432819054.781424000
 
 [nav/default]
 version = 6.2.2
-modtime = 1432826163.493107000
+modtime = 1432827708.760218000

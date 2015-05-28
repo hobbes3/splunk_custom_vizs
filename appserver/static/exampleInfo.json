@@ -2,7 +2,7 @@
     {
         "id": "viz_boxplot",
         "title": "Boxplot",
-        "short-description": "",
+        "short-description": "In descriptive statistics, a box plot is a convenient way of graphically depicting groups of numerical data through their quartiles.",
         "category": "Charts",
         "versions": ["6.2"],
         "sourceFiles": [
@@ -14,8 +14,8 @@
     {
         "id": "viz_bubblechart",
         "title": "Bubblechart",
-        "short-description": "",
-        "category": "Shapes",
+        "short-description": "Bubble charts encode data in the area of circles. Although less perceptually-accurate than bar charts, they can pack hundreds of values into a small space.",
+        "category": "Sizes",
         "versions": ["6.2"],
         "sourceFiles": [
             "/static/app/custom_vizs/components/bubblechart/bubblechart.js",
@@ -26,7 +26,7 @@
     {
         "id": "viz_calendarheatmap",
         "title": "Calendar",
-        "short-description": "",
+        "short-description": "The Calendar Heatmap displays time-series data on a timeline as a heatmap. This view is good for visualizing time-based events and activity and can be configured extensively.",
         "category": "Time Charts",
         "versions": ["6.2"],
         "sourceFiles": [
@@ -38,7 +38,7 @@
     {
         "id": "viz_chordchart",
         "title": "Chordchart",
-        "short-description": "",
+        "short-description": "A chord chart arranges the nodes radially, drawing thick curves between nodes. The thickness of the curve encodes the frequency of connections between two nodes.",
         "category": "Lines",
         "versions": ["6.2"],
         "sourceFiles": [
@@ -50,7 +50,7 @@
     {
         "id": "viz_dendrogram",
         "title": "Dendrogram",
-        "short-description": "",
+        "short-description": "A dendrogram is a node-link diagram that places leaf nodes of the tree at the same depth.",
         "category": "Lines",
         "versions": ["6.2"],
         "sourceFiles": [
@@ -62,7 +62,7 @@
     {
         "id": "viz_forcedirected",
         "title": "Force-directed graph",
-        "short-description": "",
+        "short-description": "Force-directed graph drawing algorithms are a class of algorithms for drawing graphs in an aesthetically pleasing way. Their purpose is to position the nodes of a graph in two-dimensional space so that all the edges are of more or less equal length and there are as few crossing edges as possible based on their relative positions, and then using these forces either to simulate the motion of the edges and nodes or to minimize their energy.",
         "category": "Lines",
         "versions": ["6.2"],
         "sourceFiles": [
@@ -74,8 +74,8 @@
     {
         "id": "viz_gantt",
         "title": "Gantt Chart",
-        "short-description": "",
-        "category": "Shapes",
+        "short-description": "Gantt charts illustrate the start and finish dates of the terminal elements and summary elements of a transaction.",
+        "category": "Charts",
         "versions": ["6.2"],
         "sourceFiles": [
             "/static/app/custom_vizs/components/gantt/gantt.js",
@@ -87,7 +87,7 @@
     {
         "id": "viz_globe",
         "title": "WebGL Globe",
-        "short-description": "",
+        "short-description": "The WebGL Globe is an open platform for geographic data visualization.",
         "category": "Maps",
         "versions": ["6.2"],
         "sourceFiles": [
@@ -99,7 +99,7 @@
     {
         "id": "viz_hiveplot",
         "title": "Hive Plot",
-        "short-description": "",
+        "short-description": "The hive plot is a rational visualization method for drawing networks. Nodes are mapped to and positioned on radially distributed linear axes — this mapping is based on network structural properties. Edges are drawn as curved links.",
         "category": "Lines",
         "versions": ["6.2"],
         "sourceFiles": [
@@ -111,7 +111,7 @@
     {
         "id": "viz_parallelcoords",
         "title": "Parallel Coordinates",
-        "short-description": "",
+        "short-description": "The parallel coordinates graph is good for visualizing multidimensional data dynamically. This graph is especially good for data with many dimensions and categories because it allows a user to interactively examine a large dataset.",
         "category": "Lines",
         "versions": ["6.2"],
         "sourceFiles": [
@@ -122,7 +122,7 @@
     {
         "id": "viz_parallelsets",
         "title": "Parallel Set",
-        "short-description": "",
+        "short-description": "The parallel sets graph is good for displaying multidimensional categorical data. Each dimension is shown horizontally with a bar for each of the possible categories in that dimension. The size of the bar indicates the number of items in that category in that dimension.",
         "category": "Lines",
         "versions": ["6.2"],
         "sourceFiles": [
@@ -134,8 +134,8 @@
     {
         "id": "viz_punchcard",
         "title": "Punch Card",
-        "short-description": "",
-        "category": "Time Charts",
+        "short-description": "Punchcard shows a count relationship between two data dimensions.",
+        "category": "Sizes",
         "versions": ["6.2"],
         "sourceFiles": [
             "/static/app/custom_vizs/components/punchcard/punchcard.js",
@@ -146,7 +146,7 @@
     {
         "id": "viz_sankey",
         "title": "Sankey",
-        "short-description": "",
+        "short-description": "Sankey diagrams are a specific type of flow diagram, in which the width of the arrows is shown proportionally to the flow quantity.",
         "category": "Lines",
         "versions": ["6.2"],
         "sourceFiles": [
@@ -158,7 +158,7 @@
     {
         "id": "viz_sunburst",
         "title": "Sunburst Chart",
-        "short-description": "",
+        "short-description": "A sunburst chart is a multilevel pie chart used to represent the proportion of different values found at each level in a hierarchy.",
         "category": "Charts",
         "versions": ["6.2"],
         "sourceFiles": [
@@ -170,8 +170,8 @@
     {
         "id": "viz_tagcloud",
         "title": "Tag Cloud",
-        "short-description": "",
-        "category": "Words",
+        "short-description": "A tag cloud is a visual representation for text data, typically used to depict keyword metadata (tags) on websites, or to visualize free form text. Tags are usually single words, and the importance of each tag is shown with font size or color.",
+        "category": "Sizes",
         "versions": ["6.2"],
         "sourceFiles": [
             "/static/app/custom_vizs/components/tagcloud/tagcloud.js",
