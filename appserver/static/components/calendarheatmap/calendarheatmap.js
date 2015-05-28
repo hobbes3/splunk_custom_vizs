@@ -19,7 +19,7 @@
 
 
 
-// the data is expected in this format after formatData (epoch time: event count): 
+// the data is expected in this format after formatData (epoch time: event count):
 // {
 //    "timestamps":[
 //       {
@@ -59,7 +59,7 @@
 // }
 
 define(function(require, exports, module) {
- 
+
     var _ = require('underscore');
     var SimpleSplunkView = require("splunkjs/mvc/simplesplunkview");
     var d3 = require("../d3/d3");
@@ -73,15 +73,15 @@ define(function(require, exports, module) {
         className: "splunk-toolkit-cal-heatmap",
 
         heatmapOptionNames: [
-            'cellRadius', 'domainMargin', 'maxDate', 'dataType', 
-            'considerMissingDataAsZero', 'verticalOrientation', 
-            'domainDynamicDimension', 'label', 'legendCellSize', 
-            'legendCellPadding', 'legendMargin', 'legendVerticalPosition', 
-            'legendHorizontalPosition', 'domainLabelFormat', 
-            'subDomainDateFormat', 'subDomainTextFormat', 'nextSelector', 
-            'previousSelector', 'itemNamespace', 'onMaxDomainReached', 
+            'cellRadius', 'domainMargin', 'maxDate', 'dataType',
+            'considerMissingDataAsZero', 'verticalOrientation',
+            'domainDynamicDimension', 'label', 'legendCellSize',
+            'legendCellPadding', 'legendMargin', 'legendVerticalPosition',
+            'legendHorizontalPosition', 'domainLabelFormat',
+            'subDomainDateFormat', 'subDomainTextFormat', 'nextSelector',
+            'previousSelector', 'itemNamespace', 'onMaxDomainReached',
             'onMinDomainReached', 'width', 'height'],
-       
+
         options: {
             managerid: "search1",   // your MANAGER ID
             data: "preview",  // Results type
@@ -120,7 +120,7 @@ define(function(require, exports, module) {
             // Knock off the prefix cause it doesnt matter here
             var sdShort = sd.replace("x_", "");
 
-            // If the current domain is valid for this subdomain 
+            // If the current domain is valid for this subdomain
             if (_.contains(this.validDomains[sdShort], dom)){
                 this.render();
             }
@@ -136,18 +136,18 @@ define(function(require, exports, module) {
             }
         },
 
-        createView: function() { 
+        createView: function() {
             return true;
         },
 
         // making the data look how we want it to for updateView to do its job
         // in this case, it looks like this:
         // {timestamp1: count, timestamp2: count, ... }
-        formatData: function(data) {              
+        formatData: function(data) {
             var rawFields = this.resultsModel.data().fields;
             var domain = this.settings.get('domain');
             var subDomain = this.settings.get('subDomain');
-            
+
             var filteredFields = _.filter(rawFields, function(d){ return d[0] !== "_"; });
             var objects = _.map(data, function(row) {
                 return _.object(rawFields, row);
@@ -157,12 +157,12 @@ define(function(require, exports, module) {
             for(var i = 0; i < filteredFields.length; i++) {
                 series.push({ name: filteredFields[i], timestamps: {}, min: Number.POSITIVE_INFINITY, max: Number.NEGATIVE_INFINITY });
             }
-            
+
             _.each(objects, function(object) {
                 // Get the timestamp for this object
                 var time = new Date(object['_time']);
                 var timeValue = time.valueOf() / 1000;
-                
+
                 // For each actual value, store it in the timestamp object
                 _.each(filteredFields, function(field, i) {
                     var value = object[field];
@@ -171,11 +171,11 @@ define(function(require, exports, module) {
                     series[i].max = Math.max(series[i].max, value);
                 });
             });
-                
+
             _.each(series, function(serie) {
-            
+
             });
-            
+
             return {
                 series: series,
                 domain: domain,
@@ -186,7 +186,7 @@ define(function(require, exports, module) {
             };
         },
 
-        updateView: function(viz, data) {     
+        updateView: function(viz, data) {
             var that = this;
             // Options that can be set externally after instantiation
             // that affect the display. Ensure that any "empty" values
@@ -207,7 +207,9 @@ define(function(require, exports, module) {
                     .domain([series.min, series.max])
                     .range([0,1,2,3,4]);
                 var legend = _.map(scale.quantiles(), function(x) { return Math.round(x); });
-                
+
+                var title = series.name;
+
                 var $el = $("<div class='heatmap-container'/>").appendTo(that.el);
                 var $title = $("<h4 class='heatmap-series-title'>Heatmap for: " + series.name + "</h4>").appendTo($el);
                 var $buttons = $("<div class='heatmap-buttons'/>").appendTo($el);
@@ -237,15 +239,19 @@ define(function(require, exports, module) {
                     onMaxDomainReached: function(hit) {
                         $next.attr("disabled", hit ? "disabled" : false);
                     },
-                    onClick: function(date, value) { 
-                        that.trigger('click', { date: date, value: value });
+                    onClick: function(date, value, title) {
+                        that.trigger('click', {
+                          date: date,
+                          value: value,
+                          series: series.name
+                        });
                         that.settings.set('value', date.valueOf());
                     }
                 }, vizOptions);
-                
+
                 var cal = new CalHeatMap();
                 cal.init(options); // create the calendar using either default or user defined options */
-                
+
                 if (idx < data.series.length - 1) {
                     $("<hr/>").appendTo($el);
                 }

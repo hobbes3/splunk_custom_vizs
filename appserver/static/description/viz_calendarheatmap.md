@@ -46,6 +46,7 @@
         <ul>
             <li><code>date</code>: The timestamp of the clicked cell.</li>
             <li><code>value</code>: The value of the field at that time.</li>
+            <li><code>series</code>: The name of the series.</li>
         </ul>
         </td>
     </tr>

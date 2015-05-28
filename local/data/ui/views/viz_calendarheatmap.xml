@@ -1,9 +1,9 @@
-<form script="autodiscover.js">
+<form script="autodiscover.js, viz_calendarheatmap.js">
   <label>Calendar Heatmap</label>
   <row>
     <panel>
       <html>
-        <h2>Splunk Internal Events by Sourcetype in the Last 2 Hours</h2>
+        <h2>Splunk Internal Events by Sourcetype in the Last 2 Hours (drilldown)</h2>
         <div id="calendarheatmap_search" class="splunk-manager" data-require="splunkjs/mvc/searchmanager" data-options='{
           "search": "index=_internal | timechart span=1m count by sourcetype",
           "preview": true,
