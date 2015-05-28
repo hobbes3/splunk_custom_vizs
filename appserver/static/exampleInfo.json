@@ -1,10 +1,9 @@
 [
-
     {
         "id": "viz_boxplot",
         "title": "Boxplot",
         "short-description": "",
-        "category": "",
+        "category": "Charts",
         "versions": ["6.2"],
         "sourceFiles": [
             "/static/app/custom_vizs/components/boxplot/boxplot.js",
@@ -12,25 +11,23 @@
         ],
         "related_links": []
     },
-
     {
         "id": "viz_bubblechart",
         "title": "Bubblechart",
         "short-description": "",
-        "category": "",
+        "category": "Shapes",
         "versions": ["6.2"],
         "sourceFiles": [
             "/static/app/custom_vizs/components/bubblechart/bubblechart.js",
             "/static/app/custom_vizs/components/bubblechart/bubblechart.css"
         ],
-        "related_links": []
+        "related_links": ["viz_tagcloud"]
     },
-
     {
         "id": "viz_calendarheatmap",
         "title": "Calendar",
         "short-description": "",
-        "category": "",
+        "category": "Time Charts",
         "versions": ["6.2"],
         "sourceFiles": [
             "/static/app/custom_vizs/components/calendarheatmap/calendarheatmap.js",
@@ -38,12 +35,11 @@
         ],
         "related_links": []
     },
-
     {
         "id": "viz_chordchart",
         "title": "Chordchart",
         "short-description": "",
-        "category": "",
+        "category": "Lines",
         "versions": ["6.2"],
         "sourceFiles": [
             "/static/app/custom_vizs/components/chordchart/chordchart.js",
@@ -51,25 +47,23 @@
         ],
         "related_links": []
     },
-
     {
         "id": "viz_dendrogram",
         "title": "Dendrogram",
         "short-description": "",
-        "category": "",
+        "category": "Lines",
         "versions": ["6.2"],
         "sourceFiles": [
             "/static/app/custom_vizs/components/dendrogram/dendrogram.js",
             "/static/app/custom_vizs/components/dendrogram/dendrogram.css"
         ],
-        "related_links": []
+        "related_links": ["viz_sunburst"]
     },
-
     {
         "id": "viz_forcedirected",
         "title": "Force-directed graph",
         "short-description": "",
-        "category": "",
+        "category": "Lines",
         "versions": ["6.2"],
         "sourceFiles": [
             "/static/app/custom_vizs/components/forcedirected/forcedirected.js",
@@ -77,12 +71,11 @@
         ],
         "related_links": []
     },
-
     {
         "id": "viz_gantt",
         "title": "Gantt Chart",
         "short-description": "",
-        "category": "",
+        "category": "Shapes",
         "versions": ["6.2"],
         "sourceFiles": [
             "/static/app/custom_vizs/components/gantt/gantt.js",
@@ -95,7 +88,7 @@
         "id": "viz_globe",
         "title": "WebGL Globe",
         "short-description": "",
-        "category": "",
+        "category": "Maps",
         "versions": ["6.2"],
         "sourceFiles": [
             "/static/app/custom_vizs/components/globe/globe.js",
@@ -107,7 +100,7 @@
         "id": "viz_hiveplot",
         "title": "Hive Plot",
         "short-description": "",
-        "category": "",
+        "category": "Lines",
         "versions": ["6.2"],
         "sourceFiles": [
             "/static/app/custom_vizs/components/hiveplot/hiveplot.js",
@@ -119,30 +112,30 @@
         "id": "viz_parallelcoords",
         "title": "Parallel Coordinates",
         "short-description": "",
-        "category": "",
+        "category": "Lines",
         "versions": ["6.2"],
         "sourceFiles": [
             "/static/app/custom_vizs/components/parallelcoords/parallelcoords.js"
         ],
-        "related_links": []
+        "related_links": ["viz_parallelsets"]
     },
     {
         "id": "viz_parallelsets",
         "title": "Parallel Set",
         "short-description": "",
-        "category": "",
+        "category": "Lines",
         "versions": ["6.2"],
         "sourceFiles": [
             "/static/app/custom_vizs/components/parallelsets/parallelsets.js",
             "/static/app/custom_vizs/components/parallelsets/parallelsets.css"
         ],
-        "related_links": []
+        "related_links": ["viz_parallelcoords"]
     },
     {
         "id": "viz_punchcard",
         "title": "Punch Card",
         "short-description": "",
-        "category": "",
+        "category": "Time Charts",
         "versions": ["6.2"],
         "sourceFiles": [
             "/static/app/custom_vizs/components/punchcard/punchcard.js",
@@ -154,7 +147,7 @@
         "id": "viz_sankey",
         "title": "Sankey",
         "short-description": "",
-        "category": "",
+        "category": "Lines",
         "versions": ["6.2"],
         "sourceFiles": [
             "/static/app/custom_vizs/components/sankey/sankey.js",
@@ -166,24 +159,24 @@
         "id": "viz_sunburst",
         "title": "Sunburst Chart",
         "short-description": "",
-        "category": "",
+        "category": "Charts",
         "versions": ["6.2"],
         "sourceFiles": [
             "/static/app/custom_vizs/components/sunburst/sunburst.js",
             "/static/app/custom_vizs/components/sunburst/sunburst.css"
         ],
-        "related_links": []
+        "related_links": ["viz_dendrogram"]
     },
     {
         "id": "viz_tagcloud",
         "title": "Tag Cloud",
         "short-description": "",
-        "category": "",
+        "category": "Words",
         "versions": ["6.2"],
         "sourceFiles": [
             "/static/app/custom_vizs/components/tagcloud/tagcloud.js",
             "/static/app/custom_vizs/components/tagcloud/tagcloud.css"
         ],
-        "related_links": []
+        "related_links": ["viz_bubblechart"]
     }
 ]

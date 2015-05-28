@@ -174,6 +174,10 @@ define(function(require, exports, module) {
                         .attr("cx", width / 2)
                         .attr("cy", function(i) { return x0(d[i]); })
                         .style("opacity", 1e-6)
+                    .append("svg:title")
+                        .text(function(d) {
+                            return d;
+                        })
                     .transition()
                         .duration(duration)
                         .attr("cy", function(i) { return x1(d[i]); })

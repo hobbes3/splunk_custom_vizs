@@ -1,4 +1,4 @@
-<dashboard script="tutorial.js">
+<dashboard script="tutorial.js" showsource="false">
   <label>Tutorial</label>
   <row>
     <panel>
@@ -73,7 +73,7 @@
           <li><b>Vladimir Skoryk</b> and <b>Jackson Sie</b>: Helped me here and there.</li>
           <li><b>Tom LaGatta</b> and <b>Stepehen Sorkin</b>: Boxplot, enough said.</li>
           <li><b>Grigori Melnik</b>: Gave me some practice on how to explain how to create and use custom JS visualizations to others.</li>
-          <li><b>Alexandar Johnson</b>: Helped me a lot on the source code viewer (from the Dashboard 6.x Examples App).</li>
+          <li><b>Alexandar Johnson</b>: Helped me a lot on the source code viewer (ported from the Dashboard 6.x Examples App).</li>
         </ul>
       </html>
     </panel>

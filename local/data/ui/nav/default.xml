@@ -1,7 +1,7 @@
 <nav search_view="search" color="#65A637">
   <view name="tutorial" default="true"/>
   <collection label="Examples">
-    <view name="dashboards"/>
+    <view name="contents"/>
     <divider/>
     <view source="all" match="viz_"/>
   </collection>
