@@ -1,0 +1,39 @@
+<form script="autodiscover.js">
+  <label>Tag Cloud</label>
+  <fieldset submitButton="false" autoRun="true">
+    <input type="time" searchWhenChanged="true">
+      <default>
+        <earliest>-24h@h</earliest>
+        <latest>now</latest>
+      </default>
+    </input>
+  </fieldset>
+  <row>
+    <panel>
+      <html>
+        <h2>Top 100 Most Common Terms in an Ad-hoc Search Query</h2>
+        <div id="tagcloud_search" class="splunk-manager" data-require="splunkjs/mvc/searchmanager" data-options='{
+          "preview": true,
+          "search": "index=_audit NOT REST: search=* | regex search_id=\"&apos;\\d+\\.\\d+&apos;\" | rex field=search max_match=0 \"(?&lt;terms&gt;\\w+)\" | top limit=100 terms | eval r=random() | sort r",
+          "earliest_time": {
+            "type": "token_safe",
+            "value": "$$earliest$$"
+          },
+          "latest_time": {
+            "type": "token_safe",
+            "value": "$$latest$$"
+          }
+        }'>
+        </div>
+        <div id="tagcloud" class="splunk-view" data-require="app/custom_vizs/components/tagcloud/tagcloud" data-options='{
+          "minFontSize": 14,
+          "maxFontSize": 55,
+          "managerid": "tagcloud_search",
+          "valueField": "count",
+          "labelField": "terms"
+        }'>
+        </div>
+     </html>
+    </panel>
+  </row>
+</form>

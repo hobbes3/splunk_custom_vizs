@@ -1,0 +1,22 @@
+<form script="autodiscover.js">
+  <label>Parallel Sets</label>
+  <row>
+    <panel>
+      <html>
+        <h2>All Unique Combination of Search Type and Status in the Last 6 Hours</h2>
+        <div id="parallelsets_search" class="splunk-manager" data-require="splunkjs/mvc/searchmanager" data-options='{
+          "search": "index=_audit info=* | dedup date_hour action info | table date_hour action info",
+          "preview": true,
+          "earliest_time": "-6h@h",
+          "latest_time": "now"
+        }'>
+        </div>
+        <div id="parallelsets" class="splunk-view" data-require="app/custom_vizs/components/parallelsets/parallelsets" data-options='{
+          "managerid": "parallelsets_search",
+          "height": "500px"
+        }'>
+        </div>
+      </html>
+    </panel>
+  </row>
+</form>

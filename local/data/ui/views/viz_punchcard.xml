@@ -1,0 +1,22 @@
+<form script="autodiscover.js">
+  <label>Punchcard</label>
+  <row>
+    <panel>
+      <html>
+        <h2>Splunk Internal Events by Sourcetype in the Last 7 Days</h2>
+        <div id="punchcard_search" class="splunk-manager" data-require="splunkjs/mvc/searchmanager" data-options='{
+          "search": "| tstats count where index=_internal by date_wday sourcetype",
+          "preview": true,
+          "earliest_time": "-6d@d",
+          "latest_time": "now"
+        }'>
+        </div>
+        <div id="punchcard" class="splunk-view" data-require="app/custom_vizs/components/punchcard/punchcard" data-options='{
+          "managerid": "punchcard_search",
+          "height": 500
+        }'>
+        </div>
+      </html>
+    </panel>
+  </row>
+</form>

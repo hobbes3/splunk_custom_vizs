@@ -1,0 +1,44 @@
+<form script="autodiscover.js">
+  <label>Box Plot</label>
+  <row>
+    <panel>
+      <html>
+        <h2>Splunk Page Responses in the Last 5 Minutes (Ungrouped Method)</h2>
+        <div id="boxplot_search" class="splunk-manager" data-require="splunkjs/mvc/searchmanager" data-options='{
+          "search": "index=_internal sourcetype=splunk_web_access | bin _time span=1m | eval time=strftime(_time, \"%F %T\") | table time spent",
+          "preview": true,
+          "earliest_time": "-5m@m",
+          "latest_time": "now"
+        }'>
+        </div>
+        <div id="boxplot" class="splunk-view" data-require="app/custom_vizs/components/boxplot/boxplot" data-options='{
+          "managerid": "boxplot_search",
+          "group_by": "time",
+          "x_axis_label": "time",
+          "y_axis_label": "ms"
+        }'>
+        </div>
+      </html>
+    </panel>
+  </row> 
+  <row>
+    <panel>
+      <html>
+        <h2>Event Rate for the Top 5 Internal Sourcetypes in the Last Hour (Grouped Method)</h2>
+        <div id="boxplot_search_grouped" class="splunk-manager" data-require="splunkjs/mvc/searchmanager" data-options='{
+          "search": "| tstats prestats=t count where index=_internal by sourcetype _time | timechart span=1m limit=5 useother=f count by sourcetype | fields - _time",
+          "preview": true,
+          "earliest_time": "-60m@m",
+          "latest_time": "now"
+        }'>
+        </div>
+        <div id="boxplot_grouped" class="splunk-view" data-require="app/custom_vizs/components/boxplot/boxplot" data-options='{
+          "managerid": "boxplot_search_grouped",
+          "x_axis_label": "sourcetype",
+          "y_axis_label": "count/minute"
+        }'>
+        </div>
+      </html>
+    </panel>
+  </row>
+</form>

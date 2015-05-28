@@ -1,0 +1,36 @@
+<form script="autodiscover.js">
+  <label>Parallel Coordinates</label>
+  <fieldset submitButton="false" autoRun="true">
+    <input type="time" searchWhenChanged="true">
+      <default>
+        <earliest>-24h@h</earliest>
+        <latest>now</latest>
+      </default>
+    </input>
+  </fieldset>
+  <row>
+    <panel>
+      <html>
+        <h2>Splunk Metrics for Pipelines</h2>
+        <div id="parallelcoords_search" class="splunk-manager" data-require="splunkjs/mvc/searchmanager" data-options='{
+          "search": "index=_internal sourcetype=splunkd component=Metrics group=pipeline | dedup 2 name processor | table name processor cpu_seconds executes cummulative_hits",
+          "preview": true,
+          "earliest_time": {
+            "type": "token_safe",
+            "value": "$$earliest$$"
+          },
+          "latest_time": {
+            "type": "token_safe",
+            "value": "$$latest$$"
+          }
+        }'>
+        </div>
+        <div id="parallelcoords" class="splunk-view" data-require="app/custom_vizs/components/parallelcoords/parallelcoords" data-options='{
+          "managerid": "parallelcoords_search",
+          "height": "500px"
+        }'>
+        </div>
+      </html>
+    </panel>
+  </row>
+</form>

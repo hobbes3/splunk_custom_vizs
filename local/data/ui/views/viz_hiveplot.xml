@@ -1,0 +1,28 @@
+<form script="autodiscover.js">
+  <label>Hive Plot</label>
+  <row>
+    <panel>
+      <html>
+        <h2>First 100 Flights (from sample_flights.csv and europe.csv)</h2>
+        <p id="info"></p>
+        <div id="hiveplot_search" class="splunk-manager" data-require="splunkjs/mvc/searchmanager" data-options='{
+          "search": "| inputlookup sample_flights.csv | head 100 | stats count by from to | inputlookup append=t europe.csv | rename country as from",
+          "preview": true
+        }'>
+        </div>
+        <div id="hiveplot" class="splunk-view" data-require="app/custom_vizs/components/hiveplot/hiveplot" data-options='{
+          "managerid": "hiveplot_search",
+          "src_field": "from",
+          "height": 500,
+          "dest_field": "to",
+          "category_field": "region",
+          "category_order": ["North", "East", "South", "West"],
+          "property_field": "population",
+          "links_name": "flights",
+          "nodes_name": "countries"
+        }'>
+        </div>
+      </html>
+    </panel>
+  </row>
+</form>

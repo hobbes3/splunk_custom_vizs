@@ -1,0 +1,38 @@
+<form script="autodiscover.js">
+  <label>Force-Directed Graph</label>
+  <fieldset submitButton="false" autoRun="true">
+    <input type="time" searchWhenChanged="true">
+      <default>
+        <earliest>-24h@h</earliest>
+        <latest>now</latest>
+      </default>
+    </input>
+  </fieldset>
+  <row>
+    <panel>
+      <html>
+        <h2>Splunkweb Navigation</h2>
+        <div id="forcedirected_search" class="splunk-manager" data-require="splunkjs/mvc/searchmanager" data-options='{
+          "search": "index=_internal sourcetype=splunk_web_access uri_path=*/app/* NOT uri_path=*/static/* | table uri_path referer | rex field=referer \"https?://[^/]+(?&lt;source&gt;/[^\\?]*)\" | rename uri_path as target | stats count by source target",
+          "preview": true,
+          "earliest_time": {
+            "type": "token_safe",
+            "value": "$$earliest$$"
+          },
+          "latest_time": {
+            "type": "token_safe",
+            "value": "$$latest$$"
+          }
+        }'>
+        </div>
+        <div id="forcedirected" class="splunk-view" data-require="app/custom_vizs/components/forcedirected/forcedirected" data-options='{
+          "managerid": "forcedirected_search",
+          "height": "500px",
+          "panAndZoom": false,
+          "isStatic": false
+        }'>
+        </div>
+      </html>
+    </panel>
+  </row>
+</form>

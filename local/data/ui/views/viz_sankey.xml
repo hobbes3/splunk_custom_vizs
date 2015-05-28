@@ -1,0 +1,40 @@
+<form script="autodiscover.js">
+  <label>Sankey Chart</label>
+  <fieldset submitButton="false" autoRun="true">
+    <input type="time" searchWhenChanged="true">
+      <default>
+        <earliest>-24h@h</earliest>
+        <latest>now</latest>
+      </default>
+    </input>
+  </fieldset>
+  <row>
+    <panel>
+      <html>
+        <h2>Splunkweb Navigation</h2>
+        <div id="sankey_search" class="splunk-manager" data-require="splunkjs/mvc/searchmanager" data-options='{
+          "search": "index=_internal sourcetype=splunk_web_access NOT uri_path=*/static/* uri_path=*/app/* OR uri_path=*/manager/* 
+                    | rex field=referer \"https?://.+?/.+?(?&lt;referer_path&gt;/[^\\?]+)\" 
+                    | rex field=uri_path \"/.+?(?&lt;path&gt;/.+)\" 
+                    | rename referer_path as from path as to 
+                    | stats count by from to",
+          "preview": true,
+          "earliest_time": {
+            "type": "token_safe",
+            "value": "$$earliest$$"
+          },
+          "latest_time": {
+            "type": "token_safe",
+            "value": "$$latest$$"
+          }
+        }'>
+        </div>
+        <div id="sankey" class="splunk-view" data-require="app/custom_vizs/components/sankey/sankey" data-options='{
+          "managerid": "sankey_search",
+          "height": "400px"
+        }'>
+        </div>
+      </html>
+    </panel>
+  </row>
+</form>

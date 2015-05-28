@@ -3,13 +3,12 @@
     {
         "id": "viz_boxplot",
         "title": "Boxplot",
-        "short-description": "Boxplot Viz",
-        "category": "Custom Viz",
+        "short-description": "",
+        "category": "",
         "versions": ["6.2"],
         "sourceFiles": [
-            "/static/app/custom_vizs/box.js",
-            "/static/app/custom_vizs/boxplot/boxplot.js",
-            "/static/app/custom_vizs/boxplot/boxplot.css"
+            "/static/app/custom_vizs/components/boxplot/boxplot.js",
+            "/static/app/custom_vizs/components/boxplot/boxplot.css"
         ],
         "related_links": []
     },
@@ -17,12 +16,12 @@
     {
         "id": "viz_bubblechart",
         "title": "Bubblechart",
-        "short-description": "Bubblechart Viz",
-        "category": "Custom Viz",
+        "short-description": "",
+        "category": "",
         "versions": ["6.2"],
         "sourceFiles": [
-            "/static/app/custom_vizs/bubblechart/bubblechart.js",
-            "/static/app/custom_vizs/bubblechart/bubblechart.css"
+            "/static/app/custom_vizs/components/bubblechart/bubblechart.js",
+            "/static/app/custom_vizs/components/bubblechart/bubblechart.css"
         ],
         "related_links": []
     },
@@ -30,14 +29,12 @@
     {
         "id": "viz_calendarheatmap",
         "title": "Calendar",
-        "short-description": "Visualize data in a calendar heatmap.",
-        "category": "Custom Viz",
+        "short-description": "",
+        "category": "",
         "versions": ["6.2"],
         "sourceFiles": [
-            "/static/app/custom_vizs/calendarheatmap/calendarheatmap.css",
-            "/static/app/custom_vizs/calendarheatmap/calendarheatmap.js",
-            "/static/app/custom_vizs/calendarheatmap/contrib/cal-heatmap.css",
-            "/static/app/custom_vizs/calendarheatmap/contrib/cal-heatmap.js"
+            "/static/app/custom_vizs/components/calendarheatmap/calendarheatmap.js",
+            "/static/app/custom_vizs/components/calendarheatmap/calendarheatmap.css"
         ],
         "related_links": []
     },
@@ -45,12 +42,12 @@
     {
         "id": "viz_chordchart",
         "title": "Chordchart",
-        "short-description": "Chordchart Viz",
-        "category": "Custom Viz",
+        "short-description": "",
+        "category": "",
         "versions": ["6.2"],
         "sourceFiles": [
-            "/static/app/custom_vizs/chordchart/chordchart.js",
-            "/static/app/custom_vizs/chordchart/chordchart.css"
+            "/static/app/custom_vizs/components/chordchart/chordchart.js",
+            "/static/app/custom_vizs/components/chordchart/chordchart.css"
         ],
         "related_links": []
     },
@@ -58,12 +55,12 @@
     {
         "id": "viz_dendrogram",
         "title": "Dendrogram",
-        "short-description": "Dendrogram Viz",
-        "category": "Custom Viz",
+        "short-description": "",
+        "category": "",
         "versions": ["6.2"],
         "sourceFiles": [
-            "/static/app/custom_vizs/dendrogram/dendrogram.js",
-            "/static/app/custom_vizs/dendrogram/dendrogram.css"
+            "/static/app/custom_vizs/components/dendrogram/dendrogram.js",
+            "/static/app/custom_vizs/components/dendrogram/dendrogram.css"
         ],
         "related_links": []
     },
@@ -71,12 +68,12 @@
     {
         "id": "viz_forcedirected",
         "title": "Force-directed graph",
-        "short-description": "forcedirected Viz",
-        "category": "Custom Viz",
+        "short-description": "",
+        "category": "",
         "versions": ["6.2"],
         "sourceFiles": [
-            "/static/app/custom_vizs/forcedirected/forcedirected.js",
-            "/static/app/custom_vizs/forcedirected/forcedirected.css"
+            "/static/app/custom_vizs/components/forcedirected/forcedirected.js",
+            "/static/app/custom_vizs/components/forcedirected/forcedirected.css"
         ],
         "related_links": []
     },
@@ -84,12 +81,12 @@
     {
         "id": "viz_gantt",
         "title": "Gantt Chart",
-        "short-description": "Gantt Viz",
-        "category": "Custom Viz",
+        "short-description": "",
+        "category": "",
         "versions": ["6.2"],
         "sourceFiles": [
-            "/static/app/custom_vizs/gantt/gantt.js",
-            "/static/app/custom_vizs/gantt/gantt.css"
+            "/static/app/custom_vizs/components/gantt/gantt.js",
+            "/static/app/custom_vizs/components/gantt/gantt.css"
         ],
         "related_links": []
     },
@@ -97,724 +94,96 @@
     {
         "id": "viz_globe",
         "title": "WebGL Globe",
-        "short-description": "Globe Viz",
-        "category": "Custom Viz",
+        "short-description": "",
+        "category": "",
         "versions": ["6.2"],
         "sourceFiles": [
-            "/static/app/custom_vizs/globe/DAT.js",
-            "/static/app/custom_vizs/globe/Detector.js",
-            "/static/app/custom_vizs/globe/Tween.js",
-            "/static/app/custom_vizs/globe/globe.js",
-            "/static/app/custom_vizs/globe/globe.css".
-            "/static/app/custom_vizs/globe/three.min.js"
+            "/static/app/custom_vizs/components/globe/globe.js",
+            "/static/app/custom_vizs/components/globe/globe.css"
         ],
         "related_links": []
     },
-
     {
-        "id": "viz_gantt",
-        "title": "Gantt Chart",
-        "short-description": "Gantt Viz",
-        "category": "Custom Viz",
+        "id": "viz_hiveplot",
+        "title": "Hive Plot",
+        "short-description": "",
+        "category": "",
         "versions": ["6.2"],
         "sourceFiles": [
-            "/static/app/custom_vizs/gantt/gantt.js",
-            "/static/app/custom_vizs/gantt/gantt.css"
+            "/static/app/custom_vizs/components/hiveplot/hiveplot.js",
+            "/static/app/custom_vizs/components/hiveplot/hiveplot.css"
         ],
         "related_links": []
     },
-
     {
-        "id": "simple_event",
-        "title": "Event",
-        "short-description": "Visualize the raw data indexed by Splunk Enterprise, with field metadata.",
-        "category": "Basic Elements",
-        "versions": ["6.0", "6.1", "6.2"],
-        "related_links": ["simple_drilldown_event"]
-    },
-
-    {
-        "id": "simple_maps",
-        "title": "Maps",
-        "short-description": "Plot geographical data on integrated maps.",
-        "category": "Basic Elements",
-        "versions": ["6.0", "6.1", "6.2"],
-        "related_links": ["simple_drilldown_maps"]
-    },
-
-    {
-        "id": "simple_html",
-        "title": "HTML",
-        "short-description": "Include static HTML content.  Useful for descriptions, links, and context.",
-        "category": "Basic Elements",
-        "versions": ["6.0", "6.1", "6.2"],
-        "related_links": []
-    },
-
-    {
-        "id": "simple_chart",
-        "title": "Chart",
-        "short-description": "Add graphs, charts, and gauges to dashboards.",
-        "category": "Chart Elements",
-        "versions": ["6.0", "6.1", "6.2"],
-        "related_links": ["simple_drilldown_chart"]
-    },
-
-    {
-        "id": "simple_chart_overlay",
-        "title": "Chart Overlay",
-        "short-description": "Show limits and other data on one chart.",
-        "category": "Chart Elements",
-        "versions": ["6.1", "6.2"]
-    },
-
-    {
-        "id": "simple_chart_gauges",
-        "title": "Splunk Gauges",
-        "short-description": "Visualize a single numeric value",
-        "category": "Chart Elements",
-        "tags": ["new"],
-        "versions": ["6.2"]
-    },
-
-    {
-        "id": "simple_table",
-        "title": "Table Element",
-        "short-description": "Create a simple table using the dashboard editor.",
-        "category": "Table Elements",
-        "versions": ["6.0", "6.1", "6.2"],
-        "related_links": ["simple_table_data_overlay","simple_table_sparklines","simple_drilldown_table"]
-    },
-
-    {
-        "id": "simple_table_data_overlay",
-        "title": "Table Element with Data Overlay",
-        "short-description": "Add data overlay modes (heatmap, high/values) using the dashboard editor.",
-        "category": "Table Elements",
-        "versions": ["6.0", "6.1", "6.2"],
-        "related_links": ["simple_table","simple_table_sparklines"]
-    },
-
-    {
-        "id": "simple_table_sparklines",
-        "title": "Table Element with Sparklines",
-        "short-description": "Configure basic and advanced sparkline formatting options.",
-        "category": "Table Elements",
-        "versions": ["6.0", "6.1", "6.2"],
-        "related_links": ["simple_table","simple_table_data_overlay"]
-    },
-
-    {
-        "id": "simple_viz_chart_bar",
-        "title": "Bar Chart",
-        "short-description": "Plot proportional data using a horizontal bar chart.",
-        "category": "Chart Elements",
-        "versions": ["6.1", "6.2"],
-        "tags": ["new"],
-        "related_links": ["simple_chart"]
-    },
-
-    {
-        "id": "simple_chart_bubble",
-        "title": "Bubble Chart",
-        "short-description": "Bubble charts can help visualize data in three dimensions",
-        "category": "Chart Elements",
+        "id": "viz_parallelcoords",
+        "title": "Parallel Coordinates",
+        "short-description": "",
+        "category": "",
         "versions": ["6.2"],
-        "tags": ["new"],
-        "related_links": ["simple_viz_chart_scatter"]
-     },
-
-    {
-        "id": "simple_viz_chart_scatter",
-        "title": "Scatter Chart",
-        "short-description": "Scatter chart example",
-        "category": "Chart Elements",
-        "versions": ["6.1","6.2"],
-        "tags": ["new"],
-        "related_links": ["simple_chart_bubble"]
-    },
-
-    {
-        "id": "custom_table_icon_set_rangemap",
-        "title": "Table Icon Set (Rangemap)",
-        "short-description": "Use Javascript and CSS in tables to convert rangemap results into icons.",
-        "category": "Table Elements",
-        "tags": ["extension"],
-        "versions": ["6.0", "6.1", "6.2"],
-        "related_links": ["custom_table_icon_set_inline","custom_table_row_highlighting","custom_table_data_bar"]
-    },
-
-    {
-        "id": "custom_table_icon_set_inline",
-        "title": "Table Icon Set (Inline)",
-        "short-description": "Add icons to table cells based on custom conditions.",
-        "category": "Table Elements",
-        "tags": ["extension"],
-        "versions": ["6.0", "6.1", "6.2"],
-        "related_links": ["custom_table_icon_set_rangemap","custom_table_row_highlighting","custom_table_data_bar"]
-    },
-
-    {
-        "id": "custom_table_row_highlighting",
-        "title": "Table Row Highlighting",
-        "short-description": "Color table rows based on conditions having multiple field values.",
-        "category": "Table Elements",
-        "tags": ["extension"],
-        "versions": ["6.0", "6.1", "6.2"],
-        "related_links": ["custom_table_icon_set_rangemap","custom_table_icon_set_inline","custom_table_data_bar"]
-    },
-
-    {
-        "id": "custom_table_cell_highlighting",
-        "title": "Table Cell Highlighting",
-        "short-description": "Color table cells based on conditions having multiple field values.",
-        "category": "Table Elements",
-        "tags": ["extension"],
-        "versions": ["6.0", "6.1", "6.2"],
-        "related_links": ["custom_table_row_highlighting","custom_table_icon_set_rangemap","custom_table_icon_set_inline","custom_table_data_bar"]
-    },
-
-    {
-        "id": "custom_table_data_bar",
-        "title": "Table with Data Bars",
-        "short-description": "Add icons and color table rows, based on search results.",
-        "category": "Table Elements",
-        "tags": ["extension"],
-        "versions": ["6.0", "6.1", "6.2"],
-        "related_links": ["custom_table_icon_set_rangemap","custom_table_row_highlighting","custom_table_icon_set_inline"]
-    },
-
-    {
-        "id": "custom_table_row_expansion",
-        "title": "Table where rows expand to show more information",
-        "short-description": "Show more information when a user expands a table row.",
-        "category": "Table Elements",
-        "tags": ["new", "extension"],
-        "versions": ["6.1", "6.2"],
-        "related_links": []
-    },
-
-    {
-        "id": "simple_single",
-        "title": "Single Value Element",
-        "short-description": "Demonstrate a single value element with basic drilldown and rangemap configurations.",
-        "category": "Single Value Elements",
-        "versions": ["6.0", "6.1", "6.2"],
-        "related_links": ["simple_drilldown_single"]
-    },
-
-    {
-        "id": "custom_single_decorations",
-        "title": "Single Value Decorations",
-        "short-description": "Insert icon sets based on a value rangemap, for a customized single value element.",
-        "category": "Single Value Elements",
-        "tags": ["extension"],
-        "versions": ["6.0", "6.1", "6.2"],
-        "related_links": ["custom_single_trend"]
-    },
-
-    {
-        "id": "custom_single_trend",
-        "title": "Single Value With Trend",
-        "short-description": "Display the customized annotations trend, for single value element.",
-        "category": "Single Value Elements",
-        "tags": ["extension"],
-        "versions": ["6.0", "6.1", "6.2"],
-        "related_links": ["custom_single_decorations"]
-    },
-
-    {
-        "id": "simple_search_inline",
-        "title": "Inline Search",
-        "short-description": "Use a search query to power dashboard elements.",
-        "category": "Search Types",
-        "versions": ["6.2"],
-        "tags": ["updated"],
-        "related_links": ["simple_search_report","simple_search_realtime"]
-    },
-
-    {
-        "id": "simple_search_report",
-        "title": "Report Search",
-        "short-description": "Use a Splunk Enterprise Report to power dashboard elements.",
-        "category": "Search Types",
-        "versions": ["6.2"],
-        "tags": ["updated"],
-        "related_links": ["simple_search_inline","simple_search_realtime"]
-    },
-
-    {
-        "id": "simple_search_postprocess",
-        "title": "Post Process Search",
-        "short-description": "Use a post process query to further filter a global search.",
-        "category": "Search Types",
-        "versions": ["6.2"],
-        "tags": ["updated"],
-        "related_links": ["simple_form_time"]
-    },
-
-    {
-        "id": "simple_search_realtime",
-        "title": "Real-time Searches",
-        "short-description": "Use a real-time search for continuous trend updating.",
-        "category": "Search Types",
-        "versions": ["6.2"],
-        "tags": ["updated"],
-        "related_links": ["simple_search_report","simple_search_inline"]
-    },
-
-    {
-        "id": "simple_search_multi",
-        "title": "Multi-Search Management",
-        "short-description": "Manage multiple background searches to drive various elements on the dashboard.",
-        "category": "Search Types",
-        "versions": ["6.2"],
-        "tags": ["new"],
-        "related_links": ["simple_search_postprocess","simple_search_report","simple_search_inline"]
-    },
-
-    {
-        "id": "simple_panel_refresh",
-        "title": "Panel Refresh Controls",
-        "short-description": "Manual and auto refresh controls for each panel on a dashboard.",
-        "category": "Search Types",
-        "versions": ["6.1", "6.2"],
-        "related_links": ["simple_search_report","simple_search_inline"]
-    },
-
-    {
-        "id": "simple_form_text",
-        "title": "Text Form Input Element",
-        "short-description": "Set search terms by populating a form with textbox input.",
-        "category": "Form Input Elements",
-        "versions": ["6.0", "6.1", "6.2"],
-        "related_links": ["simple_form_dropdown","simple_form_radio","simple_form_time"]
-    },
-
-    {
-        "id": "simple_form_dropdown",
-        "title": "Dropdown Form Input Element",
-        "short-description": "Set search terms by populating a form with one or more dropdown options.",
-        "category": "Form Input Elements",
-        "versions": ["6.0", "6.1", "6.2"],
-        "related_links": ["simple_form_text","simple_form_radio","simple_form_time"]
-    },
-
-    {
-        "id": "simple_form_radio",
-        "title": "Radio Form Input Element",
-        "short-description": "Set search terms by populating a form with one or more sets of radio buttons.",
-        "category": "Form Input Elements",
-        "versions": ["6.0", "6.1", "6.2"],
-        "related_links": ["simple_form_text","simple_form_dropdown","simple_form_time"]
-    },
-
-    {
-        "id": "simple_form_multiselect",
-        "title": "Multiple Selection",
-        "short-description": "Include a multi-select input.",
-        "category": "Form Input Elements",
-        "versions": ["6.1", "6.2"],
-        "related_links": ["simple_form_checkbox"]
-    },
-
-    {
-        "id": "simple_form_checkbox",
-        "title": "Multiple Checkbox",
-        "short-description": "Include multiple checkbox selection.",
-        "category": "Form Input Elements",
-        "versions": ["6.1", "6.2"],
-        "related_links": ["simple_form_multiselect"]
-    },
-
-    {
-        "id": "simple_form_time",
-        "title": "Time Picker Form Input",
-        "short-description": "Add a timerange picker to modify a search time span.",
-        "category": "Form Input Elements",
-        "versions": ["6.0", "6.1", "6.2"],
-        "related_links": ["simple_form_text","simple_form_dropdown","simple_form_radio"]
-    },
-
-    {
-        "id": "simple_form_cascading",
-        "title": "Cascading Form Input",
-        "short-description": "Power a form input from other input values to narrow search results.",
-        "category": "Form Input Elements",
-        "versions": ["6.0", "6.1", "6.2"],
-        "related_links": ["simple_form_text","simple_form_dropdown","simple_form_radio","simple_form_time"]
-    },
-
-    {
-        "id": "simple_form_advanced",
-        "title": "Form Input - Advanced Controls",
-        "short-description": "Demonstrate various form input operations.",
-        "category": "Form Input Elements",
-        "versions": ["6.0", "6.1", "6.2"],
-        "related_links": ["simple_form_text","simple_form_dropdown","simple_form_radio","simple_form_time", "simple_form_cascading"]
-    },
-
-    {
-        "id": "custom_link_switcher",
-        "title": "Custom Link Switcher",
-        "short-description": "Toggle dashboard content using a list of links.",
-        "category": "Form Input Elements",
-        "tags": ["extension"],
-        "versions": ["6.0", "6.1", "6.2"],
         "sourceFiles": [
-            "/static/app/simple_xml_examples/components/linkswitcher/linkswitcher.js"
+            "/static/app/custom_vizs/components/parallelcoords/parallelcoords.js"
         ],
         "related_links": []
     },
-
     {
-        "id": "simple_input_change",
-        "title": "Input Multi-token Setter",
-        "short-description": "Set multiple tokens within form inputs to drive multiple searches, better labeling, and more",
-        "category": "Form Input Elements",
-        "tags": ["new"],
+        "id": "viz_parallelsets",
+        "title": "Parallel Set",
+        "short-description": "",
+        "category": "",
         "versions": ["6.2"],
-        "related_links": []
-    },
-
-    {
-        "id": "simple_drilldown_single",
-        "title": "Drilldown Single Value",
-        "short-description": "Link to other pages from the single value visualization.",
-        "category": "Drilldown Elements",
-        "versions": ["6.1", "6.2"],
-        "related_links": ["simple_single"]
-    },
-
-    {
-        "id": "simple_drilldown_chart",
-        "title": "Drilldown Chart",
-        "short-description": "Click on chart content to discover the underlying events.",
-        "category": "Drilldown Elements",
-        "versions": ["6.0", "6.1", "6.2"],
-        "related_links": ["simple_chart"]
-    },
-
-    {
-        "id": "simple_drilldown_table",
-        "title": "Drilldown Table",
-        "short-description": "Discover the underlying events by clicking on table content.",
-        "category": "Drilldown Elements",
-        "versions": ["6.0", "6.1", "6.2"],
-        "related_links": ["simple_table"]
-    },
-
-    {
-        "id": "custom_drilldown_url_field",
-        "title": "Drilldown URL Field Value",
-        "short-description": "Configure drilldown to redirect users to the url set as the field value.",
-        "category": "Drilldown Elements",
-        "tags": ["extension"],
-        "versions": ["6.0", "6.1", "6.2"],
-        "related_links": ["simple_drilldown_table"]
-    },
-
-    {
-        "id": "simple_drilldown_event",
-        "title": "Drilldown Event",
-        "short-description": "Select parts of event field metadata to narrow a search.",
-        "category": "Drilldown Elements",
-        "versions": ["6.0", "6.1", "6.2"],
-        "related_links": ["simple_event"]
-    },
-
-    {
-        "id": "simple_drilldown_maps",
-        "title": "Drilldown Maps",
-        "short-description": "Toggle map drilldown on or off.",
-        "category": "Drilldown Elements",
-        "versions": ["6.0", "6.1", "6.2"],
-        "related_links": ["simple_maps"]
-    },
-
-    {
-        "id": "simple_drilldown_dynamic",
-        "title": "Dynamic Drilldown",
-        "short-description": "Control the drilldown destination and content by passing click information to a linked form.",
-        "category": "Drilldown Elements",
-        "versions": ["6.0", "6.1", "6.2"],
-        "related_links": ["simple_drilldown_chart","simple_drilldown_table"]
-    },
-
-
-    {
-        "id": "simple_inpage_drilldown_form",
-        "title": "Contextual Drilldown (In-page)",
-        "short-description": "Drilldown to access contextual information without leaving the page.",
-        "category": "Drilldown Elements",
-        "versions": ["6.1", "6.2"],
-        "related_links": ["simple_chart_range_selection"]
-    },
-
-    {
-        "id": "simple_chart_range_selection",
-        "title": "Pan and Zoom Chart Controls",
-        "short-description": "Charts allow you to select a range to zoom in.  Alternatively you can use that data to drilldown further into your data.",
-        "category": "Drilldown Elements",
-        "versions": ["6.1", "6.2"],
-        "related_links": ["simple_inpage_drilldown_form"]
-    },
-
-
-    {
-        "id": "simple_layout_panels",
-        "title": "Multiple Panels to a Row",
-        "short-description": "Organize similar content in a single row.",
-        "category": "Layout Elements",
-        "versions": ["6.0", "6.1", "6.2"],
-        "related_links": ["simple_layout_grouping_single","simple_layout_grouping_chart"]
-    },
-
-    {
-        "id": "simple_layout_grouping_single",
-        "title": "Row Grouping with Single Values",
-        "short-description": "Group multiple single value elements, aligning horizontally.",
-        "category": "Layout Elements",
-        "versions": ["6.1", "6.2"],
-        "related_links": ["simple_layout_panels","simple_layout_grouping_chart"]
-    },
-
-    {
-        "id": "simple_layout_grouping_chart",
-        "title": "Row Grouping with Charts",
-        "short-description": "Group multiple charts, tables, html panels, or events, aligning vertically.",
-        "category": "Layout Elements",
-        "versions": ["6.1", "6.2"],
-        "related_links": ["simple_layout_panels","simple_layout_grouping_single"]
-    },
-
-    {
-        "id": "custom_layout_dark",
-        "title": "Custom Layout: Dark",
-        "short-description": "Apply page-level, custom stylesheets.",
-        "category": "Layout Elements",
-        "tags": ["extension"],
-        "versions": ["6.0", "6.1", "6.2"],
-        "related_links": []
-    },
-
-    {
-        "id": "custom_layout_overlay_single",
-        "title": "Image Overlay With Single Values",
-        "short-description": "Display workflow status visually using an image, and grouped single value elements.",
-        "category": "Layout Elements",
-        "tags": ["extension"],
-        "versions": ["6.2"],
-        "related_links": ["simple_single"]
-    },
-
-    {
-        "id": "custom_layout_panel_width",
-        "title": "Layout Customization: Panel Width",
-        "short-description": "Customize the width of dashboard panels.",
-        "category": "Layout Elements",
-        "tags": ["extension"],
-        "versions": ["6.0", "6.1", "6.2"],
-        "related_links": []
-    },
-
-    {
-        "id": "simple_form_inputs_in_panels",
-        "title": "Form Elements Within Panels",
-        "short-description": "Example of placing form elements within a panel.",
-        "category": "Layout Elements",
-        "versions": ["6.1", "6.2"],
-        "related_links": ["simple_form_dropdown, simple_form_radio"]
-    },
-
-    {
-        "id": "simple_form_timerange_in_panels",
-        "title": "Time Range Picker Within Panels",
-        "short-description": "Example of placing a time range picker within a panel.",
-        "category": "Layout Elements",
-        "versions": ["6.1", "6.2"],
-        "related_links": ["simple_form_dropdown, simple_form_time"]
-    },
-
-    {
-        "id": "simple_display_controls",
-        "title": "Display Controls",
-        "short-description": "Turn on or off display of common components like the header, footer, edit controls.",
-        "category": "Layout Elements",
-        "tags": ["new"],
-        "versions": ["6.2"]
-    },
-
-    {
-        "id": "custom_chart_overlay",
-        "title": "D3 Chart Overlay",
-        "short-description": "Define a custom chart overlay, using D3.",
-        "category": "Custom Visualizations",
-        "tags": ["extension"],
-        "versions": ["6.0", "6.1", "6.2"],
         "sourceFiles": [
-            "/static/js/splunkjs/mvc/d3chart/d3chartview.js"
+            "/static/app/custom_vizs/components/parallelsets/parallelsets.js",
+            "/static/app/custom_vizs/components/parallelsets/parallelsets.css"
         ],
-        "related_links": ["simple_chart", "custom_viz_bubble_chart", "custom_viz_parallel_coordinates"]
+        "related_links": []
     },
-
     {
-        "id": "custom_viz_tag_cloud",
+        "id": "viz_punchcard",
+        "title": "Punch Card",
+        "short-description": "",
+        "category": "",
+        "versions": ["6.2"],
+        "sourceFiles": [
+            "/static/app/custom_vizs/components/punchcard/punchcard.js",
+            "/static/app/custom_vizs/components/punchcard/punchcard.css"
+        ],
+        "related_links": []
+    },
+    {
+        "id": "viz_sankey",
+        "title": "Sankey",
+        "short-description": "",
+        "category": "",
+        "versions": ["6.2"],
+        "sourceFiles": [
+            "/static/app/custom_vizs/components/sankey/sankey.js",
+            "/static/app/custom_vizs/components/sankey/sankey.css"
+        ],
+        "related_links": []
+    },
+    {
+        "id": "viz_sunburst",
+        "title": "Sunburst Chart",
+        "short-description": "",
+        "category": "",
+        "versions": ["6.2"],
+        "sourceFiles": [
+            "/static/app/custom_vizs/components/sunburst/sunburst.js",
+            "/static/app/custom_vizs/components/sunburst/sunburst.css"
+        ],
+        "related_links": []
+    },
+    {
+        "id": "viz_tagcloud",
         "title": "Tag Cloud",
-        "short-description": "Add search-driven, custom visualizations to a dashboard, using JavaScript.",
-        "category": "Custom Visualizations",
-        "tags": ["extension"],
-        "versions": ["6.0", "6.1", "6.2"],
-        "sourceFiles": [
-             "/static/app/simple_xml_examples/components/tagcloud/tagcloud.js",
-             "/static/app/simple_xml_examples/components/tagcloud/tagcloud.css"
-        ],
-        "related_links": ["custom_viz_tag_cloud_autodiscover"]
-    },
-
-    {
-        "id": "custom_viz_tag_cloud_autodiscover",
-        "title": "Tag Cloud with Auto-Discovery",
-        "short-description": "Re-use custom visualizations across different dashboards without using separate scripts.",
-        "category": "Custom Visualizations",
-        "tags": ["extension"],
-        "versions": ["6.0", "6.1", "6.2"],
-        "sourceFiles": [
-            "/static/app/simple_xml_examples/components/tagcloud/tagcloud.js",
-            "/static/app/simple_xml_examples/components/tagcloud/tagcloud.css"
-        ],
-        "related_links": ["custom_viz_tag_cloud"]
-    },
-
-    {
-        "id": "custom_viz_base_search",
-        "title": "Tag Cloud with Base Search",
-        "short-description": "Use the new top-level search element in 6.2 and connect it to your custom visualization.",
-        "category": "Custom Visualizations",
-        "tags": ["new", "extension"],
+        "short-description": "",
+        "category": "",
         "versions": ["6.2"],
         "sourceFiles": [
-            "/static/app/simple_xml_examples/components/tagcloud/tagcloud.js",
-            "/static/app/simple_xml_examples/components/tagcloud/tagcloud.css"
+            "/static/app/custom_vizs/components/tagcloud/tagcloud.js",
+            "/static/app/custom_vizs/components/tagcloud/tagcloud.css"
         ],
-        "related_links": ["custom_viz_tag_cloud"]
-    },
-
-    {
-        "id": "custom_viz_tokens",
-        "title": "Tag Cloud with Tokens",
-        "short-description": "Example on how to use token-replacement in combination with custom visualizations.",
-        "category": "Custom Visualizations",
-        "tags": ["new", "extension"],
-        "versions": ["6.1", "6.2"],
-        "sourceFiles": [
-            "/static/app/simple_xml_examples/components/tagcloud/tagcloud.js",
-            "/static/app/simple_xml_examples/components/tagcloud/tagcloud.css"
-        ],
-        "related_links": ["custom_viz_tag_cloud"]
-    },
-
-    {
-        "id": "custom_viz_bubble_chart",
-        "title": "D3 Bubble Chart",
-        "short-description": "Add a bubble chart to a dashboard.",
-        "category": "Custom Visualizations",
-        "tags": ["extension"],
-        "versions": ["6.0", "6.1", "6.2"],
-        "sourceFiles": [
-            "/static/app/simple_xml_examples/components/bubblechart/bubblechart.js"
-        ],
-        "related_links": ["custom_viz_parallel_coordinates","custom_chart_overlay"]
-    },
-
-    {
-        "id": "custom_viz_parallel_coordinates",
-        "title": "D3 Parallel Coordinates",
-        "short-description": "Add a parallel coordinates plot to a dashboard.",
-        "category": "Custom Visualizations",
-        "tags": ["extension"],
-        "versions": ["6.0", "6.1", "6.2"],
-        "sourceFiles": [
-            "/static/app/simple_xml_examples/components/parallelcoords/parallelcoords.js"
-        ],
-        "related_links": ["custom_viz_bubble_chart","custom_chart_overlay", "custom_viz_forcedirected"]
-    },
-
-    {
-        "id": "custom_viz_forcedirected",
-        "title": "D3 Force-Directed Graph",
-        "short-description": "Add force-directed graphs to a dashboard",
-        "category": "Custom Visualizations",
-        "tags": ["extension"],
-        "versions": ["6.0", "6.1", "6.2"],
-        "sourceFiles": [
-            "/static/app/simple_xml_examples/components/forcedirected/forcedirected.js"
-        ],
-        "related_links": ["custom_viz_bubble_chart","custom_chart_overlay", "custom_viz_parallel_coordinates"]
-    },
-
-    {
-        "id": "custom_viz_sankey",
-        "title": "Sankey Diagram",
-        "short-description": "Add sankey diagrams to a dashboard.",
-        "category": "Custom Visualizations",
-        "tags": ["new", "extension"],
-        "versions": ["6.2"],
-        "sourceFiles": [
-            "/static/app/simple_xml_examples/components/sankey/sankey.js",
-            "/static/app/simple_xml_examples/components/sankey/sankey.css"
-        ],
-        "related_links": ["custom_viz_bubble_chart","custom_chart_overlay", "custom_viz_parallel_coordinates"]
-    },
-
-    {
-        "id": "custom_app_token",
-        "title": "Custom token definitions",
-        "short-description": "Use JavaScript to set tokens in panel titles, html panels, and for drilldown.",
-        "category": "Token Customization",
-        "versions": ["6.0", "6.1", "6.2"],
-        "related_links": ["custom_rest_token"],
-        "tags": ["extension"]
-    },
-
-    {
-        "id": "custom_rest_token",
-        "title": "Custom token from REST endpoint",
-        "short-description": "Set a dashboard token, specified in a custom configuration file and retrieved using REST.",
-        "category": "Token Customization",
-        "versions": ["6.0", "6.1", "6.2"],
-        "related_links": ["custom_app_token"],
-        "tags": ["extension"]
-    },
-
-    {
-        "id": "custom_event_tokens",
-        "title": "Dynamic tokens from drilldown and change",
-        "short-description": "See live what tokens are available when you click on a chart, legend, or change an input.",
-        "category": "Token Customization",
-        "versions": ["6.1", "6.2"],
-        "tags": ["new"],
-        "related_links": [""]
-    },
-
-    {
-        "id": "custom_token_viewer",
-        "title": "View what tokens are available ",
-        "short-description": "See live what tokens are available on the page.",
-        "category": "Token Customization",
-        "versions": ["6.0", "6.1", "6.2"],
-        "tags": ["new"],
-        "related_links": [""]
-    },
-
-    {
-        "id": "custom_token_links",
-        "title": "Custom token links",
-        "short-description": "Set tokens from links or buttons in HTML panels",
-        "category": "Token Customization",
-        "versions": ["6.2"],
-        "tags": ["new"],
-        "related_links": ["custom_event_tokens", "custom_token_viewer"]
+        "related_links": []
     }
-
 ]

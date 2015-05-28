@@ -1,0 +1,36 @@
+<form script="autodiscover_globe.js" stylesheet="dark.css">
+  <label>WebGL Globe</label>
+  <fieldset submitButton="false" autoRun="true"></fieldset>
+  <row>
+    <panel>
+      <input type="dropdown" token="grouping" searchWhenChanged="true">
+        <label>Grouping</label>
+        <choice value="">No Grouping</choice>
+        <choice value="gender">By Gender</choice>
+        <default></default>
+      </input>
+      <html>
+        <h2>Locations Sample (from sample_geo.csv)</h2>
+        <div id="globe_search" class="splunk-manager" data-require="splunkjs/mvc/searchmanager" data-options='{
+          "search": "| inputlookup sample_geo.csv",
+          "preview": true,
+          "earliest_time": "0",
+          "latest_time": "now"
+        }'>
+        </div>
+        <div id="globe" class="splunk-view" data-require="app/custom_vizs/components/globe/globe" data-options='{
+          "managerid": "globe_search",
+          "world_image_path": "app/custom_vizs/components/globe/world_nature.jpg",
+          "lat_field": "lat",
+          "lon_field": "lon",
+          "group_by_field": {
+            "type": "token_safe",
+            "value": "$$grouping$$"
+          },
+          "spin_speed": 1
+        }'>
+        </div>
+      </html>
+    </panel>
+  </row>
+</form>

@@ -1,0 +1,42 @@
+<form script="autodiscover.js">
+  <label>Sunburst Chart</label>
+  <fieldset submitButton="false" autoRun="true">
+    <input type="time" searchWhenChanged="true">
+      <default>
+        <earliest>-24h@h</earliest>
+        <latest>now</latest>
+      </default>
+    </input>
+  </fieldset>
+  <row>
+    <panel>
+      <html>
+        <h2>Top 10 Splunk Internal Sources by Index and Sourcetype</h2>
+        <div id="sunburst_search" class="splunk-manager" data-require="splunkjs/mvc/searchmanager" data-options='{
+          "search": {
+            "type": "token_safe",
+            "value": "| tstats count where index=_* by index sourcetype source | sort 10 -count | eval source=replace(source, \".+\\/(.+)$\", \"\\1\")"
+          },
+          "preview": true,
+          "earliest_time": {
+            "type": "token_safe",
+            "value": "$$earliest$$"
+          },
+          "latest_time": {
+            "type": "token_safe",
+            "value": "$$latest$$"
+          }
+        }'>
+        </div>
+        <div id="sunburst" class="splunk-view" data-require="app/custom_vizs/components/sunburst/sunburst" data-options='{
+          "managerid": "sunburst_search",
+          "height": 800,
+          "valueField": "count",
+          "categoryFields": "index sourcetype source",
+          "chartTitle": "Index"
+        }'>
+        </div>
+      </html>
+    </panel>
+  </row>
+</form>

@@ -1,0 +1,53 @@
+<form script="autodiscover.js, viz_bubblechart.js">
+  <label>Bubble Chart</label>
+  <fieldset submitButton="false" autoRun="true">
+    <input type="time" searchWhenChanged="true">
+      <default>
+        <earliest>-24h@h</earliest>
+        <latest>now</latest>
+      </default>
+    </input>
+    <input type="text" token="term" id="input_term"/>
+    <input type="text" token="category" id="input_category"/>
+  </fieldset>
+  <row>
+    <panel>
+      <html>
+        <h2>Top 30 Most Common Terms in an Ad-hoc Search Query (drilldown)</h2>
+        <div id="bubblechart_search" class="splunk-manager" data-require="splunkjs/mvc/searchmanager" data-options='{
+          "preview": true,
+          "search": "index=_audit NOT REST: search=* | regex search_id=\"&apos;\\d+\\.\\d+&apos;\" | rex field=search max_match=0 \"(?&lt;terms&gt;\\w+)\" | eval terms=mvdedup(terms) | top limit=30 terms | lookup search_commands.csv search_command AS terms OUTPUT search_command | eval type=case(isnum(terms), \"number\", isnotnull(search_command), \"command\", 1=1, \"word\") | eval terms=if(isnum(terms), \"\\\"\"+terms+\"\\\"\", terms)",
+          "earliest_time": {
+            "type": "token_safe",
+            "value": "$$earliest$$"
+            },
+          "latest_time": {
+            "type": "token_safe",
+            "value": "$$latest$$"
+          }
+        }'>
+        </div>
+        <div id="bubblechart" class="splunk-view" data-require="app/custom_vizs/components/bubblechart/bubblechart" data-options='{
+          "managerid": "bubblechart_search",
+          "nameField": "terms",
+          "valueField": "count",
+          "categoryField": "type",
+          "height": 600
+        }'>
+        </div>
+      </html>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <chart id="timechart" depends="$term$">
+        <title>Term: $term$ - Type: $category$</title>
+        <search>
+          <query>index=_audit NOT REST: "$term$" search=* | regex search_id="'\\d+\\.\\d+'" | rex field=search max_match=0 "(?&lt;terms&gt;\w+)" | search terms="$term$" | timechart count</query>
+          <earliest>$earliest$</earliest>
+          <latest>$latest$</latest>
+        </search>
+      </chart>
+    </panel>
+  </row>    
+</form>

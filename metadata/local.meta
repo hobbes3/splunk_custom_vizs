@@ -1,43 +1,69 @@
 [views/viz_parallelset]
 version = 6.2.2
-modtime = 1430427005.082196000
+modtime = 1432766805.588891000
 
 [views/tutorial]
 version = 6.2.2
-modtime = 1431750246.702756000
+modtime = 1432742499.154062000
 
 [views/viz_bubblechart]
 version = 6.2.2
-modtime = 1430298387.949626000
+modtime = 1432762934.059680000
 
 [views/viz_sankey]
 version = 6.2.2
-modtime = 1430392242.650881000
+modtime = 1432767360.087845000
 
 [views/viz_forcedirected]
 version = 6.2.2
-modtime = 1430392461.048628000
+modtime = 1432763654.491036000
 
 [views/viz_calendarheatmap]
-version = 6.2.3
-modtime = 1432256708.843724000
+version = 6.2.2
+modtime = 1432756827.464811000
 
 [views/viz_parallelcoords]
 version = 6.2.2
-modtime = 1430427132.038318000
+modtime = 1432765539.686080000
 
 [views/viz_chordchart]
 version = 6.2.2
-modtime = 1430476660.843175000
+modtime = 1432763292.215489000
 
 [views/viz_globe]
 version = 6.2.2
-modtime = 1431491498.801983000
+modtime = 1432764841.509800000
 
 [views/viz_gantt]
 version = 6.2.2
-modtime = 1431543383.191691000
+modtime = 1432764382.322337000
 
 [views/viz_hiveplot]
 version = 6.2.2
-modtime = 1432312721.071929000
+modtime = 1432765496.903485000
+
+[views/viz_boxplot]
+version = 6.2.2
+modtime = 1432758879.663499000
+
+[views/viz_dendrogram]
+version = 6.2.2
+modtime = 1432763358.624562000
+
+[views/viz_parallelsets]
+export = none
+owner = admin
+version = 6.2.2
+modtime = 1432766892.169750000
+
+[views/viz_punchcard]
+version = 6.2.2
+modtime = 1432767248.287787000
+
+[views/viz_sunburst]
+version = 6.2.2
+modtime = 1432780861.259374000
+
+[views/viz_tagcloud]
+version = 6.2.2
+modtime = 1432781003.277277000

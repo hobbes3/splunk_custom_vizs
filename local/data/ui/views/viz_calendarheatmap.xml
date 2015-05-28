@@ -1,0 +1,21 @@
+<form script="autodiscover.js">
+  <label>Calendar Heatmap</label>
+  <row>
+    <panel>
+      <html>
+        <h2>Splunk Internal Events by Sourcetype in the Last 2 Hours</h2>
+        <div id="calendarheatmap_search" class="splunk-manager" data-require="splunkjs/mvc/searchmanager" data-options='{
+          "search": "index=_internal | timechart span=1m count by sourcetype",
+          "preview": true,
+          "earliest_time": "-120m@h",
+          "latest_time": "now"
+        }'>
+        </div>
+        <div id="calendarheatmap" class="splunk-view" data-require="app/custom_vizs/components/calendarheatmap/calendarheatmap" data-options='{
+          "managerid": "calendarheatmap_search"
+        }'>
+        </div>
+      </html>
+    </panel>
+  </row>
+</form>
