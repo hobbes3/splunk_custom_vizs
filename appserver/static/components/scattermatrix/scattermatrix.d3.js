@@ -1,1 +1,0 @@
-Standard tech training rate: $2,500/day X 3 days = $7,500 value for $1,500.
