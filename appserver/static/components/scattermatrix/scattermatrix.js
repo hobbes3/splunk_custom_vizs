@@ -12,6 +12,7 @@ define(function(require, exports, module) {
             "managerid": null,
             "data": "preview",
             "height": 400,
+            "colors": [],
             "groupByField": "" 
         },
         output_mode: "json",
@@ -26,6 +27,8 @@ define(function(require, exports, module) {
             e.data.render();
         },
         createView: function() {
+            // Clearing 'waiting for data...'
+            this.$el.html("");
             return true;
         },
 
@@ -39,11 +42,12 @@ define(function(require, exports, module) {
             // mbostock used species as the field that is grouped (colored)
             // we'll just pass a value from options
             var species = this.settings.get("groupByField"); 
-            
-
-            var height = parseInt(this.settings.get("height") || that.$el.height());
+            var height = parseInt(this.settings.get("height"));
             var width = height;
 
+            var colors = this.settings.get("colors"); 
+            var color = !colors ? d3.scale.category10() : d3.scale.ordinal().range(colors);
+            
             var size = 150,
                 padding = 20;
 
@@ -62,8 +66,6 @@ define(function(require, exports, module) {
                 .scale(y)
                 .orient("left")
                 .ticks(5);
-
-            var color = d3.scale.category10();
 
             var domainByTrait = {},
                 traits = d3.keys(data[0]).filter(function(d) { return d !== species; }),
@@ -174,6 +176,7 @@ define(function(require, exports, module) {
             }
 
             d3.select(self.frameElement).style("height", size * n + padding + 20 + "px");
+
         }
 
     });
