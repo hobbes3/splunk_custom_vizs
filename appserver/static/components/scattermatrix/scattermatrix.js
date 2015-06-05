@@ -46,7 +46,10 @@ define(function(require, exports, module) {
             var width = height;
 
             var colors = this.settings.get("colors"); 
-            var color = !colors ? d3.scale.category10() : d3.scale.ordinal().range(colors);
+            var color =  d3.scale.category10();
+            if (colors.length > 0){
+              color = d3.scale.ordinal().range(colors);
+            }
             
             var size = 150,
                 padding = 20;
