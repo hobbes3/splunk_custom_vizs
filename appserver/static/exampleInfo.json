@@ -178,5 +178,17 @@
             "/static/app/custom_vizs/components/tagcloud/tagcloud.css"
         ],
         "related_links": ["viz_bubblechart"]
+    },
+    {
+        "id": "viz_scattermatrix",
+        "title": "Scatterplot Matrix",
+        "short-description": "Scatterplot matrices are a great way to roughly determine if you have a linear correlation between multiple variables.",
+        "category": "Charts",
+        "versions": ["6.2"],
+        "sourceFiles": [
+            "/static/app/custom_vizs/components/scattermatrix/scattermatrix.js",
+            "/static/app/custom_vizs/components/scattermatrix/scattermatrix.css"
+        ],
+        "related_links": []
     }
 ]
