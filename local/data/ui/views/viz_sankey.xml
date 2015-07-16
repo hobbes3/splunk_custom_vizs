@@ -1,4 +1,4 @@
-<form script="autodiscover.js">
+<form script="custom_vizs:autodiscover.js">
   <label>Sankey Chart</label>
   <fieldset submitButton="false" autoRun="true">
     <input type="time" searchWhenChanged="true">
@@ -13,10 +13,10 @@
       <html>
         <h2>Splunkweb Navigation</h2>
         <div id="sankey_search" class="splunk-manager" data-require="splunkjs/mvc/searchmanager" data-options='{
-          "search": "index=_internal sourcetype=splunk_web_access NOT uri_path=*/static/* uri_path=*/app/* OR uri_path=*/manager/* 
-                    | rex field=referer \"https?://.+?/.+?(?&lt;referer_path&gt;/[^\\?]+)\" 
-                    | rex field=uri_path \"/.+?(?&lt;path&gt;/.+)\" 
-                    | rename referer_path as from path as to 
+          "search": "index=_internal sourcetype=splunk_web_access NOT uri_path=*/static/* uri_path=*/app/* OR uri_path=*/manager/*
+                    | rex field=referer \"https?://.+?/.+?(?&lt;referer_path&gt;/[^\\?]+)\"
+                    | rex field=uri_path \"/.+?(?&lt;path&gt;/.+)\"
+                    | rename referer_path as from path as to
                     | stats count by from to",
           "preview": true,
           "earliest_time": {

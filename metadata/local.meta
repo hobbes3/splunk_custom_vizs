@@ -3,8 +3,8 @@ version = 6.2.2
 modtime = 1432766805.588891000
 
 [views/tutorial]
-version = 6.2.2
-modtime = 1432847992.564602000
+version = 6.2.4
+modtime = 1437006798.418956000
 
 [views/viz_bubblechart]
 version = 6.2.2
@@ -27,8 +27,8 @@ version = 6.2.2
 modtime = 1432765539.686080000
 
 [views/viz_chordchart]
-version = 6.2.2
-modtime = 1432763292.215489000
+version = 6.2.4
+modtime = 1437005441.030963000
 
 [views/viz_globe]
 version = 6.2.2

@@ -1,4 +1,4 @@
-<form script="autodiscover.js">
+<form script="custom_vizs:autodiscover.js">
   <label>Box Plot</label>
   <row>
     <panel>
@@ -20,7 +20,7 @@
         </div>
       </html>
     </panel>
-  </row> 
+  </row>
   <row>
     <panel>
       <html>

@@ -1,4 +1,4 @@
-<form script="autodiscover_globe.js" stylesheet="dark.css">
+<form script="custom_vizs:autodiscover_globe.js" stylesheet="dark.css">
   <label>WebGL Globe</label>
   <fieldset submitButton="false" autoRun="true"></fieldset>
   <row>

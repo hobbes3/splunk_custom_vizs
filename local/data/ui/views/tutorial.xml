@@ -11,8 +11,7 @@
         </p>
         <h2>Instructions</h2>
         <ul>
-          <li>If you don't want to depend on this app, then copy the necessary files in <code>custom_viz/appserver/static/&lt;js_viz&gt;/</code> and <code>autodiscover.js</code> to your own app's <code>appserver/static/</code>. Some visualizations like the globe uses its own, unique <code>autodiscover.js</code> file.</li>
-          <li>At the top of your dashboard load <code>autodiscover.js</code> like <code>&lt;form script="autodiscover.js"&gt;</code>.</li>
+          <li>If you don't want to depend on this app, then copy the necessary files in <code>custom_viz/appserver/static/&lt;js_viz&gt;/</code> and other JS like <code>autodiscover.js</code> to your own app's <code>appserver/static/</code>. Then remove or modify the <code>custom_vizs:</code> prefix from the JS filename. Some visualizations like the globe uses its own, unique <code>autodiscover.js</code> file.</li>
           <li>Call the custom visualization using 2 <code>&lt;div&gt;</code>'s in a HTML panel (see <b>SimpleXML Declaration</b> below).</li>
         </ul>  
       </html>
@@ -36,10 +35,10 @@
           <li>To use a saved search or post process search, use <code>splunkjs/mvc/savedsearchmanager</code> or <code>splunkjs/mvc/postprocessmanager</code>, respectively. Note that these both require <code>managerid</code>.</li>
           <li>More info about various SplunkJS objects:
             <ul>
-              <li><a href="http://docs.splunk.com/DocumentationStatic/WebFramework/1.1/compref_simplesplunk.html">SimpleSplunkView</a></li>
-              <li><a href="http://docs.splunk.com/DocumentationStatic/WebFramework/1.1/compref_searchmanager.html">SearchManager</a></li>
-              <li><a href="http://docs.splunk.com/DocumentationStatic/WebFramework/1.1/compref_savedsearchmanager.html">SavedSearchManager</a></li>
-              <li><a href="http://docs.splunk.com/DocumentationStatic/WebFramework/1.1/compref_postprocessmanager.html">PostProcessManager</a></li>
+              <li><a href="http://docs.splunk.com/DocumentationStatic/WebFramework/1.1/compref_simplesplunk.html" target="_blank">SimpleSplunkView</a></li>
+              <li><a href="http://docs.splunk.com/DocumentationStatic/WebFramework/1.1/compref_searchmanager.html" target="_blank">SearchManager</a></li>
+              <li><a href="http://docs.splunk.com/DocumentationStatic/WebFramework/1.1/compref_savedsearchmanager.html" target="_blank">SavedSearchManager</a></li>
+              <li><a href="http://docs.splunk.com/DocumentationStatic/WebFramework/1.1/compref_postprocessmanager.html" target="_blank">PostProcessManager</a></li>
               <li>All SplunkJS objects are located in <code>$SPLUNKHOME$/share/splunk/search_mrsparkle/exposed/js/splunkjs/mvc/</code>.</li>
             </ul>
           </li>
@@ -56,14 +55,14 @@
         </ul>
         <h2>Sources</h2>
         <ul>
-          <li><a href="https://splunkbase.splunk.com/app/1603/">Splunk 6.x Dashboard Examples</a></li>
-          <li><a href="https://splunkbase.splunk.com/app/1613/">Splunk Web Framework Toolkit</a></li>
-          <li><a href="https://splunkbase.splunk.com/app/1741/">Gantt Chart visualization</a></li>
-          <li><a href="http://bost.ocks.org/mike/uberdata/">Uber Rides by Neighborhood</a></li>
-          <li><a href="https://www.chromeexperiments.com/globe">WebGL Globe - Chrome Experiments</a></li>
-          <li><a href="http://bl.ocks.org/mbostock/4339083">Collapsible Tree</a></li>
-          <li><a href="http://bl.ocks.org/jensgrubert/7789216">D3.js Boxplot with Axes and Labels</a></li>
-          <li><a href="http://bl.ocks.org/mbostock/2066415">Hive Plot (Links)</a></li>
+          <li><a href="https://splunkbase.splunk.com/app/1603/" target="_blank">Splunk 6.x Dashboard Examples</a></li>
+          <li><a href="https://splunkbase.splunk.com/app/1613/" target="_blank">Splunk Web Framework Toolkit</a></li>
+          <li><a href="https://splunkbase.splunk.com/app/1741/" target="_blank">Gantt Chart visualization</a></li>
+          <li><a href="http://bost.ocks.org/mike/uberdata/" target="_blank">Uber Rides by Neighborhood</a></li>
+          <li><a href="https://www.chromeexperiments.com/globe" target="_blank">WebGL Globe - Chrome Experiments</a></li>
+          <li><a href="http://bl.ocks.org/mbostock/4339083" target="_blank">Collapsible Tree</a></li>
+          <li><a href="http://bl.ocks.org/jensgrubert/7789216" target="_blank">D3.js Boxplot with Axes and Labels</a></li>
+          <li><a href="http://bl.ocks.org/mbostock/2066415" target="_blank">Hive Plot (Links)</a></li>
         </ul>
         <h2>Thanks to</h2>
         <ul>
@@ -72,7 +71,8 @@
           <li><b>Genti Zaimi</b>, <b>Thomas Mann</b>, and <b>Roy Moranz</b>: My current and previous managers for supporting my SplunkJS journey.</li>
           <li><b>Misty Gibbs</b>: Allowing me to speak at Splunk's .conf.</li>
           <li><b>Vladimir Skoryk</b> and <b>Jackson Sie</b>: Helped me here and there.</li>
-          <li><b>Tom LaGatta</b> and <b>Stepehen Sorkin</b>: Boxplot, enough said.</li>
+          <li><b>Stepehen Sorkin</b>: Boxplot, enough said.</li>
+          <li><b>Tom LaGatta</b>: Boxplot and also promoting this app in his talks. He also showed me about using the app name as a prefix when including JS files (ie <code>custom_vizs:autodiscover.js</code>).</li>
           <li><b>Grigori Melnik</b>: Gave me some practice on how to explain how to create and use custom JS visualizations to others.</li>
           <li><b>Alexandar Johnson</b>: Helped me a lot on the source code viewer (ported from the Dashboard 6.x Examples App).</li>
         </ul>

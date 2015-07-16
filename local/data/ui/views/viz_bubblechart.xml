@@ -1,4 +1,4 @@
-<form script="autodiscover.js, viz_bubblechart.js">
+<form script="custom_vizs:autodiscover.js, custom_vizs:viz_bubblechart.js">
   <label>Bubble Chart</label>
   <fieldset submitButton="false" autoRun="true">
     <input type="time" searchWhenChanged="true">
@@ -49,5 +49,5 @@
         </search>
       </chart>
     </panel>
-  </row>    
+  </row>
 </form>

@@ -1,4 +1,4 @@
-<form script="autodiscover.js">
+<form script="custom_vizs:autodiscover.js">
   <label>Gantt Chart</label>
   <fieldset submitButton="false" autoRun="true">
     <input type="time" searchWhenChanged="true">

@@ -1,4 +1,4 @@
-<form script="autodiscover.js, viz_chordchart.js">
+<form script="custom_vizs:autodiscover.js, custom_vizs:viz_chordchart.js">
   <label>Chord Chart</label>
   <fieldset submitButton="false">
     <input type="text" token="selected_country" id="input_selected_country"></input>

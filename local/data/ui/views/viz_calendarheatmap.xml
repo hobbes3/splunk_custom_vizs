@@ -1,4 +1,4 @@
-<form script="autodiscover.js, viz_calendarheatmap.js">
+<form script="custom_vizs:autodiscover.js, custom_vizs:viz_calendarheatmap.js">
   <label>Calendar Heatmap</label>
   <row>
     <panel>
