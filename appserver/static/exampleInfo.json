@@ -25,7 +25,7 @@
     },
     {
         "id": "viz_calendarheatmap",
-        "title": "Calendar",
+        "title": "Calendar Heatmap",
         "short-description": "The Calendar Heatmap displays time-series data on a timeline as a heatmap. This view is good for visualizing time-based events and activity and can be configured extensively.",
         "category": "Time Charts",
         "versions": ["6.2"],
