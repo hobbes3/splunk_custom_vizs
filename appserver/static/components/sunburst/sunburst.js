@@ -18,12 +18,12 @@ define(function(require, exports, module) {
         options: {
             managerid: null,
             data: 'preview',
-            chartTitle: null,
-            valueField: null,
-            categoryFields: null,
-            truncateValue: 0,
-            formatLabel: _.identity,
-            formatTooltip: function(d) {
+            root_label: "",
+            value_field: null,
+            category_fields: null,
+            truncate_value: 0,
+            format_label: _.identity,
+            format_tooltip: function(d) {
                 return (d.name || "Total") + ": " + d.value;
             }
         },
@@ -33,9 +33,9 @@ define(function(require, exports, module) {
         initialize: function() {
             SimpleSplunkView.prototype.initialize.apply(this, arguments);
 
-            this.settings.on("change:valueField", this.render, this);
-            this.settings.on("change:categoryFields", this.render, this);
-            this.settings.on("change:formatLabel change:formatTooltip change:chartTitle", this.render, this);
+            this.settings.on("change:value_field", this.render, this);
+            this.settings.on("change:category_fields", this.render, this);
+            this.settings.on("change:format_label change:format_tooltip change:root_label", this.render, this);
 
             // Set up resize callback.
             $(window).resize(_.debounce(_.bind(this._handleResize, this), 20));
@@ -65,12 +65,12 @@ define(function(require, exports, module) {
 
         // making the data look how we want it to for updateView to do its job
         formatData: function(data) {
-            var valueField = this.settings.get("valueField");
-            var fieldList = this.settings.get("categoryFields");
+            var value_field = this.settings.get("value_field");
+            var category_fields = this.settings.get("category_fields");
             var color_field = this.settings.get("color_field");
 
-            if(!fieldList) {
-                fieldList = this.resultsModel.data().fields;
+            if(!category_fields) {
+                category_fields = this.resultsModel.data().fields;
             }
 
             var get_sum = function(list) {
@@ -96,7 +96,7 @@ define(function(require, exports, module) {
                     }
 
                     var node = {};
-                    var intersection = _(_(children[0]).keys()).intersection(fieldList);
+                    var intersection = _(_(children[0]).keys()).intersection(category_fields);
 
                     if(intersection.length === 0) {
                         node = {
@@ -123,33 +123,31 @@ define(function(require, exports, module) {
                 });
             };
 
-            dataResults = nest(data, fieldList[0]);
+            data_results = nest(data, category_fields[0]);
 
-            var root_label = this.settings.get("chartTitle") || "";
+            var root_label = this.settings.get("root_label") || "";
 
             formatted_data = {
-                "results": {
-                    "name": root_label,
-                    "children": dataResults
-                },
-                "fields": fieldList
+                "name": root_label,
+                "children": data_results
             };
 
             if(color_field) {
-                formatted_data.results.colors = _(data).chain().pluck("status").uniq().value();
+                formatted_data.colors = _(data).chain().pluck(color_field).uniq().value();
             }
 
             return formatted_data;
         },
 
         updateView: function(viz, data) {
+            var root_color = this.settings.get("root_color");
             var color_field = this.settings.get("color_field");
             var colors = this.settings.get("colors");
             var propagate = this.settings.get("propagate");
 
-            var formatLabel = this.settings.get("formatLabel") || _.identity;
-            var formatTooltip = this.settings.get("formatTooltip") || function(d) { return d.name; };
-            var truncateValue = this.settings.get("truncateValue");
+            var format_label = this.settings.get("format_label") || _.identity;
+            var format_tooltip = this.settings.get("format_tooltip") || function(d) { return d.name; };
+            var truncate_value = this.settings.get("truncate_value");
             var containerHeight = this.$el.height();
             var containerWidth = this.$el.width();
 
@@ -191,16 +189,18 @@ define(function(require, exports, module) {
                 .innerRadius(function(d) { return Math.max(0, y(d.y)); })
                 .outerRadius(function(d) { return Math.max(0, y(d.y + d.dy)); });
 
-            var root = data.results;
-
             var g = graph.selectAll("g")
-                .data(partition.nodes(root))
+                .data(partition.nodes(data))
                 .enter().append("g");
 
             var path = g.append("path")
                 .attr("d", arc)
                 .style("fill", function(d) {
                     var fill_color;
+
+                    if(root_color && !("parent" in d)) {
+                        return root_color;
+                    }
 
                     if(color_field) {
                         if(propagate) {
@@ -233,7 +233,7 @@ define(function(require, exports, module) {
                 .on("click", click);
 
             path.append("title")
-                .text(formatTooltip);
+                .text(format_tooltip);
 
             var textAnchorPos = function(depthMarker) {
                 return function(d) {
@@ -260,15 +260,15 @@ define(function(require, exports, module) {
                 .attr("x", 0)
                 .text(function(d) {
                     var sliceWidth = Math.abs(Math.max(0, y(d.y)) - Math.max(0, y(d.y + d.dy)));
-                    var formatted = formatLabel(d.name);
+                    var formatted = format_label(d.name);
 
                     // Trunctate the title
-                    return formatted.substring(0, sliceWidth / truncateValue);
+                    return formatted.substring(0, sliceWidth / truncate_value);
                 })
                 .on("click", click);
 
             text.append("title")
-                .text(formatTooltip);
+                .text(format_tooltip);
 
             function click(d) {
                 // The "at depth" object is treated differently;
