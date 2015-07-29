@@ -1,7 +1,7 @@
 define(function(require, exports, module) {
 
     var _ = require('underscore');
-    var SimpleSplunkView = require("splunkjs/mvc/simplesplunkview");  
+    var SimpleSplunkView = require("splunkjs/mvc/simplesplunkview");
     var nester = require("../underscore-nest/underscore-nest");
     var d3 = require("../d3/d3");
 
@@ -13,11 +13,11 @@ define(function(require, exports, module) {
     var Sunburst = SimpleSplunkView.extend({
         moduleId: module.id,
 
-        className: "splunk-toolkit-sunburst", 
+        className: "splunk-toolkit-sunburst",
 
         options: {
-            managerid: null,  
-            data: 'preview', 
+            managerid: null,
+            data: 'preview',
             chartTitle: null,
             valueField: null,
             categoryFields: null,
@@ -28,7 +28,7 @@ define(function(require, exports, module) {
             }
         },
 
-        output_mode: "json_rows",
+        output_mode: "json",
 
         initialize: function() {
             SimpleSplunkView.prototype.initialize.apply(this, arguments);
@@ -36,8 +36,8 @@ define(function(require, exports, module) {
             this.settings.on("change:valueField", this.render, this);
             this.settings.on("change:categoryFields", this.render, this);
             this.settings.on("change:formatLabel change:formatTooltip change:chartTitle", this.render, this);
-            
-            // Set up resize callback. 
+
+            // Set up resize callback.
             $(window).resize(_.debounce(_.bind(this._handleResize, this), 20));
         },
 
@@ -66,31 +66,63 @@ define(function(require, exports, module) {
         // making the data look how we want it to for updateView to do its job
         formatData: function(data) {
             var valueField = this.settings.get('valueField');
-            var rawFields = this.resultsModel.data().fields;
             var fieldList = this.settings.get("categoryFields");
-            if(fieldList){
-                fieldList = fieldList.split(/[ ,]+/);
-            }
-            else{
+
+            if(!fieldList) {
                 fieldList = this.resultsModel.data().fields;
             }
-            var objects = _.map(data, function(row) {
-                return _.object(rawFields, row);
-            });
-            var dataResults = nester.nest(objects, fieldList, function(children) {
-                var total = 0;
-                _.each(children, function(child){
-                    var size = child[valueField] || 1;
-                    total += size;
-                });
-                return total;
-            });
-            dataResults['name'] = this.settings.get("chartTitle") || "";
-            data = {
-                'results': dataResults,
-                'fields': fieldList
+
+            var get_sum = function(list) {
+                return _(list).pluck(list[0].length - 1).reduce(function(memo, num) { return memo + num; }, 0);
             };
-            return data;
+
+            var nest = function(list, group_by) {
+                var groups = _(list).groupBy(group_by);
+
+                return _(groups).map(function(value, key) {
+                    var children = _(value)
+                        .chain()
+                        .each(function(v) {
+                            delete v[group_by];
+                            return v;
+                        })
+                        .compact()
+                        .value();
+
+                    var node;
+                    var intersection = _(_(children[0]).keys()).intersection(fieldList);
+
+                    if(intersection.length === 0) {
+                        node = {
+                            "name": key,
+                            "value": 1,
+                            "data": children[0]
+                        };
+                    }
+                    else {
+                        node = {
+                            "name": key,
+                            "children": nest(children, intersection[0])
+                        };
+                    }
+
+                    return node;
+                });
+            };
+
+            dataResults = nest(data, fieldList[0]);
+
+            var root_label = this.settings.get("chartTitle") || "";
+
+            formatted_data = {
+                "results": {
+                    "name": root_label,
+                    "children": dataResults
+                },
+                "fields": fieldList
+            };
+
+            return formatted_data;
         },
 
         updateView: function(viz, data) {
@@ -99,7 +131,7 @@ define(function(require, exports, module) {
             var formatTooltip = this.settings.get("formatTooltip") || function(d) { return d.name; };
             var truncateValue = this.settings.get("truncateValue");
             var containerHeight = this.$el.height();
-            var containerWidth = this.$el.width(); 
+            var containerWidth = this.$el.width();
 
             // Clear svg
             var svg = $(viz.svg[0]);
@@ -114,12 +146,12 @@ define(function(require, exports, module) {
                 .append("g")
                 .attr("width", graphWidth)
                 .attr("height", graphHeight)
-                .attr("transform", "translate("  
-                        + ((graphWidth/2) + viz.margin.left ) + ","  
+                .attr("transform", "translate("
+                        + ((graphWidth/2) + viz.margin.left ) + ","
                         + ((graphHeight/2) + viz.margin.top ) + ")");
 
             var radius = Math.min(graphWidth, graphHeight) / 2;
-            
+
             var color = d3.scale.category20c();
 
             var x = d3.scale.linear()
@@ -129,7 +161,9 @@ define(function(require, exports, module) {
                 .range([0, radius]);
 
             var partition = d3.layout.partition()
-                .value(function(d) { return d['value']; });
+                .value(function(d) {
+                    return d.value;
+                });
 
             var arc = d3.svg.arc()
                 .startAngle(function(d) { return Math.max(0, Math.min(2 * Math.PI, x(d.x))); })
@@ -145,9 +179,11 @@ define(function(require, exports, module) {
 
             var path = g.append("path")
                 .attr("d", arc)
-                .style("fill", function(d) {return color((d.children ? d : d.parent).name); })
+                .style("fill", function(d) {
+                    return color((d.children ? d : d.parent).name);
+                })
                 .on("click", click);
-                
+
             path.append("title")
                 .text(formatTooltip);
 
@@ -157,7 +193,7 @@ define(function(require, exports, module) {
                 };
             };
 
-            var textTransform = function(depthMarker) { 
+            var textTransform = function(depthMarker) {
                 return function(d) {
                     // Objects at the origin don't need to be rotated
                     var angle = x(d.x + d.dx / 2) * 180 / Math.PI + (d.depth === depthMarker ? 0 : -90);
@@ -168,7 +204,7 @@ define(function(require, exports, module) {
                     return "rotate(" + rotate + ")translate(" + (translation) + ")rotate(" + (angle > 90 ? -180 : 0) + ")";
                 };
             };
-                                         
+
             var text = g.append("text")
                 .attr("text-anchor", textAnchorPos(0))
                 .attr("transform", textTransform(0))
@@ -179,10 +215,10 @@ define(function(require, exports, module) {
                     var formatted = formatLabel(d.name);
 
                     // Trunctate the title
-                    return formatted.substring(0, sliceWidth / truncateValue); 
+                    return formatted.substring(0, sliceWidth / truncateValue);
                 })
                 .on("click", click);
-                
+
             text.append("title")
                 .text(formatTooltip);
 
@@ -199,7 +235,7 @@ define(function(require, exports, module) {
                       // check if the animated element's data e lies
                       // within the visible angle span given in d and
                       // the element is d or a possible child of d
-                      if ((e.x >= d.x && e.x < (d.x + d.dx)) && (e.depth >= d.depth)) { 
+                      if ((e.x >= d.x && e.x < (d.x + d.dx)) && (e.depth >= d.depth)) {
                         // get a selection of the associated text element
                         var arcText = d3.select(this.parentNode).select("text");
                         // fade in the text element and recalculate positions
