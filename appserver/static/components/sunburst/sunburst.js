@@ -65,7 +65,7 @@ define(function(require, exports, module) {
 
         // making the data look how we want it to for updateView to do its job
         formatData: function(data) {
-            var valueField = this.settings.get('valueField');
+            var valueField = this.settings.get("valueField");
             var fieldList = this.settings.get("categoryFields");
 
             if(!fieldList) {
@@ -89,12 +89,15 @@ define(function(require, exports, module) {
                         .compact()
                         .value();
 
+                    var statuses = _(children).chain().pluck("status").uniq().value();
+
                     var node;
                     var intersection = _(_(children[0]).keys()).intersection(fieldList);
 
                     if(intersection.length === 0) {
                         node = {
                             "name": key,
+                            "statuses": statuses,
                             "value": 1,
                             "data": children[0]
                         };
@@ -102,6 +105,7 @@ define(function(require, exports, module) {
                     else {
                         node = {
                             "name": key,
+                            "statuses": statuses,
                             "children": nest(children, intersection[0])
                         };
                     }
@@ -117,6 +121,7 @@ define(function(require, exports, module) {
             formatted_data = {
                 "results": {
                     "name": root_label,
+                    "statuses": _(data).chain().pluck("status").uniq().value(),
                     "children": dataResults
                 },
                 "fields": fieldList
@@ -127,6 +132,7 @@ define(function(require, exports, module) {
 
         updateView: function(viz, data) {
             var that = this;
+            var colors = this.settings.get("colors");
             var formatLabel = this.settings.get("formatLabel") || _.identity;
             var formatTooltip = this.settings.get("formatTooltip") || function(d) { return d.name; };
             var truncateValue = this.settings.get("truncateValue");
@@ -180,7 +186,18 @@ define(function(require, exports, module) {
             var path = g.append("path")
                 .attr("d", arc)
                 .style("fill", function(d) {
-                    return color((d.children ? d : d.parent).name);
+                    var fill_color;
+                    _(colors).every(function(v) {
+                        var status = _(v).keys()[0];
+                        if(d.statuses.indexOf(status) > -1) {
+                            fill_color = v[status];
+                            return false;
+                        }
+
+                        return true;
+                    });
+
+                    return fill_color ? fill_color : color((d.children ? d : d.parent).name);
                 })
                 .on("click", click);
 
