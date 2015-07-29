@@ -8,7 +8,7 @@ define(function(require, exports, module) {
     require("css!./sunburst.css");
 
     window.nester = nester;
-    var ANIMATION_DURATION = 750;  // milliseconds
+    var ANIMATION_DURATION = 500;  // milliseconds
 
     var Sunburst = SimpleSplunkView.extend({
         moduleId: module.id,
@@ -67,6 +67,7 @@ define(function(require, exports, module) {
         formatData: function(data) {
             var valueField = this.settings.get("valueField");
             var fieldList = this.settings.get("categoryFields");
+            var color_field = this.settings.get("color_field");
 
             if(!fieldList) {
                 fieldList = this.resultsModel.data().fields;
@@ -89,25 +90,33 @@ define(function(require, exports, module) {
                         .compact()
                         .value();
 
-                    var statuses = _(children).chain().pluck("status").uniq().value();
+                    var colors;
+                    if(color_field) {
+                        colors = _(children).chain().pluck(color_field).uniq().value();
+                    }
 
-                    var node;
+                    var node = {};
                     var intersection = _(_(children[0]).keys()).intersection(fieldList);
 
                     if(intersection.length === 0) {
                         node = {
                             "name": key,
-                            "statuses": statuses,
                             "value": 1,
                             "data": children[0]
                         };
+
+                        if(colors) {
+                            node.colors = colors;
+                        }
                     }
                     else {
-                        node = {
-                            "name": key,
-                            "statuses": statuses,
-                            "children": nest(children, intersection[0])
-                        };
+                        node.name = key;
+
+                        if(colors) {
+                            node.colors = colors;
+                        }
+
+                        node.children = nest(children, intersection[0]);
                     }
 
                     return node;
@@ -121,18 +130,23 @@ define(function(require, exports, module) {
             formatted_data = {
                 "results": {
                     "name": root_label,
-                    "statuses": _(data).chain().pluck("status").uniq().value(),
                     "children": dataResults
                 },
                 "fields": fieldList
             };
 
+            if(color_field) {
+                formatted_data.results.colors = _(data).chain().pluck("status").uniq().value();
+            }
+
             return formatted_data;
         },
 
         updateView: function(viz, data) {
-            var that = this;
+            var color_field = this.settings.get("color_field");
             var colors = this.settings.get("colors");
+            var propagate = this.settings.get("propagate");
+
             var formatLabel = this.settings.get("formatLabel") || _.identity;
             var formatTooltip = this.settings.get("formatTooltip") || function(d) { return d.name; };
             var truncateValue = this.settings.get("truncateValue");
@@ -158,7 +172,7 @@ define(function(require, exports, module) {
 
             var radius = Math.min(graphWidth, graphHeight) / 2;
 
-            var color = d3.scale.category20c();
+            var color_range = d3.scale.category20c();
 
             var x = d3.scale.linear()
                 .range([0, 2 * Math.PI]);
@@ -187,17 +201,34 @@ define(function(require, exports, module) {
                 .attr("d", arc)
                 .style("fill", function(d) {
                     var fill_color;
-                    _(colors).every(function(v) {
-                        var status = _(v).keys()[0];
-                        if(d.statuses.indexOf(status) > -1) {
-                            fill_color = v[status];
-                            return false;
+
+                    if(color_field) {
+                        if(propagate) {
+                            _(colors).every(function(v) {
+                                var color = _(v).keys()[0];
+                                if(d.colors.indexOf(color) > -1) {
+                                    fill_color = v[color];
+                                    return false;
+                                }
+
+                                return true;
+                            });
                         }
+                        else if(d.data) {
+                            var color = d.data[color_field];
 
-                        return true;
-                    });
+                            _(colors).every(function(v) {
+                                if(_(v).has(color)) {
+                                    fill_color = v[color];
+                                    return false;
+                                }
 
-                    return fill_color ? fill_color : color((d.children ? d : d.parent).name);
+                                return true;
+                            });
+                        }
+                    }
+
+                    return fill_color ? fill_color : color_range((d.children ? d : d.parent).name);
                 })
                 .on("click", click);
 
