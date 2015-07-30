@@ -70,7 +70,8 @@ define(function(require, exports, module) {
             var color_field = this.settings.get("color_field");
 
             if(!category_fields) {
-                category_fields = this.resultsModel.data().fields;
+                category_fields = _(this.resultsModel.data().fields).pluck("name");
+                this.settings.set("category_fields", category_fields);
             }
 
             var get_sum = function(list) {
@@ -140,6 +141,8 @@ define(function(require, exports, module) {
         },
 
         updateView: function(viz, data) {
+            var that = this;
+
             var root_color = this.settings.get("root_color");
             var color_field = this.settings.get("color_field");
             var colors = this.settings.get("colors");
@@ -271,6 +274,8 @@ define(function(require, exports, module) {
                 .text(format_tooltip);
 
             function click(d) {
+                that.trigger("click", d);
+
                 // The "at depth" object is treated differently;
                 // centered and not rotated.
                 var depthMarker = d.depth;
