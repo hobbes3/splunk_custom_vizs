@@ -4,6 +4,7 @@ define(function(require, exports, module) {
     var SimpleSplunkView = require("splunkjs/mvc/simplesplunkview");
     var nester = require("../underscore-nest/underscore-nest");
     var d3 = require("../d3/d3");
+    var mvc = require("splunkjs/mvc");
 
     require("css!./sunburst.css");
 
@@ -28,7 +29,8 @@ define(function(require, exports, module) {
             }
         },
 
-        output_mode: "json",
+        //output_mode: "json",
+        output_mode: "json_rows",
 
         initialize: function() {
             SimpleSplunkView.prototype.initialize.apply(this, arguments);
@@ -48,6 +50,7 @@ define(function(require, exports, module) {
         createView: function() {
             // Here we wet up the initial view layout
             var margin = {top: 30, right: 30, bottom: 30, left: 30};
+
             var availableWidth = parseInt(this.settings.get("width") || this.$el.width());
             var availableHeight = parseInt(this.settings.get("height") || this.$el.height());
 
@@ -60,7 +63,13 @@ define(function(require, exports, module) {
                 .attr("pointer-events", "all");
 
             // The returned object gets passed to updateView as viz
-            return { container: this.$el, svg: svg, margin: margin};
+            return {
+                "container": this.$el,
+                "svg": svg,
+                "margin": margin,
+                "width": availableWidth,
+                "height": availableHeight
+            };
         },
 
         // making the data look how we want it to for updateView to do its job
@@ -69,14 +78,15 @@ define(function(require, exports, module) {
             var category_fields = this.settings.get("category_fields");
             var color_field = this.settings.get("color_field");
 
+            var rawFields = this.resultsModel.data().fields;
+            var data = _.map(data, function(row) {
+                return _.object(rawFields, row);
+            });
+
             if(!category_fields) {
                 category_fields = _(this.resultsModel.data().fields).pluck("name");
                 this.settings.set("category_fields", category_fields);
             }
-
-            var get_sum = function(list) {
-                return _(list).pluck(list[0].length - 1).reduce(function(memo, num) { return memo + num; }, 0);
-            };
 
             var nest = function(list, group_by) {
                 var groups = _(list).groupBy(group_by);
@@ -126,7 +136,7 @@ define(function(require, exports, module) {
 
             data_results = nest(data, category_fields[0]);
 
-            var root_label = this.settings.get("root_label") || "";
+            var root_label = this.settings.get("root_label");
 
             formatted_data = {
                 "name": root_label,
@@ -151,18 +161,21 @@ define(function(require, exports, module) {
             var format_label = this.settings.get("format_label") || _.identity;
             var format_tooltip = this.settings.get("format_tooltip") || function(d) { return d.name; };
             var truncate_value = this.settings.get("truncate_value");
-            var containerHeight = this.$el.height();
-            var containerWidth = this.$el.width();
+            //var containerHeight = this.$el.height();
+            //var containerWidth = this.$el.width();
 
             // Clear svg
             var svg = $(viz.svg[0]);
             svg.empty();
-            svg.height(containerHeight);
-            svg.width(containerWidth);
+            //svg.height(containerHeight);
+            //svg.width(containerWidth);
 
             // Add the graph group as a child of the main svg
-            var graphWidth = containerWidth - viz.margin.left - viz.margin.right;
-            var graphHeight = containerHeight - viz.margin.top - viz.margin.bottom;
+            //var graphWidth = containerWidth - viz.margin.left - viz.margin.right;
+            //var graphHeight = containerHeight - viz.margin.top - viz.margin.bottom;
+            var graphWidth = viz.width - viz.margin.left - viz.margin.right;
+            var graphHeight = viz.height - viz.margin.top - viz.margin.bottom;
+
             var graph = viz.svg
                 .append("g")
                 .attr("width", graphWidth)
@@ -274,6 +287,13 @@ define(function(require, exports, module) {
                 .text(format_tooltip);
 
             function click(d) {
+                var search_id = that.settings.get("managerid");
+                var search = mvc.Components.get(search_id);
+
+                if(search.settings.get("latest_time") === "rt") {
+                    return;
+                }
+
                 that.trigger("click", d);
 
                 // The "at depth" object is treated differently;

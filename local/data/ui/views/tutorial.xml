@@ -71,10 +71,10 @@
           <li><b>Genti Zaimi</b>, <b>Thomas Mann</b>, and <b>Roy Moranz</b>: My current and previous managers for supporting my SplunkJS journey.</li>
           <li><b>Misty Gibbs</b>: Allowing me to speak at Splunk's .conf.</li>
           <li><b>Vladimir Skoryk</b> and <b>Jackson Sie</b>: Helped me here and there.</li>
-          <li><b>Stepehen Sorkin</b>: Boxplot, enough said.</li>
+          <li><b>Stephen Sorkin</b>: Boxplot, enough said.</li>
           <li><b>Tom LaGatta</b>: Boxplot and also promoting this app in his talks. He also showed me about using the app name as a prefix when including JS files (ie <code>custom_vizs:autodiscover.js</code>).</li>
           <li><b>Grigori Melnik</b>: Gave me some practice on how to explain how to create and use custom JS visualizations to others.</li>
-          <li><b>Alexandar Johnson</b>: Helped me a lot on the source code viewer (ported from the Dashboard 6.x Examples App).</li>
+          <li><b>Alexander Johnson</b>: Helped me a lot on the source code viewer (ported from the Dashboard 6.x Examples App).</li>
         </ul>
       </html>
     </panel>
