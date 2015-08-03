@@ -1,0 +1,22 @@
+<form script="autodiscover.js">
+  <label>Scatter Matrix</label>
+  <row>
+    <panel>
+      <html>
+        <h2>Iris flower <a href="http://en.wikipedia.org/wiki/Iris_flower_data_set">data set</a></h2>
+        <p id="info"></p>
+        <div id="scattermatrix_search" class="splunk-manager" data-require="splunkjs/mvc/searchmanager" data-options='{
+          "search": "| inputlookup flowers.csv",
+          "preview": true
+        }'>
+        </div>
+        <div id="scattermatrix" class="splunk-view" data-require="app/custom_vizs/components/scattermatrix/scattermatrix" data-options='{
+          "managerid": "scattermatrix_search",
+          "groupByField": "species",
+          "colors" : ["#6FAE93", "#BC5E2B", "#576D86"]
+        }'>
+        </div>
+      </html>
+    </panel>
+  </row>
+</form>
