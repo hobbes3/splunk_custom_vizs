@@ -15,7 +15,7 @@
         <div id="sunburst_search" class="splunk-manager" data-require="splunkjs/mvc/searchmanager" data-options='{
           "search": {
             "type": "token_safe",
-            "value": "| tstats count where index=_* by index sourcetype source | sort 10 -count | eval source=replace(source, \".+\\/(.+)$\", \"\\1\")"
+            "value": "| tstats count where index=_* by index sourcetype source | sort 10 -count | eval source=replace(source, \".+\\/(.+)$\", \"\\1\") | eventstats sum(count) as total | eval percent=count/total | eval status=case(percent&gt;0.3, \"high\", percent&gt;0.2, \"medium\", 1=1, \"low\")"
           },
           "preview": true,
           "earliest_time": {
@@ -31,12 +31,29 @@
         <div id="sunburst" class="splunk-view" data-require="app/custom_vizs/components/sunburst/sunburst" data-options='{
           "managerid": "sunburst_search",
           "height": 800,
-          "valueField": "count",
-          "categoryFields": "index sourcetype source",
-          "chartTitle": "Index"
+          "value_field": "count",
+          "category_fields": ["index", "sourcetype", "source"],
+          "root_label": "Index",
+          "root_color": "#ffffff",
+          "propagate": false,
+          "color_field": "status",
+          "colors": [
+            {"high": "#F7977A"},
+            {"medium": "#FFF79A"},
+            {"low": "#82CA9D"}
+          ]
         }'>
         </div>
       </html>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <table>
+        <title>Sunburst Search Results</title>
+        <search base="sunburst_search">
+        </search>
+      </table>
     </panel>
   </row>
 </form>

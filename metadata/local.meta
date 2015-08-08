@@ -4,7 +4,7 @@ modtime = 1432766805.588891000
 
 [views/tutorial]
 version = 6.2.4
-modtime = 1438294937.697111000
+modtime = 1438368701.821035000
 
 [views/viz_bubblechart]
 version = 6.2.2
@@ -59,17 +59,17 @@ version = 6.2.2
 modtime = 1432767248.287787000
 
 [views/viz_sunburst]
-version = 6.2.2
-modtime = 1432780861.259374000
+version = 6.2.4
+modtime = 1438375068.607696000
 
 [views/viz_tagcloud]
 version = 6.2.2
 modtime = 1432781003.277277000
 
 [views/contents]
-version = 6.2.2
-modtime = 1432819054.781424000
+version = 6.2.4
+modtime = 1438368133.024945000
 
 [nav/default]
-version = 6.2.2
-modtime = 1432827708.760218000
+version = 6.2.4
+modtime = 1438368066.477154000

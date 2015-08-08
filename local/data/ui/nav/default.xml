@@ -1,5 +1,9 @@
 <nav search_view="search" color="#d62728">
   <view name="tutorial" default="true"/>
-  <view name="contents"/>
+  <collection label="Examples">
+    <view name="contents"/>
+    <divider/>
+    <view source="all" match="viz_"/>
+  </collection>
   <view name="search"/>
 </nav>

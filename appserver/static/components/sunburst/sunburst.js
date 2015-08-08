@@ -116,6 +116,10 @@ define(function(require, exports, module) {
                             "data": children[0]
                         };
 
+                        if(value_field) {
+                            node.value = parseInt(children[0][value_field]);
+                        }
+
                         if(colors) {
                             node.colors = colors;
                         }
@@ -287,14 +291,14 @@ define(function(require, exports, module) {
                 .text(format_tooltip);
 
             function click(d) {
+                that.trigger("click", d);
+
                 var search_id = that.settings.get("managerid");
                 var search = mvc.Components.get(search_id);
 
                 if(search.settings.get("latest_time") === "rt") {
                     return;
                 }
-
-                that.trigger("click", d);
 
                 // The "at depth" object is treated differently;
                 // centered and not rotated.

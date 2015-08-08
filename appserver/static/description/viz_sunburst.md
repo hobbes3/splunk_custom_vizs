@@ -26,31 +26,37 @@
         <td>The width of the chart.</td>
     </tr>
     <tr>
-        <td><code>chartTitle</code></td>
+        <td><code>root_label</code></td>
         <td>string</td>
         <td>null</td>
         <td>The name of the root node (displayed at graph center).</td>
     </tr>
     <tr>
-        <td><code>categoryFields</code></td>
-        <td>string (can be a space-separated list)</td>
-        <td>null (defaults to all)</td>
-        <td>A list of fields by which to group children of the root node. Each field essintially indicates the group of the next level in the tree.</td>
+        <td><code>root_color</code></td>
+        <td>string</td>
+        <td>null</td>
+        <td>The color of the root node (displayed at graph center).</td>
     </tr>
     <tr>
-        <td><code>valueField</code></td>
+        <td><code>category_fields</code></td>
+        <td>array</td>
+        <td>null (defaults to all fields)</td>
+        <td>A list of fields by which to group children of the root node. Each field essintially indicates the group of the next level in the tree. An example of an array is <code>["foo", "bar"]</code>.</td>
+    </tr>
+    <tr>
+        <td><code>value_field</code></td>
         <td>string</td>
         <td>null</td>
         <td>Indicates the field used to determine the size of the radial groups.</td>
     </tr>
     <tr>
-        <td><code>formatLabel</code></td>
+        <td><code>format_label</code></td>
         <td>function</td>
         <td>_.identity</td>
         <td>A custom formatting function for node names. Takes each node name as an input and returns a formatted name.</td>
     </tr>
     <tr>
-        <td><code>formatTooltip</code></td>
+        <td><code>format_tooltip</code></td>
         <td>function</td>
         <td>"{name}: {value}"</td>
         <td>A custom formatting function for tooltips. Takes each node as an input and returns a formatted tooltip string.</td>

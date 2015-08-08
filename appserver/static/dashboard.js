@@ -88,6 +88,7 @@ require([
                 var customScripts = root.attr('script');
                 if (customScripts) {
                     _(customScripts.split(',')).chain().map($.trim).each(function(script) {
+                        script = script.replace(/^[^:]+:/, "");
                         var codeModel = new Backbone.Model({
                             name: script,
                             url: '/static/app/' + APP + '/' + script
