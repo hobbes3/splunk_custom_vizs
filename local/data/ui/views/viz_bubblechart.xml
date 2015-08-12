@@ -50,4 +50,12 @@
       </chart>
     </panel>
   </row>
+  <row>
+    <panel>
+      <table>
+        <title>Bubble Chart Search Results</title>
+        <search base="bubblechart_search"/>
+      </table>
+    </panel>
+  </row>
 </form>

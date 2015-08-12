@@ -38,4 +38,12 @@
       </html>
     </panel>
   </row>
+  <row>
+    <panel>
+      <table>
+        <title>Dendrogram Search Results</title>
+        <search base="dendrogram_search"/>
+      </table>
+    </panel>
+  </row>
 </form>

@@ -35,4 +35,12 @@
       </chart>
     </panel>
   </row>
+  <row>
+    <panel>
+      <table>
+        <title>Chord Chart Search Results</title>
+        <search base="chordchart_search"/>
+      </table>
+    </panel>
+  </row>
 </form>

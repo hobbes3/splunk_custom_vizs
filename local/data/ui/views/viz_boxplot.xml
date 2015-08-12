@@ -4,7 +4,7 @@
     <panel>
       <html>
         <h2>Splunk Page Responses in the Last 5 Minutes (Ungrouped Method)</h2>
-        <div id="boxplot_search" class="splunk-manager" data-require="splunkjs/mvc/searchmanager" data-options='{
+        <div id="boxplot_search_ungrouped" class="splunk-manager" data-require="splunkjs/mvc/searchmanager" data-options='{
           "search": "index=_internal sourcetype=splunk_web_access | bin _time span=1m | eval time=strftime(_time, \"%F %T\") | table time spent",
           "preview": true,
           "earliest_time": "-5m@m",
@@ -12,13 +12,21 @@
         }'>
         </div>
         <div id="boxplot" class="splunk-view" data-require="app/custom_vizs/components/boxplot/boxplot" data-options='{
-          "managerid": "boxplot_search",
+          "managerid": "boxplot_search_ungrouped",
           "group_by": "time",
           "x_axis_label": "time",
           "y_axis_label": "ms"
         }'>
         </div>
       </html>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <table>
+        <title>Ungrouped Method Search Results</title>
+        <search base="boxplot_search_ungrouped"/>
+      </table>
     </panel>
   </row>
   <row>
@@ -39,6 +47,14 @@
         }'>
         </div>
       </html>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <table>
+        <title>Grouped Method Search Results</title>
+        <search base="boxplot_search_grouped"/>
+      </table>
     </panel>
   </row>
 </form>

@@ -13,7 +13,7 @@
       <html>
         <h2>Splunk Metrics for Pipelines</h2>
         <div id="parallelcoords_search" class="splunk-manager" data-require="splunkjs/mvc/searchmanager" data-options='{
-          "search": "index=_internal sourcetype=splunkd component=Metrics group=pipeline | dedup 2 name processor | table name processor cpu_seconds executes cummulative_hits",
+          "search": "index=_internal sourcetype=splunkd component=Metrics group=pipeline | dedup 2 name processor | table name processor cpu_seconds executes",
           "preview": true,
           "earliest_time": {
             "type": "token_safe",
@@ -31,6 +31,14 @@
         }'>
         </div>
       </html>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <table>
+        <title>Parallel Coordinates Search Results</title>
+        <search base="parallelcoords_search"/>
+      </table>
     </panel>
   </row>
 </form>

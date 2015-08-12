@@ -50,6 +50,18 @@
         <td>Indicates the field used to determine the size of the radial groups.</td>
     </tr>
     <tr>
+        <td><code>color_field</code></td>
+        <td>string</td>
+        <td>null</td>
+        <td>Indicates the field used to determine the colors (the color is set based on this value).</td>
+    </tr>
+    <tr>
+        <td><code>colors</code></td>
+        <td>array</td>
+        <td>null</td>
+        <td>This is an array of object, where each object consist of a value and a color. When the value of <code>color_field</code> matches here then the color is used. The order of the array sets a precedence (first one overrides the rest).</td>
+    </tr>
+    <tr>
         <td><code>format_label</code></td>
         <td>function</td>
         <td>_.identity</td>

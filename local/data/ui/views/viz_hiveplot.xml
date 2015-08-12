@@ -25,4 +25,12 @@
       </html>
     </panel>
   </row>
+  <row>
+    <panel>
+      <table>
+        <title>Hive Plot Search Results</title>
+        <search base="hiveplot_search"/>
+      </table>
+    </panel>
+  </row>
 </form>

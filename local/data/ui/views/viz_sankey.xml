@@ -37,4 +37,12 @@
       </html>
     </panel>
   </row>
+  <row>
+    <panel>
+      <table>
+        <title>Sankey Search Results</title>
+        <search base="sankey_search"/>
+      </table>
+    </panel>
+  </row>
 </form>

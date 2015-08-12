@@ -7,64 +7,64 @@ version = 6.2.4
 modtime = 1438368701.821035000
 
 [views/viz_bubblechart]
-version = 6.2.2
-modtime = 1432762934.059680000
+version = 6.2.4
+modtime = 1439342488.167501000
 
 [views/viz_sankey]
-version = 6.2.2
-modtime = 1432767360.087845000
+version = 6.2.4
+modtime = 1439342941.190450000
 
 [views/viz_forcedirected]
-version = 6.2.2
-modtime = 1432763654.491036000
+version = 6.2.4
+modtime = 1439342675.848699000
 
 [views/viz_calendarheatmap]
-version = 6.2.2
-modtime = 1432849298.423920000
+version = 6.2.4
+modtime = 1439342556.252202000
 
 [views/viz_parallelcoords]
-version = 6.2.2
-modtime = 1432765539.686080000
+version = 6.2.4
+modtime = 1439342850.228778000
 
 [views/viz_chordchart]
 version = 6.2.4
-modtime = 1437005441.030963000
+modtime = 1439342588.118783000
 
 [views/viz_globe]
-version = 6.2.2
-modtime = 1432764841.509800000
+version = 6.2.4
+modtime = 1439342748.318260000
 
 [views/viz_gantt]
-version = 6.2.2
-modtime = 1432764382.322337000
+version = 6.2.4
+modtime = 1439342711.512311000
 
 [views/viz_hiveplot]
-version = 6.2.2
-modtime = 1432765496.903485000
+version = 6.2.4
+modtime = 1439342784.301704000
 
 [views/viz_boxplot]
-version = 6.2.2
-modtime = 1432758879.663499000
+version = 6.2.4
+modtime = 1439342434.975813000
 
 [views/viz_dendrogram]
-version = 6.2.2
-modtime = 1432763358.624562000
+version = 6.2.4
+modtime = 1439342636.969473000
 
 [views/viz_parallelsets]
-version = 6.2.2
-modtime = 1432766892.169750000
+version = 6.2.4
+modtime = 1439342883.602658000
 
 [views/viz_punchcard]
-version = 6.2.2
-modtime = 1432767248.287787000
+version = 6.2.4
+modtime = 1439342915.747417000
 
 [views/viz_sunburst]
 version = 6.2.4
 modtime = 1438375068.607696000
 
 [views/viz_tagcloud]
-version = 6.2.2
-modtime = 1432781003.277277000
+version = 6.2.4
+modtime = 1439342970.571927000
 
 [views/contents]
 version = 6.2.4

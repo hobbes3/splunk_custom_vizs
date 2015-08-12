@@ -5,7 +5,7 @@
       <html>
         <h2>Splunk Internal Events by Sourcetype in the Last 2 Hours (drilldown)</h2>
         <div id="calendarheatmap_search" class="splunk-manager" data-require="splunkjs/mvc/searchmanager" data-options='{
-          "search": "index=_internal | timechart span=1m count by sourcetype",
+          "search": "index=_internal | timechart span=1m limit=5 count by sourcetype",
           "preview": true,
           "earliest_time": "-120m@h",
           "latest_time": "now"
@@ -16,6 +16,14 @@
         }'>
         </div>
       </html>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <table>
+        <title>Calendar Heatmap Search Results</title>
+        <search base="calendarheatmap_search"/>
+      </table>
     </panel>
   </row>
 </form>

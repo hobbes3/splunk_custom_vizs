@@ -35,4 +35,12 @@
       </html>
     </panel>
   </row>
+  <row>
+    <panel>
+      <table>
+        <title>Force-Directed Graph Search Results</title>
+        <search base="forcedirected_search"/>
+      </table>
+    </panel>
+  </row>
 </form>

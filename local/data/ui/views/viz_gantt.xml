@@ -44,4 +44,12 @@
       </html>
     </panel>
   </row>
+  <row>
+    <panel>
+      <table>
+        <title>Gantt Chart Search Results</title>
+        <search base="gantt_search"/>
+      </table>
+    </panel>
+  </row>
 </form>

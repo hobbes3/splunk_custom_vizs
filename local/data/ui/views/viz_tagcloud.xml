@@ -36,4 +36,12 @@
      </html>
     </panel>
   </row>
+  <row>
+    <panel>
+      <table>
+        <title>Tag Cloud Search Results</title>
+        <search base="tagcloud_search"/>
+      </table>
+    </panel>
+  </row>
 </form>

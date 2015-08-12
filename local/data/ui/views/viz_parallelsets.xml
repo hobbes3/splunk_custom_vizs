@@ -19,4 +19,12 @@
       </html>
     </panel>
   </row>
+  <row>
+    <panel>
+      <table>
+        <title>Parallel Sets Search Results</title>
+        <search base="parallelsets_search"/>
+      </table>
+    </panel>
+  </row>
 </form>
