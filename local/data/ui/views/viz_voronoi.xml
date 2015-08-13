@@ -5,14 +5,21 @@
       <html>
         <h2>Voronoi Map</h2>
         <div id="voronoi_search" class="splunk-manager" data-require="splunkjs/mvc/searchmanager" data-options='{
-          "search": "| stats count",
+          "search": "| inputlookup flights.csv | lookup airports.csv iata AS from OUTPUT latitude AS from_lat longitude AS from_lon | lookup airports.csv iata AS to OUTPUT latitude AS to_lat longitude AS to_lon",
           "preview": true,
           "earliest_time": "0",
           "latest_time": "now"
         }'>
         </div>
         <div id="voronoi" class="splunk-view" data-require="app/custom_vizs/components/voronoi/voronoi" data-options='{
-          "managerid": "voronoi_search"
+          "managerid": "voronoi_search",
+          "src_label_field": "from",
+          "src_lat_field": "from_lat",
+          "src_lon_field": "from_lon",
+          "dst_label_field": "to",
+          "dst_lat_field": "to_lat",
+          "dst_lon_field": "to_lon",
+          "count_field": "count"
         }'>
         </div>
       </html>

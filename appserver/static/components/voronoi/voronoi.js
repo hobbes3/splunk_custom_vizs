@@ -39,7 +39,7 @@ define(function(require, exports, module) {
             //$(window).resize(this, _.debounce(this._handleResize, 20));
         },
 
-        _handleResize: function(e){
+        _handleResize: function(e) {
 
             // e.data is the this pointer passed to the callback.
             // here it refers to this object and we call render()
@@ -84,25 +84,45 @@ define(function(require, exports, module) {
 
             queue()
                 .defer(d3.json, "/static/app/custom_vizs/components/voronoi/us.json")
-                .defer(d3.csv, "/static/app/custom_vizs/components/voronoi/airports.csv")
-                .defer(d3.csv, "/static/app/custom_vizs/components/voronoi/flights.csv")
                 .await(ready);
 
-            function ready(error, us, airports, flights) {
+            function ready(error, us) {
             if (error) throw error;
 
             var airportById = d3.map(),
                 positions = [];
 
+            var from = _(data).chain().groupBy("from").each(function(v, k, o) { o[k] = v[0] }).value();
+            var to   = _(data).chain().groupBy("to")  .each(function(v, k, o) { o[k] = v[0] }).value();
+
+            var uniques = _(from).extend(to);
+
+            var airports = _(uniques).map(function(v, k) {
+                var o = {};
+
+                o.id = k;
+
+                if(v.from === k) {
+                    o.latitude  = v.from_lat;
+                    o.longitude = v.from_lon;
+                }
+                else {
+                    o.latitude  = v.to_lat;
+                    o.longitude = v.to_lon;
+                }
+
+                return o;
+            });
+
             airports.forEach(function(d) {
-                airportById.set(d.iata, d);
+                airportById.set(d.id, d);
                 d.outgoing = [];
                 d.incoming = [];
             });
 
-            flights.forEach(function(flight) {
-                var source = airportById.get(flight.origin),
-                    target = airportById.get(flight.destination),
+            data.forEach(function(flight) {
+                var source = airportById.get(flight.from),
+                    target = airportById.get(flight.to),
                     link = {source: source, target: target};
                 source.outgoing.push(link);
                 target.incoming.push(link);
