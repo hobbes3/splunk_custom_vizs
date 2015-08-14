@@ -1,8 +1,8 @@
-.states {
+.regions {
   fill: #ccc;
 }
 
-.state-borders {
+.region-borders {
   fill: none;
   stroke: #fff;
   stroke-width: 1.5px;
@@ -10,28 +10,28 @@
   stroke-linecap: round;
 }
 
-.airport-arcs {
+.point-arcs {
   display: none;
   fill: none;
   stroke: #000;
 }
 
-.airport-cell {
+.point-cell {
   fill: none;
   pointer-events: all;
 }
 
-.airports circle {
+.points circle {
   fill: steelblue;
   stroke: #fff;
   pointer-events: none;
 }
 
-.airport:hover .airport-arcs {
+.point:hover .point-arcs {
   display: inline;
 }
 
-svg:not(:hover) .airport-cell {
+.point-cell {
   stroke: #000;
-  stroke-opacity: .2;
+  stroke-opacity: 0.1;
 }
