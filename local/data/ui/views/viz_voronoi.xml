@@ -18,8 +18,7 @@
           "src_lon_field": "from_lon",
           "dst_label_field": "to",
           "dst_lat_field": "to_lat",
-          "dst_lon_field": "to_lon",
-          "count_field": "count"
+          "dst_lon_field": "to_lon"
         }'>
         </div>
       </html>
