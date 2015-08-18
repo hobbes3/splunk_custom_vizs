@@ -1,37 +1,45 @@
-.regions {
-  fill: #ccc;
+.country {
+    fill: #ccc;
+    stroke: #fff;
+    stroke-width: .5px;
+    stroke-linejoin: round;
 }
 
-.region-borders {
-  fill: none;
-  stroke: #fff;
-  stroke-width: 1.5px;
-  stroke-linejoin: round;
-  stroke-linecap: round;
+.graticule {
+    fill: none;
+    stroke: #000;
+    stroke-opacity: .3;
+    stroke-width: .5px;
+}
+
+.graticule.outline {
+    stroke: #333;
+    stroke-opacity: 1;
+    stroke-width: 1.5px;
 }
 
 .point-arcs {
-  display: none;
-  fill: none;
-  stroke: #000;
+    display: none;
+    fill: none;
+    stroke: #000;
 }
 
 .point-cell {
-  fill: none;
-  pointer-events: all;
+    fill: none;
+    pointer-events: all;
 }
 
 .points circle {
-  fill: steelblue;
-  stroke: #fff;
-  pointer-events: none;
+    fill: steelblue;
+    stroke: #fff;
+    pointer-events: none;
 }
 
 .point:hover .point-arcs {
-  display: inline;
+    display: inline;
 }
 
 .point-cell {
-  stroke: #000;
-  stroke-opacity: 0.1;
+    stroke: #000;
+    stroke-opacity: 0.2;
 }

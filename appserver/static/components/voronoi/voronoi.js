@@ -2,7 +2,7 @@ define(function(require, exports, module) {
 
     var _ = require('underscore');
     var d3 = require("../d3/d3");
-    var queue = require("./queue");
+    var geo = require("./d3.geo.projection.v0");
     var topojson = require("./topojson");
     var SimpleSplunkView = require("splunkjs/mvc/simplesplunkview");
 
@@ -22,7 +22,10 @@ define(function(require, exports, module) {
             dst_lat_field: "dst_lat",
             dst_lon_field: "dst_lon",
             count_field: "count",
-            height: 600
+            center_lat: 0,
+            center_lon: 0,
+            zoom: 250,
+            height: 800
         },
 
         output_mode: "json",
@@ -78,6 +81,10 @@ define(function(require, exports, module) {
             var dst_lat_field   = that.settings.get("dst_lat_field");
             var dst_lon_field   = that.settings.get("dst_lon_field");
 
+            var center_lat = that.settings.get("center_lat");
+            var center_lon = that.settings.get("center_lon");
+            var zoom       = that.settings.get("zoom");
+
             var count_field = that.settings.get("count_field");
 
             var height = that.settings.get("height");
@@ -85,9 +92,12 @@ define(function(require, exports, module) {
 
             that.$el.html("");
 
-            var projection = d3.geo.albers()
+            var projection = d3.geo.kavrayskiy7()
+                .center([center_lon, center_lat])
+                .scale(zoom)
                 .translate([width / 2, height / 2])
-                .scale(1080);
+
+            var graticule = d3.geo.graticule();
 
             var path = d3.geo.path()
                 .projection(projection);
@@ -101,12 +111,25 @@ define(function(require, exports, module) {
                 .attr("width", width)
                 .attr("height", height);
 
-            queue()
-                .defer(d3.json, "/static/app/custom_vizs/components/voronoi/us.json")
-                .await(ready);
+            svg.append("path")
+                .datum(graticule)
+                .attr("class", "graticule")
+                .attr("d", path);
 
-            function ready(error, us) {
-                if (error) throw error;
+            svg.append("path")
+                .datum(graticule.outline)
+                .attr("class", "graticule outline")
+                .attr("d", path);
+
+            d3.json("/static/app/custom_vizs/components/voronoi/readme-world.json", function(error, world) {
+                var countries = topojson.feature(world, world.objects.countries).features,
+                    neighbors = topojson.neighbors(world.objects.countries.geometries);
+
+                svg.selectAll(".country")
+                    .data(countries)
+                    .enter().insert("path", ".graticule")
+                    .attr("class", "country")
+                    .attr("d", path);
 
                 var get_points_by_id = d3.map(),
                     positions = [];
@@ -161,16 +184,6 @@ define(function(require, exports, module) {
                 voronoi(points)
                     .forEach(function(d) { d.point.cell = d; });
 
-                svg.append("path")
-                    .datum(topojson.feature(us, us.objects.land))
-                    .attr("class", "regions")
-                    .attr("d", path);
-
-                svg.append("path")
-                    .datum(topojson.mesh(us, us.objects.states, function(a, b) { return a !== b; }))
-                    .attr("class", "region-borders")
-                    .attr("d", path);
-
                 var point = svg.append("g")
                     .attr("class", "points")
                     .selectAll("g")
@@ -192,7 +205,10 @@ define(function(require, exports, module) {
                 point.append("circle")
                     .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; })
                     .attr("r", function(d, i) { return Math.sqrt(d[count_field]); });
-            }
+
+                point.append("title")
+                    .text(function(d) { return d.id; });
+            });
         }
     });
     return Voronoi;
