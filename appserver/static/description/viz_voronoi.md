@@ -91,7 +91,7 @@
             <td>
             <code>center_lat</code>
             </td>
-            <td>string</td>
+            <td>number</td>
             <td>0</td>
             <td>The latitude for the map's center (North is positive; South is negative).</td>
         </tr>
@@ -99,7 +99,7 @@
             <td>
             <code>center_lon</code>
             </td>
-            <td>string</td>
+            <td>number</td>
             <td>0</td>
             <td>The longitude for the map's center (East is positive; West is negative).</td>
         </tr>
@@ -107,9 +107,17 @@
             <td>
             <code>zoom</code>
             </td>
-            <td>string</td>
+            <td>number</td>
             <td>250</td>
             <td>The zoom level of the map.</td>
+        </tr>
+        <tr>
+            <td>
+            <code>max_circle_size</code>
+            </td>
+            <td>number</td>
+            <td>20</td>
+            <td>The maximum circle size (circle sizes are normalized to this value).</td>
         </tr>
     </tbody>
 </table>

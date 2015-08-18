@@ -25,6 +25,7 @@ define(function(require, exports, module) {
             center_lat: 0,
             center_lon: 0,
             zoom: 250,
+            max_circle_size: 20,
             height: 800
         },
 
@@ -80,12 +81,13 @@ define(function(require, exports, module) {
             var dst_label_field = that.settings.get("dst_label_field");
             var dst_lat_field   = that.settings.get("dst_lat_field");
             var dst_lon_field   = that.settings.get("dst_lon_field");
+            var count_field     = that.settings.get("count_field");
 
             var center_lat = that.settings.get("center_lat");
             var center_lon = that.settings.get("center_lon");
             var zoom       = that.settings.get("zoom");
 
-            var count_field = that.settings.get("count_field");
+            var max_circle_size = that.settings.get("max_circle_size");
 
             var height = that.settings.get("height");
             var width = that.$el.width();
@@ -131,27 +133,33 @@ define(function(require, exports, module) {
                     .attr("class", "country")
                     .attr("d", path);
 
+                var format = d3.format(",");
+
                 var get_points_by_id = d3.map(),
                     positions = [];
 
-                var src = _(data).chain().groupBy(src_label_field).each(function(v, k, o) { o[k] = v[0] }).value();
-                var dst = _(data).chain().groupBy(dst_label_field).each(function(v, k, o) { o[k] = v[0] }).value();
+                var src = _(data).chain().groupBy(src_label_field).each(function(v, k, o) { o[k] = v; }).value();
+                var dst = _(data).chain().groupBy(dst_label_field).each(function(v, k, o) { o[k] = v; }).value();
 
-                var uniques = _(src).extend(dst);
+                var uniques = _(dst).extend(src);
+
+                var max = 0;
 
                 var points = _(uniques).map(function(v, k) {
                     var o = {};
 
                     o.id = k;
-                    o.value = v[count_field];
+                    o.value = _(v).pluck(count_field).reduce(function(memo, num) { return memo + parseFloat(num); }, 0);
 
-                    if(v.from === k) {
-                        o.lat = v[src_lat_field];
-                        o.lon = v[src_lon_field];
+                    max = Math.max(max, o.value);
+
+                    if(v[0].from === k) {
+                        o.lat = v[0][src_lat_field];
+                        o.lon = v[0][src_lon_field];
                     }
                     else {
-                        o.lat = v[dst_lat_field];
-                        o.lon = v[dst_lon_field];
+                        o.lat = v[0][dst_lat_field];
+                        o.lon = v[0][dst_lon_field];
                     }
 
                     return o;
@@ -205,10 +213,15 @@ define(function(require, exports, module) {
 
                 point.append("circle")
                     .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; })
-                    .attr("r", function(d, i) { return Math.sqrt(d[count_field]); });
+                    .attr("r", function(d, i) { return d.value/max*max_circle_size; });
 
                 point.append("title")
-                    .text(function(d) { return d.id + ": " + d.value; });
+                    .text(function(d) {
+                        return d.id + ": " +
+                            format(d.outgoing.length) + " distinct outgoing, " +
+                            format(d.incoming.length) + " distinct incoming, " +
+                            format(d.value) + " total";
+                    });
             });
         }
     });
