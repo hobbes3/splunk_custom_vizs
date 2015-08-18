@@ -183,7 +183,7 @@
         "id": "viz_voronoi",
         "title": "Voronoi Map",
         "short-description": "A Voronoi Map is a mathematical partitioning of a plane into regions based on distance to points in a specific subset of the plane.",
-        "category": "Map",
+        "category": "Maps",
         "versions": ["6.2"],
         "sourceFiles": [
             "/static/app/custom_vizs/components/voronoi/voronoi.js",

@@ -143,6 +143,7 @@ define(function(require, exports, module) {
                     var o = {};
 
                     o.id = k;
+                    o.value = v[count_field];
 
                     if(v.from === k) {
                         o.lat = v[src_lat_field];
@@ -207,7 +208,7 @@ define(function(require, exports, module) {
                     .attr("r", function(d, i) { return Math.sqrt(d[count_field]); });
 
                 point.append("title")
-                    .text(function(d) { return d.id; });
+                    .text(function(d) { return d.id + ": " + d.value; });
             });
         }
     });
