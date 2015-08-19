@@ -19,7 +19,7 @@
           "dst_field": "to",
           "dst_category_field": "to_region",
           "dst_value_field": "to_total",
-          "category_order": ["Northeast", "South", "West", "Midwest"],
+          "category_order": ["Midwest", "Northeast", "South", "West"],
           "links_name": "flights",
           "nodes_name": "airports",
           "node_name": "Airport",
