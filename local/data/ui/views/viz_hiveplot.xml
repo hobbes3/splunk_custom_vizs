@@ -3,7 +3,7 @@
   <row>
     <panel>
       <html>
-        <h2>Sample Flights among the Top 15 Airports (from sample_flights.csv and europe.csv)</h2>
+        <h2>Sample Flights among the Top 15 Airports (from sample_flights.csv)</h2>
         <p id="info"></p>
         <div id="hiveplot_search" class="splunk-manager" data-require="splunkjs/mvc/searchmanager" data-options='{
           "search": "| inputlookup sample_flights.csv | lookup us_airports_top_15.csv airport AS from OUTPUT airport AS from_airport | lookup us_airports_top_15.csv airport AS to OUTPUT airport AS to_airport | where isnotnull(from_airport) AND isnotnull(to_airport) | where (random() % 10) = 0 | table count from to | lookup us_airports.csv iata as from output state as from_state | lookup us_regions.csv state as from_state output region as from_region | lookup us_airports.csv iata as to output state as to_state | lookup us_regions.csv state as to_state output region as to_region | eventstats sum(count) as from_total by from | eventstats sum(count) as to_total by to",
