@@ -3,23 +3,28 @@
   <row>
     <panel>
       <html>
-        <h2>First 100 Flights (from sample_flights.csv and europe.csv)</h2>
+        <h2>Sample Flights among the Top 15 Airports (from sample_flights.csv and europe.csv)</h2>
         <p id="info"></p>
         <div id="hiveplot_search" class="splunk-manager" data-require="splunkjs/mvc/searchmanager" data-options='{
-          "search": "| inputlookup sample_flights.csv | head 100 | stats count by from to | inputlookup append=t europe.csv | rename country as from",
+          "search": "| inputlookup sample_flights.csv | lookup us_airports_top_15.csv airport AS from OUTPUT airport AS from_airport | lookup us_airports_top_15.csv airport AS to OUTPUT airport AS to_airport | where isnotnull(from_airport) AND isnotnull(to_airport) | where (random() % 10) = 0 | table count from to | lookup us_airports.csv iata as from output state as from_state | lookup us_regions.csv state as from_state output region as from_region | lookup us_airports.csv iata as to output state as to_state | lookup us_regions.csv state as to_state output region as to_region | eventstats sum(count) as from_total by from | eventstats sum(count) as to_total by to",
           "preview": true
         }'>
         </div>
         <div id="hiveplot" class="splunk-view" data-require="app/custom_vizs/components/hiveplot/hiveplot" data-options='{
           "managerid": "hiveplot_search",
-          "src_field": "from",
           "height": 500,
-          "dest_field": "to",
-          "category_field": "region",
-          "category_order": ["North", "East", "South", "West"],
-          "property_field": "population",
+          "src_field": "from",
+          "src_category_field": "from_region",
+          "src_value_field": "from_total",
+          "dst_field": "to",
+          "dst_category_field": "to_region",
+          "dst_value_field": "to_total",
+          "category_order": ["Northeast", "South", "West", "Midwest"],
           "links_name": "flights",
-          "nodes_name": "countries"
+          "nodes_name": "airports",
+          "node_name": "Airport",
+          "category_name": "Region",
+          "value_name": "Total Flights"
         }'>
         </div>
       </html>

@@ -14,12 +14,17 @@ define(function(require, exports, module) {
             "data": "preview",
             "height": 900,
             "src_field": "src",
-            "dest_field": "dest",
-            "property_field": "property",
-            "category_field": "category",
+            "src_category_field": "src_category",
+            "src_value_field": "src_value",
+            "dst_field": "dst",
+            "dst_category_field": "dst_category",
+            "dst_value_field": "dst_value",
             "category_order": null,
             "links_name": "links",
             "nodes_name": "nodes",
+            "node_name": "Node",
+            "category_name": "Category",
+            "value_name": "Value",
             "labels": true
         },
         output_mode: "json",
@@ -28,10 +33,12 @@ define(function(require, exports, module) {
             // In the case that any options are changed, it will dynamically update without having to refresh
             // Copy the following line for whichever field you'd like dynamic updating on
 
-            this.settings.on("change:src_field",      this.render, this);
-            this.settings.on("change:dest_field",     this.render, this);
-            this.settings.on("change:property_field", this.render, this);
-            this.settings.on("change:category_field", this.render, this);
+            this.settings.on("change:src_field",          this.render, this);
+            this.settings.on("change:src_category_field", this.render, this);
+            this.settings.on("change:src_value_field", this.render, this);
+            this.settings.on("change:dst_field",          this.render, this);
+            this.settings.on("change:dst_category_field", this.render, this);
+            this.settings.on("change:dst_value_field", this.render, this);
         },
         createView: function() {
             // Clearing 'waiting for data...'
@@ -49,51 +56,65 @@ define(function(require, exports, module) {
         formatData: function(data) {
             var that = this;
 
-            var src_field = that.settings.get("src_field");
-            var dest_field = that.settings.get("dest_field");
-            var property_field = that.settings.get("property_field");
-            var category_field = that.settings.get("category_field");
+            var src_field          = that.settings.get("src_field");
+            var src_category_field = that.settings.get("src_category_field");
+            var src_value_field = that.settings.get("src_value_field");
+            var dst_field          = that.settings.get("dst_field");
+            var dst_category_field = that.settings.get("dst_category_field");
+            var dst_value_field = that.settings.get("dst_value_field");
+
             var category_order = that.settings.get("category_order");
 
             var formatted_data = {};
 
-            var categories = _(data).chain().pluck(category_field).uniq().compact().value();
+            var src_categories = _(data).chain().pluck(src_category_field).uniq().compact().value();
+            var dst_categories = _(data).chain().pluck(dst_category_field).uniq().compact().value();
+
+            var categories = _(src_categories).union(dst_categories);
+
             categories = _(category_order).intersection(categories).concat(_(categories).difference(category_order))
 
-            var min = _(data).chain().map(function(o) { return parseFloat(o[property_field]); }).min().value();
-            var max = _(data).chain().map(function(o) { return parseFloat(o[property_field]); }).max().value();
+            var min = _(data).chain().map(function(o) { return Math.min(parseFloat(o[src_value_field]), parseFloat(o[dst_value_field])); }).min().value();
+            var max = _(data).chain().map(function(o) { return Math.max(parseFloat(o[src_value_field]), parseFloat(o[dst_value_field])); }).max().value();
             var range = max - min;
 
-            var nodes_info = _(data).filter(function(o) { return o[property_field]; });
+            var src = _(data).chain().groupBy(src_field).each(function(v, k, o) { o[k] = v; }).value();
+            var dst = _(data).chain().groupBy(dst_field).each(function(v, k, o) { o[k] = v; }).value();
 
-            var nodes = _(data)
-                .chain()
-                .uniq(function(o) { return o[src_field]; })
-                .map(function(o) {
-                    var name = o[src_field];
-                    var find = {};
-                    find[src_field] = name;
-                    var category = _(nodes_info).findWhere(find)[category_field];
-                    var property = parseFloat(_(nodes_info).findWhere(find)[property_field]);
+            var uniques = _(dst).extend(src);
 
-                    return {
-                        name: name,
-                        x: categories.indexOf(category),
-                        y: (property - min)/range,
-                        property: property,
-                        category: category,
-                        sources: [],
-                        targets: []
-                    };
-                })
-                .value();
+            var nodes = _(uniques).map(function(v, k) {
+                o = {
+                    name: k,
+                    sources: [],
+                    targets: []
+                }
+
+                var category;
+
+                if(v[0][src_field] === k) {
+                    category = v[0][src_category_field];
+                    value = v[0][src_value_field];
+                }
+                else {
+                    category = v[0][dst_category_field];
+                    value = v[0][dst_value_field];
+                }
+
+                o.category = category;
+                o.value = value;
+                o.x = categories.indexOf(category);
+                o.y = (value - min)/range;
+
+                return o;
+            });
 
             var links = _(data)
                 .chain()
-                .filter(function(o) { return o[src_field] && o[dest_field]; })
+                .filter(function(o) { return o[src_field] && o[dst_field]; })
                 .map(function(o) {
                     var source = _(nodes).findWhere({name: o[src_field]});
-                    var target = _(nodes).findWhere({name: o[dest_field]});
+                    var target = _(nodes).findWhere({name: o[dst_field]});
 
                     source.targets.push(target);
                     target.sources.push(source);
@@ -132,10 +153,13 @@ define(function(require, exports, module) {
                 formatCommaNumber = d3.format("0,000"),
                 defaultInfo;
 
-            var links_name     = that.settings.get("links_name");
             var nodes_name     = that.settings.get("nodes_name");
-            var property_field = that.settings.get("property_field");
+            var links_name     = that.settings.get("links_name");
+            var node_name      = that.settings.get("node_name");
+            var category_name  = that.settings.get("category_name");
+            var value_name     = that.settings.get("value_name");
             var category_field = that.settings.get("category_field");
+            var value_field    = that.settings.get("value_field");
             var labels         = that.settings.get("labels");
 
             // Initialize the info display.
@@ -249,7 +273,7 @@ define(function(require, exports, module) {
                     });
                 svg.selectAll(".axis").classed("hidden", true);
                 d3.select(this).classed("active", true);
-                info.text("Country: " + d.name + ", Region: " + d.category + ", Population: " + formatCommaNumber(d.property));
+                info.text(node_name + ": " + d.name + ", " + category_name + ": " + d.category + ", " + value_name + ": " + formatCommaNumber(d.value));
             }
 
             // Clear any highlighted nodes or links.

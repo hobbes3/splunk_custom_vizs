@@ -27,8 +27,8 @@ version = 6.2.4
 modtime = 1439342850.228778000
 
 [views/viz_chordchart]
-version = 6.2.4
-modtime = 1439342588.118783000
+version = 6.2.5
+modtime = 1439940916.831258000
 
 [views/viz_globe]
 version = 6.2.4
@@ -39,8 +39,8 @@ version = 6.2.4
 modtime = 1439342711.512311000
 
 [views/viz_hiveplot]
-version = 6.2.4
-modtime = 1439342784.301704000
+version = 6.2.5
+modtime = 1439949464.280797000
 
 [views/viz_boxplot]
 version = 6.2.4
@@ -78,4 +78,4 @@ modtime = 1438368066.477154000
 export = none
 owner = admin
 version = 6.2.5
-modtime = 1439923601.687111000
+modtime = 1439939507.898988000

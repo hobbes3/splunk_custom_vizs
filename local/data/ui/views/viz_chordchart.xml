@@ -1,14 +1,14 @@
 <form script="custom_vizs:autodiscover.js, custom_vizs:viz_chordchart.js">
   <label>Chord Chart</label>
   <fieldset submitButton="false">
-    <input type="text" token="selected_country" id="input_selected_country"></input>
+    <input type="text" token="selected_airport" id="input_selected_airport"></input>
   </fieldset>
   <row>
     <panel>
       <html>
-        <h2>Flights Sample (from sample_flights.csv) (drilldown)</h2>
+        <h2>Flights between Top 15 US Airports (from sample_flights.csv) (drilldown)</h2>
         <div id="chordchart_search" class="splunk-manager" data-require="splunkjs/mvc/searchmanager" data-options='{
-          "search": "| inputlookup sample_flights.csv | stats count by from to",
+          "search": "| inputlookup sample_flights.csv | lookup us_airports_top_15.csv airport AS from OUTPUT airport AS from_airport | lookup us_airports_top_15.csv airport AS to OUTPUT airport AS to_airport | where isnotnull(from_airport) AND isnotnull(to_airport) | table count from to",
           "preview": true,
           "earliest_time": "0",
           "latest_time": "now"
@@ -26,10 +26,10 @@
   </row>
   <row>
     <panel>
-      <chart id="piechart" depends="$selected_country$">
-        <title>Flights from $selected_country$</title>
+      <chart id="piechart" depends="$selected_airport$">
+        <title>Flights from $selected_airport$</title>
         <search>
-          <query>| inputlookup sample_flights.csv | where from=$selected_country|s$ | stats count by to</query>
+          <query>| inputlookup sample_flights.csv | where from=$selected_airport|s$ | lookup us_airports_top_15.csv airport AS to OUTPUT airport AS to_airport | where isnotnull(to_airport) | table to count</query>
         </search>
         <option name="charting.chart">pie</option>
       </chart>

@@ -15,7 +15,7 @@ require([
         });
     }
 
-    $("#input_selected_country").hide();
+    $("#input_selected_airport").hide();
 
     var unsubmitted_tokens = mvc.Components.get('default');
     var submitted_tokens = mvc.Components.get('submitted');
@@ -25,7 +25,7 @@ require([
         var piechart   = mvc.Components.get("piechart");
 
         chordchart.on("click", function(e) {
-            unsubmitted_tokens.set("form.selected_country", e.name);
+            unsubmitted_tokens.set("form.selected_airport", e.name);
             submit_and_update_url();
         });
 

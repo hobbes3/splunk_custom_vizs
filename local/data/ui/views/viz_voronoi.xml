@@ -3,9 +3,9 @@
   <row>
     <panel>
       <html>
-        <h2>Voronoi Map</h2>
+        <h2>Flights among US Airports (from sample_flight.csv)</h2>
         <div id="voronoi_search" class="splunk-manager" data-require="splunkjs/mvc/searchmanager" data-options='{
-          "search": "| inputlookup flights.csv | lookup airports.csv iata AS from OUTPUT latitude AS from_lat longitude AS from_lon | lookup airports.csv iata AS to OUTPUT latitude AS to_lat longitude AS to_lon",
+          "search": "| inputlookup sample_flights.csv | lookup airports.csv iata AS from OUTPUT latitude AS from_lat longitude AS from_lon | lookup airports.csv iata AS to OUTPUT latitude AS to_lat longitude AS to_lon",
           "preview": true,
           "earliest_time": "0",
           "latest_time": "now"
