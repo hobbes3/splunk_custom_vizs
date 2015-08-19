@@ -33,27 +33,43 @@
     </tr>
     <tr>
         <td>
-        <code>dest_field</code>
+        <code>src_category_field</code>
         </td>
         <td>string</td>
-        <td>"dest"</td>
+        <td>"src_category"</td>
+        <td>The name of the property field. The category determines which line the node will be on.</td>
+    </tr>
+    <tr>
+        <td>
+        <code>src_value_field</code>
+        </td>
+        <td>string</td>
+        <td>"src_value"</td>
+        <td>The name of the value field for the source. The value determines the node's distance from the center on one of the lines.</td>
+    </tr>
+    <tr>
+        <td>
+        <code>dst_field</code>
+        </td>
+        <td>string</td>
+        <td>"dst"</td>
         <td>The name of the destination field.</td>
     </tr>
     <tr>
         <td>
-        <code>property_field</code>
+        <code>dst_category_field</code>
         </td>
         <td>string</td>
-        <td>"property"</td>
-        <td>The name of the property field.</td>
+        <td>"dst_category"</td>
+        <td>The name of the category field for the destination.</td>
     </tr>
     <tr>
         <td>
-        <code>category_field</code>
+        <code>dst_value_field</code>
         </td>
         <td>string</td>
-        <td>"category"</td>
-        <td>The name of the category field.</td>
+        <td>"dst_value"</td>
+        <td>The name of the value field for the destination.</td>
     </tr>
     <tr>
         <td>
@@ -77,7 +93,31 @@
         </td>
         <td>string</td>
         <td>"nodes"</td>
-        <td>The name of the nodes for ths status.</td>
+        <td>The name of the nodes for the status.</td>
+    </tr>
+    <tr>
+        <td>
+        <code>node_name</code>
+        </td>
+        <td>string</td>
+        <td>"Node"</td>
+        <td>The label of the node name for the status when hovering over a node. For example, by default the status will say something like "Node: Foo, Category: Bar, Value: 42".</td>
+    </tr>
+    <tr>
+        <td>
+        <code>category_name</code>
+        </td>
+        <td>string</td>
+        <td>"Category"</td>
+        <td>The label of the category name for the status when hovering over a node.</td>
+    </tr>
+    <tr>
+        <td>
+        <code>value_name</code>
+        </td>
+        <td>string</td>
+        <td>"Value"</td>
+        <td>The label of the value name for the status when hovering over a node.</td>
     </tr>
     <tr>
         <td>
