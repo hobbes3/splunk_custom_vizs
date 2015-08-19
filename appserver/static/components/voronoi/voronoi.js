@@ -15,10 +15,10 @@ define(function(require, exports, module) {
         options: {
             managerid: null,
             data: "preview",
-            src_label_field: "src",
+            src_field: "src",
             src_lat_field: "src_lat",
             src_lon_field: "src_lon",
-            dst_label_field: "dst",
+            dst_field: "dst",
             dst_lat_field: "dst_lat",
             dst_lon_field: "dst_lon",
             count_field: "count",
@@ -41,13 +41,13 @@ define(function(require, exports, module) {
             // in the case that any options are changed, it will dynamically update
             // without having to refresh. copy the following line for whichever field
             // you'd like dynamic updating on
-            this.settings.on("change:src_label_field", this.render, this);
+            this.settings.on("change:src_field",     this.render, this);
             this.settings.on("change:src_lat_field", this.render, this);
             this.settings.on("change:src_lon_field", this.render, this);
-            this.settings.on("change:dst_label", this.render, this);
+            this.settings.on("change:dst_label",     this.render, this);
             this.settings.on("change:dst_lat_field", this.render, this);
             this.settings.on("change:dst_lon_field", this.render, this);
-            this.settings.on("change:count_field", this.render, this);
+            this.settings.on("change:count_field",   this.render, this);
 
             // Set up resize callback. The first argument is a this
             // pointer which gets passed into the callback event
@@ -75,13 +75,13 @@ define(function(require, exports, module) {
         updateView: function(viz, data) {
             var that = this;
 
-            var src_label_field = that.settings.get("src_label_field");
-            var src_lat_field   = that.settings.get("src_lat_field");
-            var src_lon_field   = that.settings.get("src_lon_field");
-            var dst_label_field = that.settings.get("dst_label_field");
-            var dst_lat_field   = that.settings.get("dst_lat_field");
-            var dst_lon_field   = that.settings.get("dst_lon_field");
-            var count_field     = that.settings.get("count_field");
+            var src_field     = that.settings.get("src_field");
+            var src_lat_field = that.settings.get("src_lat_field");
+            var src_lon_field = that.settings.get("src_lon_field");
+            var dst_field     = that.settings.get("dst_field");
+            var dst_lat_field = that.settings.get("dst_lat_field");
+            var dst_lon_field = that.settings.get("dst_lon_field");
+            var count_field   = that.settings.get("count_field");
 
             var center_lat = that.settings.get("center_lat");
             var center_lon = that.settings.get("center_lon");
@@ -138,8 +138,8 @@ define(function(require, exports, module) {
                 var get_points_by_id = d3.map(),
                     positions = [];
 
-                var src = _(data).chain().groupBy(src_label_field).each(function(v, k, o) { o[k] = v; }).value();
-                var dst = _(data).chain().groupBy(dst_label_field).each(function(v, k, o) { o[k] = v; }).value();
+                var src = _(data).chain().groupBy(src_field).each(function(v, k, o) { o[k] = v; }).value();
+                var dst = _(data).chain().groupBy(dst_field).each(function(v, k, o) { o[k] = v; }).value();
 
                 var uniques = _(dst).extend(src);
 
@@ -153,7 +153,7 @@ define(function(require, exports, module) {
 
                     max = Math.max(max, o.value);
 
-                    if(v[0].from === k) {
+                    if(v[0][src_field] === k) {
                         o.lat = v[0][src_lat_field];
                         o.lon = v[0][src_lon_field];
                     }
@@ -172,8 +172,8 @@ define(function(require, exports, module) {
                 });
 
                 data.forEach(function(connection) {
-                    var source = get_points_by_id.get(connection[src_label_field]),
-                        target = get_points_by_id.get(connection[dst_label_field]),
+                    var source = get_points_by_id.get(connection[src_field]),
+                        target = get_points_by_id.get(connection[dst_field]),
                         link = {source: source, target: target};
                     source.outgoing.push(link);
                     target.incoming.push(link);

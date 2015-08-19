@@ -33,7 +33,7 @@
         </tr>
         <tr>
             <td>
-            <code>src_label_field</code>
+            <code>src_field</code>
             </td>
             <td>string</td>
             <td>"src"</td>
@@ -57,7 +57,7 @@
         </tr>
         <tr>
             <td>
-            <code>dst_label_field</code>
+            <code>dst_field</code>
             </td>
             <td>string</td>
             <td>"dst"</td>

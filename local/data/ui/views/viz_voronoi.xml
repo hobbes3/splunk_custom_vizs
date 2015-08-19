@@ -13,10 +13,10 @@
         </div>
         <div id="voronoi" class="splunk-view" data-require="app/custom_vizs/components/voronoi/voronoi" data-options='{
           "managerid": "voronoi_search",
-          "src_label_field": "from",
+          "src_field": "from",
           "src_lat_field": "from_lat",
           "src_lon_field": "from_lon",
-          "dst_label_field": "to",
+          "dst_field": "to",
           "dst_lat_field": "to_lat",
           "dst_lon_field": "to_lon",
           "center_lat": 45,
