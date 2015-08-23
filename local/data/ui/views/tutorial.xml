@@ -10,14 +10,14 @@
           Custom JS visualizations can be used in Splunk by including special JS files that extends and modifies the <code>SimpleSplunkView</code> SplunkJS object. All custom JS (and other static files like CSS and images) goes in the app's <code>appserver/static/</code> folder. These JS are then called from SimpleXML. Creating the JS files require server access, but <i>using</i> the custom visualization only require access to Splunk UI (SimpleXML).
         </p>
         <h2>Instructions</h2>
-        <p>Reference the <code>custom_vizs</code> app:</p>
+        <p>Reference the <code>custom_vizs</code> app (recommended):</p>
         <ul>
           <li>Clone one of the example dashboards to this app or your own app, then simply modify the search and options.</li>
           <li>Note that the dashboard references the JS files in this app.</li>
         </ul>
         <p>Create your own standalone app:</p>
         <ul>
-          <li>If you don't want to depend on this app, then copy the necessary files in <code>custom_viz/appserver/static/&lt;js_viz&gt;/</code> and other JS dependencies like <code>autodiscover.js</code> to your own app's <code>appserver/static/</code>. Then remove or modify the <code>custom_vizs:</code> prefix from first line of the Simple XML code.</li>
+          <li>If you absolutely don't want to depend on this app, then copy the necessary files in <code>custom_viz/appserver/static/components/&lt;js_viz&gt;/</code> and other JS dependencies like <code>autodiscover.js</code> and <code>d3.js</code> to your own app's <code>appserver/static/</code>. Then remove or modify the <code>custom_vizs:</code> prefix from first line of the Simple XML code.</li>
           <li>Some dashboard examples use its own <code>autodiscover.js</code> and JS file (like the Globe and Bubble Chart examples).</li>
         </ul>
       </html>
@@ -45,7 +45,7 @@
               <li><a href="http://docs.splunk.com/DocumentationStatic/WebFramework/1.1/compref_searchmanager.html" target="_blank">SearchManager</a></li>
               <li><a href="http://docs.splunk.com/DocumentationStatic/WebFramework/1.1/compref_savedsearchmanager.html" target="_blank">SavedSearchManager</a></li>
               <li><a href="http://docs.splunk.com/DocumentationStatic/WebFramework/1.1/compref_postprocessmanager.html" target="_blank">PostProcessManager</a></li>
-              <li>All SplunkJS objects are located in <code>$SPLUNKHOME$/share/splunk/search_mrsparkle/exposed/js/splunkjs/mvc/</code>.</li>
+              <li>All SplunkJS objects are located in <code>$SPLUNK_HOME$/share/splunk/search_mrsparkle/exposed/js/splunkjs/mvc/</code>.</li>
             </ul>
           </li>
         </ul>
@@ -71,6 +71,7 @@
           <li><a href="http://bl.ocks.org/mbostock/2066415" target="_blank">Hive Plot (Links)</a></li>
           <li><a href="http://bl.ocks.org/mbostock/7608400" target="_blank">Voronoi Arc Map</a></li>
           <li><a href="http://bl.ocks.org/mbostock/4180634" target="_blank">World Map</a></li>
+          <li><a href="http://ocularwarfare.com/ipew/" target="_blank">IPew Map</a></li>
         </ul>
         <h2>Thanks to</h2>
         <ul>

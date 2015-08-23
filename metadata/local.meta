@@ -4,7 +4,7 @@ modtime = 1432766805.588891000
 
 [views/tutorial]
 version = 6.2.5
-modtime = 1439925836.316623000
+modtime = 1440298269.103258000
 
 [views/viz_bubblechart]
 version = 6.2.4
@@ -78,4 +78,14 @@ modtime = 1438368066.477154000
 export = none
 owner = admin
 version = 6.2.5
-modtime = 1439951548.361120000
+modtime = 1440202586.125821000
+
+[views/viz_ipew]
+version = 6.2.5
+modtime = 1440291301.862061000
+
+[]
+access = read : [ * ], write : [ admin, power ]
+export = system
+version = 6.2.5
+modtime = 1440297576.531527000

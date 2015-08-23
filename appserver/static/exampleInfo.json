@@ -109,6 +109,17 @@
         "related_links": []
     },
     {
+        "id": "viz_ipew",
+        "title": "IPew Map",
+        "short-description": "IPew is an open source \"live attack map\" simulation built with D3 (Datamaps) that puts global cyberwar for anyone wanting to display these good-for-only-eye-candy maps on your site.",
+        "category": "Maps",
+        "versions": ["6.2"],
+        "sourceFiles": [
+            "/static/app/custom_vizs/components/ipew/ipew.js"
+        ],
+        "related_links": []
+    },
+    {
         "id": "viz_parallelcoords",
         "title": "Parallel Coordinates",
         "short-description": "The parallel coordinates graph is good for visualizing multidimensional data dynamically. This graph is especially good for data with many dimensions and categories because it allows a user to interactively examine a large dataset.",

@@ -1,0 +1,31 @@
+<form script="custom_vizs:autodiscover.js" stylesheet="dark.css">
+  <label>IPew Map</label>
+  <row>
+    <panel>
+      <html>
+        <h2>Randomly Generated Attacks in Real Time</h2>
+        <div id="ipew_search" class="splunk-manager" data-require="splunkjs/mvc/searchmanager" data-options='{
+          "search": "sourcetype=ipew_sample | eval msg=src_country+\" (\"+src+\") attacks \"+dst_country+\" (\"+dst+\") (\"+type+\")\" | table _time src_lat src_lon dst_lat dst_lon type msg | sort 0 -_time",
+          "preview": true,
+          "earliest_time": "rt-30",
+          "latest_time": "rt"
+        }'>
+        </div>
+        <div id="ipew" class="splunk-view" data-require="app/custom_vizs/components/ipew/ipew" data-options='{
+          "managerid": "ipew_search"
+        }'>
+        </div>
+      </html>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <table>
+        <title>IPew Search Results</title>
+        <search base="ipew_search"/>
+        <option name="drilldown">none</option>
+        <option name="fields">_time,msg</option>
+      </table>
+    </panel>
+  </row>
+</form>

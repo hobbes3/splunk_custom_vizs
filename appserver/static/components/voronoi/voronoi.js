@@ -1,9 +1,10 @@
-define(function(require, exports, module) {
+// Voronoi Map D3.js code taken and modified from http://bl.ocks.org/mbostock/7608400 by Mike Bostock
 
+define(function(require, exports, module) {
     var _ = require('underscore');
     var d3 = require("../d3/d3");
-    var geo = require("./d3.geo.projection.v0");
-    var topojson = require("./topojson");
+    var geo = require("../d3/d3.geo.projection");
+    var topojson = require("../d3/topojson");
     var SimpleSplunkView = require("splunkjs/mvc/simplesplunkview");
 
     require("css!./voronoi.css");

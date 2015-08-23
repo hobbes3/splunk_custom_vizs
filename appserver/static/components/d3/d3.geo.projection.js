@@ -1,6 +1,6 @@
 define(function(require, exports, module) {
 
-    var d3 = require("../d3/d3");
+    var d3 = require("./d3");
 
     (function() {
     d3.geo.project = function(object, projection) {
