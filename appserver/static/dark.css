@@ -57,10 +57,10 @@ svg text {
 .panel-body.html, .form-settings, .input label, h2.panel-title {
     color: #ddd;
 }
-.html a, .view-new-time-range-picker-dialog .presets-container a, .sidebar .panel-contents a, #global-system-menu .popdown-dialog-body a {
+.html a, .view-new-time-range-picker-dialog .presets-container a, .sidebar .panel-contents a, #global-system-menu .popdown-dialog-body a, .sourcecode-viewer a {
     color: #5379af;
 }
-.html a:hover, .view-new-time-range-picker-dialog .presets-container a:hover, .sidebar .panel-contents a:hover, #global-system-menu .popdown-dialog-body a:hover {
+.html a:hover, .view-new-time-range-picker-dialog .presets-container a:hover, .sidebar .panel-contents a:hover, #global-system-menu .popdown-dialog-body a:hover, .sourcecode-viewer a:hover {
     color: #32496a;
 }
 #token_debug.table-striped > tbody > tr:nth-child(odd) > td, #token_debug.table-striped > tbody > tr:nth-child(odd) > th {

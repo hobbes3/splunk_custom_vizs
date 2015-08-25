@@ -5,14 +5,17 @@
       <html>
         <h2>Randomly Generated Attacks in Real Time</h2>
         <div id="ipew_search" class="splunk-manager" data-require="splunkjs/mvc/searchmanager" data-options='{
-          "search": "sourcetype=ipew_sample | eval msg=src_country+\" (\"+src+\") attacks \"+dst_country+\" (\"+dst+\") (\"+type+\")\" | table _time src_lat src_lon dst_lat dst_lon type msg | sort 0 -_time",
+          "search": "sourcetype=ipew_sample | eval msg=src_country+\" (\"+src+\") attacks \"+dst_country+\" (\"+dst+\") (\"+type+\")\" | eval id=md5(_raw) | table _time id src_lat src_lon dst_lat dst_lon type msg | sort 0 -_time",
           "preview": true,
           "earliest_time": "rt-30",
           "latest_time": "rt"
         }'>
         </div>
         <div id="ipew" class="splunk-view" data-require="app/custom_vizs/components/ipew/ipew" data-options='{
-          "managerid": "ipew_search"
+          "managerid": "ipew_search",
+          "queue": 10,
+          "limit": 5,
+          "sound_filename": "/static/app/custom_vizs/components/ipew/shot_sound.mp3"
         }'>
         </div>
       </html>
