@@ -111,7 +111,7 @@
     {
         "id": "viz_ipew",
         "title": "IPew Map",
-        "short-description": "IPew is an open source \"live attack map\" simulation built with D3 (Datamaps) that puts global cyberwar for anyone wanting to display these good-for-only-eye-candy maps on your site.",
+        "short-description": "IPew is an open source \"live attack map\" simulation built with D3 (Datamaps) that puts global cyberwar for anyone wanting to display these good-for-only-eye-candy maps.",
         "category": "Maps",
         "versions": ["6.2"],
         "sourceFiles": [
