@@ -113,11 +113,19 @@
         </tr>
         <tr>
             <td>
+            <code>min_circle_size</code>
+            </td>
+            <td>number</td>
+            <td>3</td>
+            <td>The minimum circle size (circle sizes are normalized to the minimum and maximum size).</td>
+        </tr>
+        <tr>
+            <td>
             <code>max_circle_size</code>
             </td>
             <td>number</td>
             <td>20</td>
-            <td>The maximum circle size (circle sizes are normalized to this value).</td>
+            <td>The maximum circle size.</td>
         </tr>
     </tbody>
 </table>

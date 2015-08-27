@@ -26,6 +26,7 @@ define(function(require, exports, module) {
             center_lat: 0,
             center_lon: 0,
             zoom: 250,
+            min_circle_size: 3,
             max_circle_size: 20,
             height: 800
         },
@@ -88,6 +89,7 @@ define(function(require, exports, module) {
             var center_lon = that.settings.get("center_lon");
             var zoom       = that.settings.get("zoom");
 
+            var min_circle_size = that.settings.get("min_circle_size");
             var max_circle_size = that.settings.get("max_circle_size");
 
             var height = that.settings.get("height");
@@ -214,7 +216,7 @@ define(function(require, exports, module) {
 
                 point.append("circle")
                     .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; })
-                    .attr("r", function(d, i) { return d.value/max*max_circle_size; });
+                    .attr("r", function(d, i) { return d.value/max*(max_circle_size-min_circle_size)+min_circle_size; });
 
                 point.append("title")
                     .text(function(d) {
