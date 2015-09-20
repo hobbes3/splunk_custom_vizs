@@ -1,10 +1,13 @@
+[eventgen]
+export = system
+
 [views/viz_parallelset]
 version = 6.2.2
 modtime = 1432766805.588891000
 
 [views/tutorial]
-version = 6.2.5
-modtime = 1440298269.103258000
+version = 6.3.0
+modtime = 1441882044.540258000
 
 [views/viz_bubblechart]
 version = 6.2.4
@@ -75,17 +78,15 @@ version = 6.2.4
 modtime = 1438368066.477154000
 
 [views/viz_voronoi]
-export = none
-owner = admin
 version = 6.2.5
 modtime = 1440202586.125821000
 
 [views/viz_ipew]
 version = 6.2.5
-modtime = 1440487883.795557000
+modtime = 1440730220.578832000
 
 []
 access = read : [ * ], write : [ admin, power ]
-export = system
-version = 6.2.5
-modtime = 1440297576.531527000
+export = none
+version = 6.3.0
+modtime = 1442773025.277724000

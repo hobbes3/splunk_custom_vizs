@@ -1,4 +1,4 @@
-<form script="custom_vizs:autodiscover.js" stylesheet="dark.css">
+<form script="custom_vizs:autodiscover.js" stylesheet="custom_vizs:dark.css">
   <label>IPew Map</label>
   <row>
     <panel>
